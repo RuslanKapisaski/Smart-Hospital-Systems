@@ -1,0 +1,41 @@
+# Ignore build output
+bin/
+obj/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code workspace files
+.vscode/
+
+# Build results
+*.dll
+*.exe
+*.app
+*.pdb
+*.cache
+*.log
+
+# NuGet packages
+*.nupkg
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# Dotnet-specific
+*.deps.json
+*.runtimeconfig.json
+
+# Backup files
+*.bak
+*.tmp
+
+# Windows thumbnail db
+Thumbs.db
+
+# Others
+_ReSharper*/
+*.vs/
