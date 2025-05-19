@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hospital_System
+namespace Hospital_System.UI
 {
-    public partial class LoginForm : Form
+    public partial class PatientForm : Form
     {
-        public LoginForm()
+        public PatientForm()
         {
             InitializeComponent();
-        }
-
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-            String text = 
         }
     }
 }
