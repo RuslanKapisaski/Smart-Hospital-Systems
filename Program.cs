@@ -1,5 +1,6 @@
 ﻿namespace Hospital_System.UI
 {
+    using Hospital_System.UI.UIManagers;
     using System;
     using System.Windows.Forms;
     
@@ -16,7 +17,11 @@
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            var settingsManager = new SettingsManagerRe();
+            settingsManager.ShowFromAdminForm();
+
+            //Application.Run(new AdminForm());
 
 
         }

@@ -6,7 +6,7 @@ namespace Hospital_System.DAL.DbConnection
 
     public static class DBConnection
     {
-        private static readonly string  conncectionString = @"Server=localhost;Username=postgres;Password=;Database=Hospital System;";
+        private static readonly string  conncectionString = @"Server=localhost;Username=postgres;Password=123r123k;Database=Hospital System;";
         //"Host=localhost;Username=postgres;Password=yourpassword;Database=hospitaldb;";
 
         public static NpgsqlConnection GetConnection()

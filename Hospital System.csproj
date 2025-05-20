@@ -81,6 +81,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="UI\AppointmentsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AppointmentsForm.Designer.cs">
+      <DependentUpon>AppointmentsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DAL\DB\DBConnection.cs" />
     <Compile Include="DAL\Models\Appointment.cs" />
     <Compile Include="DAL\Models\Enums\DoctorSchedule.cs" />
@@ -91,6 +97,12 @@
     <Compile Include="DAL\Models\Enums\PaymentStatus.cs" />
     <Compile Include="DAL\Models\Inventory.cs" />
     <Compile Include="DAL\Models\Patient.cs" />
+    <Compile Include="UI\InventoryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\InventoryForm.Designer.cs">
+      <DependentUpon>InventoryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\AdminForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -102,6 +114,12 @@
     </Compile>
     <Compile Include="UI\DoctorForm.Designer.cs">
       <DependentUpon>DoctorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\HospitalForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\HospitalForm.Designer.cs">
+      <DependentUpon>HospitalForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\PatientForm.cs">
       <SubType>Form</SubType>
@@ -123,6 +141,22 @@
     <Compile Include="UI\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UIManagers\DeveloperForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UIManagers\DeveloperForm.Designer.cs">
+      <DependentUpon>DeveloperForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UIManagers\SettingsManagerRe.cs" />
+    <EmbeddedResource Include="UI\AdminForm.resx">
+      <DependentUpon>AdminForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\InventoryForm.resx">
+      <DependentUpon>InventoryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\PatientForm.resx">
+      <DependentUpon>PatientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\RegisterForm.resx">
       <DependentUpon>RegisterForm.cs</DependentUpon>
     </EmbeddedResource>

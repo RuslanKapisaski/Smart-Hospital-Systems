@@ -1,7 +1,7 @@
 ﻿
-namespace Hospital_System.UI
+namespace Hospital_System.UI.UIManagers
 {
-    partial class PatientForm
+    partial class DeveloperForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,17 +29,10 @@ namespace Hospital_System.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // PatientForm
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "PatientForm";
-            this.Text = "Patient";
-            this.ResumeLayout(false);
-
+            this.Text = "DeveloperForm";
         }
 
         #endregion
