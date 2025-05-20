@@ -48,9 +48,6 @@
             this.birthDatePicker = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
             this.npgsqlCommand1 = new Npgsql.NpgsqlCommand();
-            this.label8 = new System.Windows.Forms.Label();
-            this.patientCheckBox = new System.Windows.Forms.CheckBox();
-            this.Doctor = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -77,7 +74,7 @@
             this.label5.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label5.Location = new System.Drawing.Point(190, 235);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 15);
+            this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.TabIndex = 16;
             this.label5.Text = "Password:";
             // 
@@ -87,7 +84,6 @@
             this.emailInput.Name = "emailInput";
             this.emailInput.Size = new System.Drawing.Size(295, 20);
             this.emailInput.TabIndex = 15;
-            this.emailInput.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.emailInput_MaskInputRejected);
             // 
             // label4
             // 
@@ -95,7 +91,7 @@
             this.label4.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label4.Location = new System.Drawing.Point(190, 199);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 15);
+            this.label4.Size = new System.Drawing.Size(35, 13);
             this.label4.TabIndex = 14;
             this.label4.Text = "Email:";
             // 
@@ -124,18 +120,20 @@
             this.label3.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label3.Location = new System.Drawing.Point(171, 275);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 15);
+            this.label3.Size = new System.Drawing.Size(72, 13);
             this.label3.TabIndex = 21;
             this.label3.Text = "Re-password:";
             // 
             // registerBtn
             // 
-            this.registerBtn.Location = new System.Drawing.Point(371, 396);
+            this.registerBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.registerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.registerBtn.Location = new System.Drawing.Point(343, 373);
             this.registerBtn.Name = "registerBtn";
-            this.registerBtn.Size = new System.Drawing.Size(75, 23);
+            this.registerBtn.Size = new System.Drawing.Size(137, 40);
             this.registerBtn.TabIndex = 23;
             this.registerBtn.Text = "Register";
-            this.registerBtn.UseVisualStyleBackColor = true;
+            this.registerBtn.UseVisualStyleBackColor = false;
             this.registerBtn.Click += new System.EventHandler(this.registerButton);
             // 
             // lNameInput
@@ -151,7 +149,7 @@
             this.label2.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label2.Location = new System.Drawing.Point(184, 164);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(70, 15);
+            this.label2.Size = new System.Drawing.Size(61, 13);
             this.label2.TabIndex = 24;
             this.label2.Text = "Last Name:";
             // 
@@ -161,7 +159,6 @@
             this.fNameInput.Name = "fNameInput";
             this.fNameInput.Size = new System.Drawing.Size(295, 20);
             this.fNameInput.TabIndex = 27;
-            this.fNameInput.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.maskedTextBox4_MaskInputRejected);
             // 
             // label6
             // 
@@ -169,14 +166,13 @@
             this.label6.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.label6.Location = new System.Drawing.Point(184, 124);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(70, 15);
+            this.label6.Size = new System.Drawing.Size(60, 13);
             this.label6.TabIndex = 26;
             this.label6.Text = "First Name:";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // birthDatePicker
             // 
-            this.birthDatePicker.Location = new System.Drawing.Point(263, 364);
+            this.birthDatePicker.Location = new System.Drawing.Point(263, 324);
             this.birthDatePicker.Name = "birthDatePicker";
             this.birthDatePicker.Size = new System.Drawing.Size(295, 20);
             this.birthDatePicker.TabIndex = 28;
@@ -185,9 +181,9 @@
             // 
             this.label7.AutoSize = true;
             this.label7.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label7.Location = new System.Drawing.Point(171, 369);
+            this.label7.Location = new System.Drawing.Point(171, 330);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(67, 15);
+            this.label7.Size = new System.Drawing.Size(60, 13);
             this.label7.TabIndex = 29;
             this.label7.Text = "Birth Date: ";
             // 
@@ -197,48 +193,12 @@
             this.npgsqlCommand1.Transaction = null;
             this.npgsqlCommand1.UnknownResultTypeList = null;
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.label8.Location = new System.Drawing.Point(171, 327);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 15);
-            this.label8.TabIndex = 30;
-            this.label8.Text = "Re-password:";
-            // 
-            // patientCheckBox
-            // 
-            this.patientCheckBox.AutoSize = true;
-            this.patientCheckBox.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.patientCheckBox.Location = new System.Drawing.Point(309, 325);
-            this.patientCheckBox.Name = "patientCheckBox";
-            this.patientCheckBox.Size = new System.Drawing.Size(63, 19);
-            this.patientCheckBox.TabIndex = 31;
-            this.patientCheckBox.Text = "patient";
-            this.patientCheckBox.UseVisualStyleBackColor = true;
-            // 
-            // Doctor
-            // 
-            this.Doctor.AutoSize = true;
-            this.Doctor.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Doctor.Location = new System.Drawing.Point(432, 327);
-            this.Doctor.Name = "Doctor";
-            this.Doctor.Size = new System.Drawing.Size(63, 19);
-            this.Doctor.TabIndex = 32;
-            this.Doctor.Text = "patient";
-            this.Doctor.UseVisualStyleBackColor = true;
-            this.Doctor.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
-            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.Doctor);
-            this.Controls.Add(this.patientCheckBox);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.birthDatePicker);
             this.Controls.Add(this.fNameInput);
@@ -256,7 +216,6 @@
             this.Controls.Add(this.label1);
             this.Name = "RegisterForm";
             this.Text = "RegisterForm";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -282,8 +241,5 @@
         private DateTimePicker birthDatePicker;
         private Label label7;
         private Npgsql.NpgsqlCommand npgsqlCommand1;
-        private Label label8;
-        private CheckBox patientCheckBox;
-        private CheckBox Doctor;
     }
 }

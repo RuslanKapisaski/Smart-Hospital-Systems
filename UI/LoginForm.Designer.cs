@@ -64,7 +64,6 @@
             this.loginTitle.Size = new System.Drawing.Size(241, 31);
             this.loginTitle.TabIndex = 3;
             this.loginTitle.Text = "Hospital Systems";
-            this.loginTitle.Click += new System.EventHandler(this.label1_Click);
             // 
             // emailLabel
             // 
@@ -74,7 +73,6 @@
             this.emailLabel.Size = new System.Drawing.Size(42, 15);
             this.emailLabel.TabIndex = 6;
             this.emailLabel.Text = "Email:";
-            this.emailLabel.Click += new System.EventHandler(this.label4_Click);
             // 
             // emailInput
             // 
@@ -82,7 +80,7 @@
             this.emailInput.Name = "emailInput";
             this.emailInput.Size = new System.Drawing.Size(295, 20);
             this.emailInput.TabIndex = 7;
-            this.emailInput.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.email_MaskInputRejected);
+
             // 
             // passInput
             // 
@@ -90,7 +88,7 @@
             this.passInput.Name = "passInput";
             this.passInput.Size = new System.Drawing.Size(295, 20);
             this.passInput.TabIndex = 9;
-            this.passInput.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.pass_MaskInputRejected);
+
             this.passInput.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.passInput_KeyPress);
             // 
             // passLabel
@@ -167,7 +165,7 @@
             this.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
-            this.Load += new System.EventHandler(this.LoginForm_Load);
+
             ((System.ComponentModel.ISupportInitialize)(this.logo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

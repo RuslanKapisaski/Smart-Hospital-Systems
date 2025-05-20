@@ -16,5 +16,25 @@ namespace Hospital_System.UI
         {
             InitializeComponent();
         }
+
+        private void viewHospitalsBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void editBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void deleteBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

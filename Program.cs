@@ -19,9 +19,9 @@
             Application.SetCompatibleTextRenderingDefault(false);
 
             var settingsManager = new SettingsManagerRe();
-            settingsManager.ShowFromAdminForm();
+            //settingsManager.ShowManagmentForm(true,true);
 
-            //Application.Run(new AdminForm());
+            Application.Run(new LoginForm());
 
 
         }

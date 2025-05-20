@@ -103,11 +103,11 @@
     <Compile Include="UI\InventoryForm.Designer.cs">
       <DependentUpon>InventoryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\AdminForm.cs">
+    <Compile Include="UI\ManagmentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <Compile Include="UI\ManagmentForm.Designer.cs">
+      <DependentUpon>ManagmentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\DoctorForm.cs">
       <SubType>Form</SubType>
@@ -141,15 +141,21 @@
     <Compile Include="UI\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UIManagers\DeveloperForm.cs">
+    <Compile Include="UI\DeveloperForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\UIManagers\DeveloperForm.Designer.cs">
+    <Compile Include="UI\DeveloperForm.Designer.cs">
       <DependentUpon>DeveloperForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UIManagers\SettingsManagerRe.cs" />
-    <EmbeddedResource Include="UI\AdminForm.resx">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <EmbeddedResource Include="UI\DoctorForm.resx">
+      <DependentUpon>DoctorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\HospitalForm.resx">
+      <DependentUpon>HospitalForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ManagmentForm.resx">
+      <DependentUpon>ManagmentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\InventoryForm.resx">
       <DependentUpon>InventoryForm.cs</DependentUpon>

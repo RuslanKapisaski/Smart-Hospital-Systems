@@ -11,22 +11,21 @@ namespace Hospital_System.UI.UIManagers
         private Size ButtonSize = new Size(200, 200);
 
 
-        public void ShowFromAdminForm()
+        public void ShowManagmentForm(bool isAdmin, bool isDeveloper)
         {
-            using (var form = new AdminForm())
+            using (var form = new ManagmentForm())
             {
-                form.Text = "Administrator Menu";
+                form.Text = "Managment Form";
 
+                if (isAdmin)
+                {
+                    ShowAdminPanel(form);
+                }
 
-                //if (Glob.User.IsAdmin)
-                //{
-                //    ShowRegistry(form);
-                //}
-
-                //if(Glob.User.IsDeveloper)
-                //{
-                //    ShowDeveloperPanel(form);
-                //}
+                if (isDeveloper)
+                {
+                    ShowDeveloperPanel(form);
+                }
 
                 form.ShowDialog();
             }
@@ -93,8 +92,10 @@ namespace Hospital_System.UI.UIManagers
         }
 
 
-        private void ShowRegistry(AdminForm form)
+        private void ShowAdminPanel(ManagmentForm form)
         {
+            var label = CreateLabel("Administrator", Color.White, Color.Black, null);
+
             var buttons = new List<Control>();
 
             buttons.Add(CreateTile("Hospitals", Color.DarkRed, () =>
@@ -107,7 +108,7 @@ namespace Hospital_System.UI.UIManagers
                 ShowFormDoctors();
             }));
 
-            buttons.Add(CreateTile("Patients", Color.Aqua, () =>
+            buttons.Add(CreateTile("Patients", Color.DarkOrange, () =>
             {
                 ShowFormPatients();
             }));
@@ -117,18 +118,32 @@ namespace Hospital_System.UI.UIManagers
                 ShowFormAppointments();
             }));
 
-            buttons.Add(CreateTile("Inventory", Color.Aqua, () =>
+            buttons.Add(CreateTile("Inventory", Color.DarkSalmon, () =>
             {
                 ShowFormInventory();
             }));
 
-            buttons.Add(CreateTile("References", Color.Purple, () =>
-            {
 
+            //form.flowLayoutPanelAdmin.Controls.Add(label);
+            buttons.ForEach(x => form.flowLayoutPanelAdmin.Controls.Add(x));
+
+        }
+
+        private void ShowDeveloperPanel(ManagmentForm form)
+        {
+            var label = CreateLabel("Developer", Color.White, Color.Black, null,350);
+
+            var buttons = new List<Control>();
+
+            buttons.Add(CreateTile("XML references", Color.Purple, () =>
+            {
+                ShowFormReferences();
             }));
 
-            buttons.ForEach(x => form.flowLayoutPanelAdmin.Controls.Add(x));
+            //form.flowLayoutPanelDeveloper.Controls.Add(label);
+            buttons.ForEach(x => form.flowLayoutPanelDeveloper.Controls.Add(x));
         }
+
 
         private Control CreateTile(string buttonText, Color backColor, Action onClick)
         {
@@ -142,5 +157,16 @@ namespace Hospital_System.UI.UIManagers
             return button;
         }
 
+        private Control CreateLabel(string text, Color backColor, Color foreColor, Font font = null, float fontSize = 10f)
+        {
+            var label = new Label();
+            label.Text = text;
+            label.Font = font;
+            label.Font = new Font(label.Font.FontFamily, fontSize);
+            label.ForeColor = foreColor;    
+            label.BackColor = backColor;
+
+            return label;
+        }
     }
 }

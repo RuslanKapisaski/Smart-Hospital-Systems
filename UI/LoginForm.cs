@@ -1,33 +1,24 @@
 ﻿namespace Hospital_System
 {
+    using Hospital_System.DAL.DbConnection;
     using Hospital_System.UI;
+    using Npgsql;
     using System;
+    using System.Data;
+    using System.Text.RegularExpressions;
     using System.Windows.Forms;
+    using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 
     public partial class LoginForm : Form
     {
+        DataTable users = new DataTable();
+
         public LoginForm()
         {
             InitializeComponent();
         }
 
-        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-    
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             this.Hide();
@@ -35,10 +26,7 @@
             register.Show();
         }
 
-        private void label4_Click(object sender, EventArgs e)
-        {
 
-        }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
@@ -50,15 +38,44 @@
             String pass = passInput.Text;
             String email = emailInput.Text;
 
-            //
-            if (pass == "123" && email == "123")
+            ValidateLoginForm(pass, email);
+
+        }
+
+        private void ValidateLoginForm(string password, string email)
+        {
+            string emailPattern = @"\w+@+\w+.\w+";
+
+            if (password.Equals(""))
             {
-                this.Hide();
-                
+                MessageBox.Show("Plese, enter a valid password", "Invalid Password");
             }
-            else if(pass!="" && email !="")
+            if (email.Equals("") && Regex.IsMatch(email, emailPattern))
             {
-                MessageBox.Show("Invalid email or password.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Plese, enter a valid email", "Invalid Password");
+            }
+
+            else
+            {
+                string query = "SELECT COUNT(*) FROM users WHERE password = @password AND email = @email";
+                using (var cmd = new NpgsqlCommand(query, DBConnection.GetConnection()))
+                {
+                    cmd.Parameters.AddWithValue("password", password);
+                    cmd.Parameters.AddWithValue("email", email);
+
+                    int userCount = Convert.ToInt32(cmd.ExecuteScalar()); 
+                    if (userCount == 1)
+                    {
+                        HospitalForm form = new HospitalForm();
+                        DBConnection.Close();
+                        form.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid login. Please enter your data.");
+                    }
+                };
 
             }
 
@@ -74,35 +91,23 @@
 
         }
 
-        private void pass_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
 
-        }
 
-        private void email_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-       
 
         private void passInput_KeyPress(object sender, KeyPressEventArgs e)
         {
-             if(e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 Login();
             }
 
-            if(e.KeyChar == (char)Keys.F1)
+            if (e.KeyChar == (char)Keys.F1)
             {
                 Reset();
             }
 
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
 
-        }
     }
 }

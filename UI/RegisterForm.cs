@@ -8,30 +8,13 @@
 
     public partial class RegisterForm : Form
     {
+
         public RegisterForm()
         {
             InitializeComponent();
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void emailInput_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void maskedTextBox4_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
+      
 
         private void registerButton(object sender, EventArgs e)
         {
@@ -48,7 +31,7 @@
             string repass = repassInput.Text;
             DateTime bdate = DateTime.Parse(birthDatePicker.Text);
             DateTime registrationDate = DateTime.Now;
-            string role = "";
+            int role_id = 0;
 
             string emailPattern = @"\w+@+\w+.\w+";
 
@@ -89,12 +72,13 @@
             else
             {
                 using (var connection = DBConnection.GetConnection())
-                using (var cmd = new NpgsqlCommand("INSERT INTO \"users\"  (first_name, last_name,password,role,birth_date,registration_date) values (@fName,@lName,@pass,@role,@bdate,@regDate)", connection))
+                using (var cmd = new NpgsqlCommand("INSERT INTO \"users\"  (first_name, last_name,email,password,role_id,birth_date,registration_date) values (@fName,@lName,@email,@pass,@role_id,@bdate,@regDate)", connection))
                 {
                     cmd.Parameters.AddWithValue("@fName", fName);
                     cmd.Parameters.AddWithValue("@lName", lName);
+                    cmd.Parameters.AddWithValue("@email",email);
                     cmd.Parameters.AddWithValue("@pass", pass);
-                    cmd.Parameters.AddWithValue("@role", role);
+                    cmd.Parameters.AddWithValue("@role_id", role_id);
                     cmd.Parameters.AddWithValue("@bdate", bdate);
                     cmd.Parameters.AddWithValue("@regDate", registrationDate);
 
@@ -104,17 +88,22 @@
                     {
                         MessageBox.Show("Registration successful.");
 
-                        DoctorForm doctorForm = new DoctorForm();
-                        PatientForm patientForm = new PatientForm();
+                        this.fNameInput = null;
+                        this.lNameInput = null;
+                        this.emailInput = null;
+                        this.passInput = null;
+                        this.repassInput = null;
+                        //DoctorForm doctorForm = new DoctorForm();
+                        //PatientForm patientForm = new PatientForm();
 
-                        if (role == "doctor")
-                        {
-                            doctorForm.Show();
-                        }
-                        else
-                        {
-                            patientForm.Show();
-                        }
+                        //if (role == "doctor")
+                        //{
+                        //    doctorForm.Show();
+                        //}
+                        //else
+                        //{
+                        //    patientForm.Show();
+                        //}
 
                         this.Hide();
                     }
@@ -129,19 +118,5 @@
 
         }
 
-        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void patientCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }
