@@ -48,7 +48,6 @@ namespace Hospital_System.UI
             this.editBtn.TabIndex = 0;
             this.editBtn.Text = "EDIT";
             this.editBtn.UseVisualStyleBackColor = false;
-            this.editBtn.Click += new System.EventHandler(this.editBtn_Click);
             // 
             // viewHospitalsBtn
             // 
@@ -63,7 +62,6 @@ namespace Hospital_System.UI
             this.viewHospitalsBtn.TabIndex = 1;
             this.viewHospitalsBtn.Text = "VIEW";
             this.viewHospitalsBtn.UseVisualStyleBackColor = false;
-            this.viewHospitalsBtn.Click += new System.EventHandler(this.viewHospitalsBtn_Click);
             // 
             // addBtn
             // 
@@ -78,7 +76,6 @@ namespace Hospital_System.UI
             this.addBtn.TabIndex = 2;
             this.addBtn.Text = "ADD";
             this.addBtn.UseVisualStyleBackColor = false;
-            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // deleteBtn
             // 
@@ -93,7 +90,6 @@ namespace Hospital_System.UI
             this.deleteBtn.TabIndex = 3;
             this.deleteBtn.Text = "DELETE";
             this.deleteBtn.UseVisualStyleBackColor = false;
-            this.deleteBtn.Click += new System.EventHandler(this.deleteBtn_Click);
             // 
             // HospitalForm
             // 

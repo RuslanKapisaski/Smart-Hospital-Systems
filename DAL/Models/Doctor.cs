@@ -1,28 +1,26 @@
 ﻿
 namespace Hospital_System.Models
 {
+    using Hospital_System.DAL.Models;
     using Hospital_System.DAL.Models.Enums;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
-    public class Doctor
+    public class Doctor:User
     {
-        [Key]
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(20)]
-        public string FirstName { get; set; }
-
-        [Required]
-        [MaxLength(20)]
-        public string LastName { get; set; }
 
         [Required]
         [MaxLength(30)]
         public string Specialization { get; set; }
 
+        [ForeignKey(nameof(Hospital))]
+        public int HospitalId { get; set; }
 
-        public List<DoctorSchedule> Schedules { get; set; } = new List<DoctorSchedule>();
+
+        public ICollection<Appointment> Appointments { get; set; }
+    
+        //Navigational
+        public Hospital Hospital { get; set; }
     }
 }

@@ -1,5 +1,7 @@
 ﻿namespace Hospital_System.UI
 {
+    using Hospital_System.DAL.DB;
+    using Hospital_System.DAL.Services;
     using Hospital_System.UI.UIManagers;
     using System;
     using System.Windows.Forms;
@@ -18,10 +20,13 @@
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            var settingsManager = new SettingsManagerRe();
-            //settingsManager.ShowManagmentForm(true,true);
+            var dbContext = new HospitalDbContext();
+            var userService = new UserService(dbContext);
+            var settingsManager = new SettingsManagerRe(userService);
 
-            Application.Run(new LoginForm());
+            settingsManager.ShowManagmentForm(isAdmin: true, isDeveloper: false);
+
+            //Application.Run(new ManagmentForm());
 
 
         }

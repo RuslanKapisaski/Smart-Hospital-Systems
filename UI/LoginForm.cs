@@ -57,25 +57,7 @@
 
             else
             {
-                string query = "SELECT COUNT(*) FROM users WHERE password = @password AND email = @email";
-                using (var cmd = new NpgsqlCommand(query, DBConnection.GetConnection()))
-                {
-                    cmd.Parameters.AddWithValue("password", password);
-                    cmd.Parameters.AddWithValue("email", email);
-
-                    int userCount = Convert.ToInt32(cmd.ExecuteScalar()); 
-                    if (userCount == 1)
-                    {
-                        HospitalForm form = new HospitalForm();
-                        DBConnection.Close();
-                        form.Show();
-                        this.Hide();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Invalid login. Please enter your data.");
-                    }
-                };
+              //
 
             }
 

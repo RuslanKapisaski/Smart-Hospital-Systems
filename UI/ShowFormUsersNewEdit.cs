@@ -8,15 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Hospital_System
+namespace Hospital_System.UI
 {
-    public partial class InventoryForm : Form
+    public partial class ShowFormUsersNewEdit : Form
     {
-        public InventoryForm()
+        public ShowFormUsersNewEdit()
         {
             InitializeComponent();
         }
-
-      
     }
 }

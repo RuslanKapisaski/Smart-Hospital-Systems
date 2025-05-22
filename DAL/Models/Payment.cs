@@ -15,10 +15,7 @@ namespace Hospital_System.Models
         [ForeignKey (nameof(Patient))]
         public int PatientId { get; set; }
 
-        public virtual Patient Patient { get; set; }
-
         [Required]
-        [Column(TypeName = "decimal(18,2)")]
         public decimal Price { get; set; }
 
         public DateTime? BillingDate { get; set; }
@@ -26,6 +23,7 @@ namespace Hospital_System.Models
         [Required]
         public PaymentStatus? Status { get; set; }
 
+        public virtual Patient Patient { get; set; }
     }
 
 }

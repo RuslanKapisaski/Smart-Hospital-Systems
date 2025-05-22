@@ -32,8 +32,14 @@ namespace Hospital_System.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManagmentForm));
             this.npgsqlCommand1 = new Npgsql.NpgsqlCommand();
             this.flowLayoutPanelAdmin = new System.Windows.Forms.FlowLayoutPanel();
-            this.flowLayoutPanelDeveloper = new System.Windows.Forms.TableLayoutPanel();
-            this.flowLayoutPanelDeveloper.SuspendLayout();
+            this.flowLayoutPanelDeveloper = new System.Windows.Forms.FlowLayoutPanel();
+            this.darkThemeLabel = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.toggleButton1 = new Hospital_System.UI.CustomControls.ToggleButton();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // npgsqlCommand1
@@ -44,52 +50,108 @@ namespace Hospital_System.UI
             // 
             // flowLayoutPanelAdmin
             // 
-            this.flowLayoutPanelAdmin.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanelAdmin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelAdmin.Location = new System.Drawing.Point(3, 3);
+            this.flowLayoutPanelAdmin.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelAdmin.Location = new System.Drawing.Point(128, 74);
             this.flowLayoutPanelAdmin.Name = "flowLayoutPanelAdmin";
-            this.flowLayoutPanelAdmin.Size = new System.Drawing.Size(633, 572);
-            this.flowLayoutPanelAdmin.TabIndex = 0;
+            this.flowLayoutPanelAdmin.Size = new System.Drawing.Size(486, 462);
+            this.flowLayoutPanelAdmin.TabIndex = 3;
             // 
             // flowLayoutPanelDeveloper
             // 
-            this.flowLayoutPanelDeveloper.BackColor = System.Drawing.Color.Transparent;
-            this.flowLayoutPanelDeveloper.ColumnCount = 2;
-            this.flowLayoutPanelDeveloper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.flowLayoutPanelDeveloper.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.flowLayoutPanelDeveloper.Controls.Add(this.flowLayoutPanelAdmin, 0, 0);
-            this.flowLayoutPanelDeveloper.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.flowLayoutPanelDeveloper.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelDeveloper.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.flowLayoutPanelDeveloper.Location = new System.Drawing.Point(613, 74);
             this.flowLayoutPanelDeveloper.Name = "flowLayoutPanelDeveloper";
-            this.flowLayoutPanelDeveloper.RowCount = 1;
-            this.flowLayoutPanelDeveloper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.flowLayoutPanelDeveloper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 578F));
-            this.flowLayoutPanelDeveloper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 578F));
-            this.flowLayoutPanelDeveloper.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 578F));
-            this.flowLayoutPanelDeveloper.Size = new System.Drawing.Size(1279, 578);
-            this.flowLayoutPanelDeveloper.TabIndex = 0;
-            this.flowLayoutPanelDeveloper.Paint += new System.Windows.Forms.PaintEventHandler(this.flowLayoutPanelDeveloper_Paint);
+            this.flowLayoutPanelDeveloper.Size = new System.Drawing.Size(618, 462);
+            this.flowLayoutPanelDeveloper.TabIndex = 4;
+            // 
+            // darkThemeLabel
+            // 
+            this.darkThemeLabel.AutoSize = true;
+            this.darkThemeLabel.Location = new System.Drawing.Point(1117, 10);
+            this.darkThemeLabel.Name = "darkThemeLabel";
+            this.darkThemeLabel.Size = new System.Drawing.Size(75, 15);
+            this.darkThemeLabel.TabIndex = 1;
+            this.darkThemeLabel.Text = "Dark Theme";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(9, 10);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(53, 43);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.BackColor = System.Drawing.Color.Silver;
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Controls.Add(this.darkThemeLabel);
+            this.panel1.Controls.Add(this.toggleButton1);
+            this.panel1.Location = new System.Drawing.Point(3, 2);
+            this.panel1.MinimumSize = new System.Drawing.Size(0, 60);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1228, 77);
+            this.panel1.TabIndex = 2;
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 74);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(126, 462);
+            this.flowLayoutPanel1.TabIndex = 5;
+            // 
+            // toggleButton1
+            // 
+            this.toggleButton1.AutoSize = true;
+            this.toggleButton1.Location = new System.Drawing.Point(1127, 29);
+            this.toggleButton1.MinimumSize = new System.Drawing.Size(50, 25);
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.OffBackColor = System.Drawing.Color.Salmon;
+            this.toggleButton1.OffToggleColor = System.Drawing.Color.Firebrick;
+            this.toggleButton1.OnBackColor = System.Drawing.Color.LimeGreen;
+            this.toggleButton1.OnToggleColor = System.Drawing.Color.Green;
+            this.toggleButton1.Size = new System.Drawing.Size(50, 25);
+            this.toggleButton1.TabIndex = 0;
+            this.toggleButton1.UseVisualStyleBackColor = true;
+            this.toggleButton1.CheckedChanged += new System.EventHandler(this.toggleButton1_CheckedChanged);
             // 
             // ManagmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1279, 578);
+            this.ClientSize = new System.Drawing.Size(1227, 605);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.flowLayoutPanelDeveloper);
+            this.Controls.Add(this.flowLayoutPanelAdmin);
+            this.Controls.Add(this.panel1);
             this.Cursor = System.Windows.Forms.Cursors.Help;
             this.Name = "ManagmentForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ManagmentForm";
-            this.flowLayoutPanelDeveloper.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         public Npgsql.NpgsqlCommand npgsqlCommand1;
+        public CustomControls.ToggleButton toggleButton1;
+        public System.Windows.Forms.Label darkThemeLabel;
+        public System.Windows.Forms.Panel panel1;
         public System.Windows.Forms.FlowLayoutPanel flowLayoutPanelAdmin;
-        public System.Windows.Forms.TableLayoutPanel flowLayoutPanelDeveloper;
+        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanelDeveloper;
+        public System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
     }
 }

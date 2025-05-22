@@ -12,18 +12,19 @@ namespace Hospital_System.Models
         [Key]
         public int AppointmentId { get; set; }
 
-        [ForeignKey (nameof(Patient))]
+        [ForeignKey(nameof(Patient))]
         public int PatientId { get; set; }
 
-        public virtual Patient Patient { get; set; }
-
-        [ForeignKey (nameof(Doctor))]
+        [ForeignKey(nameof(Doctor))]
         public int DoctorId { get; set; }
-
-        public virtual Doctor Doctor { get; set; }
 
         public DateTime? AppointmentDate { get; set; }
 
         public AppointmentStatus Status { get; set; }
+
+        //Navigational
+        public virtual Patient Patient { get; set; }
+
+        public virtual Doctor Doctor { get; set; }
     }
 }
