@@ -14,12 +14,14 @@ namespace Hospital_System.BLL.Interfaces
 
         bool LoginUser(UserDTO user);
 
-        bool EditUser(string userID,RoleDTO newRole);
+        bool EditUserRole(int userID, RoleDTO newRole);
 
-        bool DeleteUser(string userId);
+        bool DeleteUser(int userId);
 
-        bool AddRoleToUser(string userId, RoleDTO roleDto);
+        bool AddRoleToUser(int userId, RoleDTO roleDto);
 
-        List<User> GetAllUsers();
+        IReadOnlyList<UserDTO> GetAllUsersDTOs();
+
+        IReadOnlyList<User> GetAllUsers();
     }
 }

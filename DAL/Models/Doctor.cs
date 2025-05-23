@@ -7,6 +7,7 @@ namespace Hospital_System.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("doctors")]
     public class Doctor:User
     {
 
@@ -19,6 +20,9 @@ namespace Hospital_System.Models
 
 
         public ICollection<Appointment> Appointments { get; set; }
+
+        [Required]
+        public ICollection<DoctorSchedule> Schedules { get; set; }
     
         //Navigational
         public Hospital Hospital { get; set; }

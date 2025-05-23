@@ -6,9 +6,9 @@ namespace Hospital_System.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("appointments")]
     public class Appointment
     {
-
         [Key]
         public int AppointmentId { get; set; }
 
@@ -20,6 +20,7 @@ namespace Hospital_System.Models
 
         public DateTime? AppointmentDate { get; set; }
 
+        [Required]
         public AppointmentStatus Status { get; set; }
 
         //Navigational

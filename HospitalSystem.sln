@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.35706.149
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36119.2
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hospital System", "Hospital System.csproj", "{530624E0-AABD-47B7-988F-EAC3377AD23B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "test12112", "..\test12112\test12112.csproj", "{A58225A5-80B0-4E69-A7EC-0F5B7F3C027F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{530624E0-AABD-47B7-988F-EAC3377AD23B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{530624E0-AABD-47B7-988F-EAC3377AD23B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{530624E0-AABD-47B7-988F-EAC3377AD23B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A58225A5-80B0-4E69-A7EC-0F5B7F3C027F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A58225A5-80B0-4E69-A7EC-0F5B7F3C027F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A58225A5-80B0-4E69-A7EC-0F5B7F3C027F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A58225A5-80B0-4E69-A7EC-0F5B7F3C027F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

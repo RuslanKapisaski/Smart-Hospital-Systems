@@ -1,6 +1,6 @@
 ﻿namespace Hospital_System.UI
 {
-    using Hospital_System.DAL.DbConnection;
+    //using Hospital_System.DAL.DbConnection;
     using System;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;

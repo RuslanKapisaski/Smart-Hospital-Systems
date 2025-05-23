@@ -1,5 +1,8 @@
-﻿using Hospital_System.Models;
+﻿using Hospital_System.DAL.Models.DTOs;
+using Hospital_System.DAL.Models.Enums;
+using Hospital_System.Models;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,21 +12,22 @@ namespace Hospital_System.BLL.Interfaces
 {
     interface IDoctorService
     {
-        void AddDoctorSpecialization();
+        void AddDoctor(DoctorDTO doctorDTO);
 
-        void AddDoctorAppointment();
+        void AddDoctorSpecialization(int doctorId,string specialization);
 
-        void AddDoctorSchedule();
+        void AddDoctorAppointment(int doctorId,AppointmentDTO appointmentDto);
 
-        string GetDoctorSpecialization();
+        void AddDoctorSchedule(int doctorId, DoctorSchedule doctorSchedule);
 
-        string GetDoctorAppointment();
+        string GetDoctorSpecialization(int doctorId);
 
-        string GetDoctorSchedule();
+        List<AppointmentDTO> GetDoctorAppointment(int doctorId);
 
+        ICollection GetDoctorSchedule(int doctorId);
 
-        Doctor GetDoctorById(int doctorID);
+        DoctorDTO GetDoctorById(int doctorID);
 
-        Doctor GetDoctorByName(string doctorName);
+        DoctorDTO GetDoctorByFullName(string doctorName);
     }
 }

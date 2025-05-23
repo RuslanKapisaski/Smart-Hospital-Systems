@@ -7,6 +7,7 @@ namespace Hospital_System.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("patients")]
     public class Patient : User
     {
         [ForeignKey(nameof(Hospital))]

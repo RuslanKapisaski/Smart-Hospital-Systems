@@ -1,6 +1,6 @@
 ﻿namespace Hospital_System
 {
-    using Hospital_System.DAL.DbConnection;
+    //using Hospital_System.DAL.DbConnection;
     using Hospital_System.UI;
     using Npgsql;
     using System;

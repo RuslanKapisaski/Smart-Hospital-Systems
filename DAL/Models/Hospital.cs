@@ -1,13 +1,12 @@
-﻿using Hospital_System.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Hospital_System.DAL.Models
+﻿namespace Hospital_System.DAL.Models
 {
+    using Hospital_System.Models;
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    [Table("hospitals")]
     public class Hospital
     {
         [Key]
@@ -22,11 +21,14 @@ namespace Hospital_System.DAL.Models
         [MaxLength(10)]
         public string ContactNumber { get; set; }
 
-
         [MaxLength(100)]
         public string Email { get; set; }
 
         public DateTime? EstablishedDate { get; set; }
+
+        [Required]
+        [MaxLength(50)]
+        public string HospitalDescription { get; set; }
 
         //Navigational 
         public ICollection<Doctor> Doctors { get; set; }

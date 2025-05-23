@@ -6,6 +6,7 @@ namespace Hospital_System.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
+    [Table("payments")]
     public class Payment
     {
  
@@ -18,10 +19,10 @@ namespace Hospital_System.Models
         [Required]
         public decimal Price { get; set; }
 
-        public DateTime? BillingDate { get; set; }
+        public DateTime BillingDate { get; set; }
 
         [Required]
-        public PaymentStatus? Status { get; set; }
+        public PaymentStatus Status { get; set; }
 
         public virtual Patient Patient { get; set; }
     }

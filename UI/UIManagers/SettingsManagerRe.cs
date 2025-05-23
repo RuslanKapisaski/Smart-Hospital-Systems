@@ -1,6 +1,7 @@
 ﻿//Регистратура. Панел за админи и разработчици
 namespace Hospital_System.UI.UIManagers
 {
+    using Hospital_System.DAL.Models.DTOs;
     using Hospital_System.DAL.Services;
     using System;
     using System.Collections.Generic;

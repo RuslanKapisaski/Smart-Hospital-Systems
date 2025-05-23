@@ -1,4 +1,5 @@
 ﻿using Hospital_System.DAL.Models;
+using Hospital_System.DAL.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,17 +10,20 @@ namespace Hospital_System.BLL.Interfaces
 {
     interface IHospitalService
     {
-        List<Hospital> GetAllHospitals();
+        bool AddHospital(HospitalDTO hospitalDTO);
 
-        bool RemoveHospital();
+        bool DeleteHospital(int hospitalId);
 
-        bool AddHospital();
+        HospitalDTO GetHospitalById(int id);
 
-        bool DeleteHospital(int id);
+        HospitalDTO GetHospitalByName(string hospitalName);
 
-        bool UpdateHospital(Hospital hospital);
+        IReadOnlyList<HospitalDTO> GetAllHospitals();
+        //NB - > all services
+        IReadOnlyList<PatientDTO> GetAllHospitalPatients();
 
-        Hospital GetHospital(int id);
+        IReadOnlyList<DoctorDTO> GetAllHospitalDoctors();
 
+        IReadOnlyList<AppointmentDTO> GetAllHospitalAppointments();
     }
 }

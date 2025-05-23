@@ -9,66 +9,64 @@
     using Npgsql;
     using System;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
 
     public class UserService : IUserService
     {
-        private static readonly string connectionString = @"Server=localhost;Username=postgres;Password=123r123k;Database=Hospital System;";
-        private readonly HospitalDbContext dbContext;
+        private readonly HospitalDbContext _hospitalDbContext;
 
         public UserService(HospitalDbContext dbContext)
         {
-            this.dbContext = dbContext;
+            this._hospitalDbContext = dbContext;
         }
 
         public bool RegisterUser(User user)
         {
-            using (var connection = new NpgsqlConnection(connectionString))
+            if (user != null)
             {
-                connection.Open();
-
-                var cmd = new NpgsqlCommand("INSERT INTO \"users\"  (first_name, last_name,email,password,role_id,birth_date,registration_date) values (@fName,@lName,@email,@pass,@role_id,@bdate,@regDate)");
-
-                cmd.Parameters.AddWithValue("@fName", user.FirstName);
-                cmd.Parameters.AddWithValue("@lName", user.LastName);
-                cmd.Parameters.AddWithValue("@email", user.Email);
-                cmd.Parameters.AddWithValue("@pass", user.Password);
-                cmd.Parameters.AddWithValue("@role_id", user.RoleId);
-                cmd.Parameters.AddWithValue("@bdate", user.BirthDate);
-                cmd.Parameters.AddWithValue("@regDate", user.RegistrationDate);
-
-                int rows = cmd.ExecuteNonQuery();
-
-                return cmd.ExecuteNonQuery() > 0;
+                throw new ArgumentException(ExceptionMessages.UserAlreadyExist);
             }
+            if (this._hospitalDbContext.Users.Any(u => u.Email == user.Email))
+            {
+                throw new ArgumentException(ExceptionMessages.UserAlreadyExist);
+            }
+            else
+            {
+                this
+                    ._hospitalDbContext
+                    .Users
+                    .Add(user);
+
+                bool isRegistered = this._hospitalDbContext.SaveChanges() == 1;
+
+                return isRegistered;
+            }
+
         }
 
         public bool LoginUser(UserDTO user)
         {
-            int userCount = 0;
-            using (var connection = new NpgsqlConnection(connectionString))
+            string userEmail = user.Email;
+            bool isRegistered = this
+                ._hospitalDbContext
+                .Users
+                .Any(u => userEmail == u.Email && u.Password == user.Password);
+
+            if (isRegistered == false)
             {
-                var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM users WHERE password = @password AND email = @email");
-                cmd.Parameters.AddWithValue("password", user.Password);
-                cmd.Parameters.AddWithValue("email", user.Email);
+                throw new ArgumentException(ExceptionMessages.UserAlreadyExist);
+            }
+            else
+            {
+                return isRegistered;
+            }
 
-                userCount = Convert.ToInt32(cmd.ExecuteScalar()); //ExecuteScalar  -> returns an object
-                if (userCount == 1)
-                {
-                    connection.Close();
-                }
-                else
-                {
-                    throw new ArgumentException(ExceptionMessages.InvalidLogin);
-                }
-            };
-
-            return Convert.ToBoolean(userCount);
         }
 
-        public bool AddRoleToUser(string userId, RoleDTO roleDto)
+        public bool AddRoleToUser(int userId, RoleDTO roleDto)
         {
-            var user = this.dbContext.Users.Find(userId);
+            var user = this._hospitalDbContext.Users.Find(userId);
 
             if (user == null)
             {
@@ -78,15 +76,18 @@
             var newRole = roleDto.Adapt<Role>();
             user.Role = newRole;
 
-            bool isNewRoleCreated = this.dbContext.SaveChanges() == 1;
+            bool isNewRoleCreated = this._hospitalDbContext.SaveChanges() == 1;
 
             return isNewRoleCreated;
 
         }
 
-        public bool EditUser(string userID, RoleDTO roleDto)
+        public bool EditUserRole(int userID, RoleDTO roleDto)
         {
-            User user = this.dbContext.Users.Find(userID);
+            User user = this
+                ._hospitalDbContext
+                .Users
+                .Find(userID);
 
             if (user == null)
             {
@@ -101,43 +102,69 @@
 
             user.Role = newRole;
 
-            this.dbContext.Users.Add(user);
+            this._hospitalDbContext
+                .Users
+                .Add(user);
 
-            bool isNewRoleEdited = this.dbContext.SaveChanges() == 1;
+            bool isNewRoleEdited = this._hospitalDbContext.SaveChanges() == 1;
 
             return isNewRoleEdited;
         }
 
-        public bool DeleteUser(string userId)
+        public bool DeleteUser(int userId)
         {
-            User user = this.dbContext.Users.Find(userId);
+            User user = this
+                ._hospitalDbContext
+                .Users
+                .Find(userId);
 
             if (user == null)
             {
                 throw new ArgumentException(ExceptionMessages.UserNotFound);
             }
 
-            this.dbContext.Users.Remove(user);
-            bool isDeleted = this.dbContext.SaveChanges() == 1;
+            this._hospitalDbContext
+                .Users
+                .Remove(user);
+            bool isDeleted = this._hospitalDbContext.SaveChanges() == 1;
 
             return isDeleted;
         }
 
-        public List<User> GetAllUsers()
+        public IReadOnlyList<User> GetAllUsers()
         {
-           List<User> users = this.dbContext.Users.ToList();
-           
-            return users;
+            var users = this
+                ._hospitalDbContext
+                .Users
+                .ToList();
+
+            if (users == null)
+            {
+                throw new ArgumentException(ExceptionMessages.NoUsersExist);
+            }
+            else
+            {
+                return users;
+            }
         }
 
-       
-    
+        public IReadOnlyList<UserDTO> GetAllUsersDTOs()
+        {
+            var users = this
+                 ._hospitalDbContext
+                 .Users
+                 .ToList();
+
+            if (users == null)
+            {
+                throw new ArgumentException(ExceptionMessages.NoUsersExist);
+            }
+            else
+            {
+                return users.Adapt<IReadOnlyList<UserDTO>>();
+            }
+        }
+
     }
 }
-
-    //void ConfigureMapster()
-    //{ For fiing name differences
-    //    TypeAdapterConfig<User, UserDTO>.NewConfig()
-    //        .Map(dest => dest.)
-    //}
 

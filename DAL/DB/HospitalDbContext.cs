@@ -11,6 +11,15 @@ namespace Hospital_System.DAL.DB
 {
     public class HospitalDbContext : DbContext
     {
+        //connection to PostgreSQL
+        public HospitalDbContext() : base(nameOrConnectionString: "PGConnectionString") { }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.HasDefaultSchema("public");
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<User> Users { get; set; }
         
         public DbSet<Patient> Patients { get; set; }

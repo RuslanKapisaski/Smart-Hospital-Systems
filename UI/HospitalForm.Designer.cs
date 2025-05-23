@@ -1,5 +1,4 @@
-﻿
-namespace Hospital_System.UI
+﻿namespace Hospital_System.DAL.Models.DTOs
 {
     partial class HospitalForm
     {
@@ -11,7 +10,6 @@ namespace Hospital_System.UI
         /// <summary>
         /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -29,88 +27,160 @@ namespace Hospital_System.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.editBtn = new System.Windows.Forms.Button();
-            this.viewHospitalsBtn = new System.Windows.Forms.Button();
-            this.addBtn = new System.Windows.Forms.Button();
-            this.deleteBtn = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalForm));
+            this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.logoPictureBox = new System.Windows.Forms.PictureBox();
+            this.labelProductName = new System.Windows.Forms.Label();
+            this.labelVersion = new System.Windows.Forms.Label();
+            this.labelCopyright = new System.Windows.Forms.Label();
+            this.labelCompanyName = new System.Windows.Forms.Label();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.okButton = new System.Windows.Forms.Button();
+            this.tableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
-            // editBtn
+            // tableLayoutPanel
             // 
-            this.editBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.editBtn.BackColor = System.Drawing.Color.Yellow;
-            this.editBtn.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.editBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.86792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.editBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.editBtn.Location = new System.Drawing.Point(548, 256);
-            this.editBtn.Name = "editBtn";
-            this.editBtn.Size = new System.Drawing.Size(114, 45);
-            this.editBtn.TabIndex = 0;
-            this.editBtn.Text = "EDIT";
-            this.editBtn.UseVisualStyleBackColor = false;
+            this.tableLayoutPanel.ColumnCount = 2;
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
+            this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
+            this.tableLayoutPanel.Controls.Add(this.logoPictureBox, 0, 0);
+            this.tableLayoutPanel.Controls.Add(this.labelProductName, 1, 0);
+            this.tableLayoutPanel.Controls.Add(this.labelVersion, 1, 1);
+            this.tableLayoutPanel.Controls.Add(this.labelCopyright, 1, 2);
+            this.tableLayoutPanel.Controls.Add(this.labelCompanyName, 1, 3);
+            this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 4);
+            this.tableLayoutPanel.Controls.Add(this.okButton, 1, 5);
+            this.tableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel.Location = new System.Drawing.Point(9, 9);
+            this.tableLayoutPanel.Name = "tableLayoutPanel";
+            this.tableLayoutPanel.RowCount = 6;
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.Size = new System.Drawing.Size(727, 460);
+            this.tableLayoutPanel.TabIndex = 0;
             // 
-            // viewHospitalsBtn
+            // logoPictureBox
             // 
-            this.viewHospitalsBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.viewHospitalsBtn.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.viewHospitalsBtn.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.viewHospitalsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.86792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.viewHospitalsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.viewHospitalsBtn.Location = new System.Drawing.Point(548, 94);
-            this.viewHospitalsBtn.Name = "viewHospitalsBtn";
-            this.viewHospitalsBtn.Size = new System.Drawing.Size(114, 49);
-            this.viewHospitalsBtn.TabIndex = 1;
-            this.viewHospitalsBtn.Text = "VIEW";
-            this.viewHospitalsBtn.UseVisualStyleBackColor = false;
+            this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logoPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("logoPictureBox.Image")));
+            this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
+            this.logoPictureBox.Name = "logoPictureBox";
+            this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 6);
+            this.logoPictureBox.Size = new System.Drawing.Size(233, 454);
+            this.logoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.logoPictureBox.TabIndex = 12;
+            this.logoPictureBox.TabStop = false;
             // 
-            // addBtn
+            // labelProductName
             // 
-            this.addBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.addBtn.BackColor = System.Drawing.Color.Green;
-            this.addBtn.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.addBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.86792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.addBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.addBtn.Location = new System.Drawing.Point(548, 183);
-            this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(114, 45);
-            this.addBtn.TabIndex = 2;
-            this.addBtn.Text = "ADD";
-            this.addBtn.UseVisualStyleBackColor = false;
+            this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelProductName.Location = new System.Drawing.Point(245, 0);
+            this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelProductName.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelProductName.Name = "labelProductName";
+            this.labelProductName.Size = new System.Drawing.Size(479, 17);
+            this.labelProductName.TabIndex = 19;
+            this.labelProductName.Text = "Product Name";
+            this.labelProductName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // deleteBtn
+            // labelVersion
             // 
-            this.deleteBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.deleteBtn.BackColor = System.Drawing.Color.Red;
-            this.deleteBtn.Cursor = System.Windows.Forms.Cursors.AppStarting;
-            this.deleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.86792F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.deleteBtn.Location = new System.Drawing.Point(548, 333);
-            this.deleteBtn.Name = "deleteBtn";
-            this.deleteBtn.Size = new System.Drawing.Size(114, 45);
-            this.deleteBtn.TabIndex = 3;
-            this.deleteBtn.Text = "DELETE";
-            this.deleteBtn.UseVisualStyleBackColor = false;
+            this.labelVersion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelVersion.Location = new System.Drawing.Point(245, 46);
+            this.labelVersion.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelVersion.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelVersion.Name = "labelVersion";
+            this.labelVersion.Size = new System.Drawing.Size(479, 17);
+            this.labelVersion.TabIndex = 0;
+            this.labelVersion.Text = "Version";
+            this.labelVersion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // HospitalForm
+            // labelCopyright
             // 
+            this.labelCopyright.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCopyright.Location = new System.Drawing.Point(245, 92);
+            this.labelCopyright.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelCopyright.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelCopyright.Name = "labelCopyright";
+            this.labelCopyright.Size = new System.Drawing.Size(479, 17);
+            this.labelCopyright.TabIndex = 21;
+            this.labelCopyright.Text = "Copyright";
+            this.labelCopyright.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // labelCompanyName
+            // 
+            this.labelCompanyName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelCompanyName.Location = new System.Drawing.Point(245, 138);
+            this.labelCompanyName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelCompanyName.MaximumSize = new System.Drawing.Size(0, 17);
+            this.labelCompanyName.Name = "labelCompanyName";
+            this.labelCompanyName.Size = new System.Drawing.Size(479, 17);
+            this.labelCompanyName.TabIndex = 22;
+            this.labelCompanyName.Text = "Company Name";
+            this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxDescription.Location = new System.Drawing.Point(245, 187);
+            this.textBoxDescription.Margin = new System.Windows.Forms.Padding(6, 3, 3, 3);
+            this.textBoxDescription.Multiline = true;
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.ReadOnly = true;
+            this.textBoxDescription.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.textBoxDescription.Size = new System.Drawing.Size(479, 224);
+            this.textBoxDescription.TabIndex = 23;
+            this.textBoxDescription.TabStop = false;
+            this.textBoxDescription.Text = "Description";
+            // 
+            // okButton
+            // 
+            this.okButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.okButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.okButton.Location = new System.Drawing.Point(649, 434);
+            this.okButton.Name = "okButton";
+            this.okButton.Size = new System.Drawing.Size(75, 23);
+            this.okButton.TabIndex = 24;
+            this.okButton.Text = "&OK";
+            // 
+            // HospitalDTO
+            // 
+            this.AcceptButton = this.okButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 423);
-            this.Controls.Add(this.deleteBtn);
-            this.Controls.Add(this.addBtn);
-            this.Controls.Add(this.viewHospitalsBtn);
-            this.Controls.Add(this.editBtn);
-            this.Name = "HospitalForm";
-            this.Text = "Hospitals";
+            this.ClientSize = new System.Drawing.Size(745, 478);
+            this.Controls.Add(this.tableLayoutPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.Name = "HospitalDTO";
+            this.Padding = new System.Windows.Forms.Padding(9);
+            this.ShowIcon = false;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "HospitalDTO";
+            this.tableLayoutPanel.ResumeLayout(false);
+            this.tableLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button editBtn;
-        private System.Windows.Forms.Button viewHospitalsBtn;
-        private System.Windows.Forms.Button addBtn;
-        private System.Windows.Forms.Button deleteBtn;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel;
+        private System.Windows.Forms.PictureBox logoPictureBox;
+        private System.Windows.Forms.Label labelProductName;
+        private System.Windows.Forms.Label labelVersion;
+        private System.Windows.Forms.Label labelCopyright;
+        private System.Windows.Forms.Label labelCompanyName;
+        private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.Button okButton;
     }
 }
