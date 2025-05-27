@@ -20,7 +20,6 @@ namespace Hospital_System.DAL.DB
         // Configure PostgreSQL connection
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            // Always use the connection string from App.config
             string connectionString = System.Configuration.ConfigurationManager
                 .ConnectionStrings["PGConnectionString"].ConnectionString;
 
@@ -38,12 +37,11 @@ namespace Hospital_System.DAL.DB
         public DbSet<User> Users { get; set; }
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
+        public DbSet<Admin> Admins { get; set; }
         public DbSet<Hospital> Hospitals { get; set; }
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Role> Roles { get; set; }
 
-        // Not recommended: Remove this if not needed (DbSets handle collections)
-        // public List<User> GetAllUsers { get; set; }
     }
 }

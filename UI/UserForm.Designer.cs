@@ -29,78 +29,143 @@ namespace Hospital_System.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
-            this.UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PatientSecondName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnAddNewUser = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            userGreetingLabel = new System.Windows.Forms.Label();
+            statsBox = new System.Windows.Forms.GroupBox();
+            roleBtn = new System.Windows.Forms.Button();
+            emailTextBox = new System.Windows.Forms.TextBox();
+            nameTextBox = new System.Windows.Forms.TextBox();
+            nameLabel = new System.Windows.Forms.Label();
+            Email = new System.Windows.Forms.Label();
+            statusLabel = new System.Windows.Forms.Label();
+            roleLabel = new System.Windows.Forms.Label();
+            contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(components);
+            statsBox.SuspendLayout();
+            SuspendLayout();
             // 
-            // dataGridViewUsers
+            // userGreetingLabel
             // 
-            this.dataGridViewUsers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUsers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UserId,
-            this.PatientFirstName,
-            this.PatientSecondName});
-            this.dataGridViewUsers.Location = new System.Drawing.Point(123, 148);
-            this.dataGridViewUsers.Name = "dataGridViewUsers";
-            this.dataGridViewUsers.RowHeadersWidth = 45;
-            this.dataGridViewUsers.Size = new System.Drawing.Size(448, 197);
-            this.dataGridViewUsers.TabIndex = 0;
+            userGreetingLabel.AutoSize = true;
+            userGreetingLabel.Font = new System.Drawing.Font("Segoe UI", 12.2264156F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            userGreetingLabel.Location = new System.Drawing.Point(12, 9);
+            userGreetingLabel.Name = "userGreetingLabel";
+            userGreetingLabel.Size = new System.Drawing.Size(94, 25);
+            userGreetingLabel.TabIndex = 0;
+            userGreetingLabel.Text = "Welcome: ";
             // 
-            // UserId
+            // statsBox
             // 
-            this.UserId.HeaderText = "UserId";
-            this.UserId.MinimumWidth = 6;
-            this.UserId.Name = "UserId";
-            this.UserId.Width = 110;
+            statsBox.Controls.Add(roleBtn);
+            statsBox.Controls.Add(emailTextBox);
+            statsBox.Controls.Add(nameTextBox);
+            statsBox.Controls.Add(nameLabel);
+            statsBox.Controls.Add(Email);
+            statsBox.Font = new System.Drawing.Font("Segoe UI", 12.2264156F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            statsBox.Location = new System.Drawing.Point(94, 117);
+            statsBox.Name = "statsBox";
+            statsBox.Size = new System.Drawing.Size(364, 361);
+            statsBox.TabIndex = 1;
+            statsBox.TabStop = false;
+            statsBox.Text = "My info";
             // 
-            // PatientFirstName
+            // roleBtn
             // 
-            this.PatientFirstName.HeaderText = "Име";
-            this.PatientFirstName.MinimumWidth = 6;
-            this.PatientFirstName.Name = "PatientFirstName";
-            this.PatientFirstName.Width = 110;
+            roleBtn.Location = new System.Drawing.Point(20, 245);
+            roleBtn.Name = "roleBtn";
+            roleBtn.Size = new System.Drawing.Size(260, 42);
+            roleBtn.TabIndex = 4;
+            roleBtn.Text = "Request Role Upgrade";
+            roleBtn.UseVisualStyleBackColor = true;
             // 
-            // PatientSecondName
+            // emailTextBox
             // 
-            this.PatientSecondName.HeaderText = "Презиме";
-            this.PatientSecondName.MinimumWidth = 6;
-            this.PatientSecondName.Name = "PatientSecondName";
-            this.PatientSecondName.Width = 110;
+            emailTextBox.Location = new System.Drawing.Point(68, 173);
+            emailTextBox.Name = "emailTextBox";
+            emailTextBox.Size = new System.Drawing.Size(160, 31);
+            emailTextBox.TabIndex = 3;
             // 
-            // btnAddNewUser
+            // nameTextBox
             // 
-            this.btnAddNewUser.Location = new System.Drawing.Point(620, 220);
-            this.btnAddNewUser.Name = "btnAddNewUser";
-            this.btnAddNewUser.Size = new System.Drawing.Size(75, 23);
-            this.btnAddNewUser.TabIndex = 1;
-            this.btnAddNewUser.Text = "ADD";
-            this.btnAddNewUser.UseVisualStyleBackColor = true;
+            nameTextBox.Location = new System.Drawing.Point(68, 111);
+            nameTextBox.Name = "nameTextBox";
+            nameTextBox.Size = new System.Drawing.Size(160, 31);
+            nameTextBox.TabIndex = 2;
+            // 
+            // nameLabel
+            // 
+            nameLabel.AutoSize = true;
+            nameLabel.Location = new System.Drawing.Point(5, 111);
+            nameLabel.Name = "nameLabel";
+            nameLabel.Size = new System.Drawing.Size(63, 25);
+            nameLabel.TabIndex = 1;
+            nameLabel.Text = "Name:";
+            // 
+            // Email
+            // 
+            Email.AutoSize = true;
+            Email.Location = new System.Drawing.Point(6, 176);
+            Email.Name = "Email";
+            Email.Size = new System.Drawing.Size(58, 25);
+            Email.TabIndex = 0;
+            Email.Text = "Email:";
+            // 
+            // statusLabel
+            // 
+            statusLabel.AutoSize = true;
+            statusLabel.Font = new System.Drawing.Font("Segoe UI", 10.18868F);
+            statusLabel.Location = new System.Drawing.Point(110, 512);
+            statusLabel.Name = "statusLabel";
+            statusLabel.Size = new System.Drawing.Size(52, 20);
+            statusLabel.TabIndex = 5;
+            statusLabel.Text = "Status:";
+            // 
+            // roleLabel
+            // 
+            roleLabel.AutoSize = true;
+            roleLabel.Font = new System.Drawing.Font("Segoe UI", 10.18868F);
+            roleLabel.Location = new System.Drawing.Point(110, 541);
+            roleLabel.Name = "roleLabel";
+            roleLabel.Size = new System.Drawing.Size(42, 20);
+            roleLabel.TabIndex = 6;
+            roleLabel.Text = "Role:";
+            // 
+            // contextMenuStrip1
+            // 
+            contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
+            contextMenuStrip1.Name = "contextMenuStrip1";
+            contextMenuStrip1.Size = new System.Drawing.Size(193, 28);
             // 
             // UserForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnAddNewUser);
-            this.Controls.Add(this.dataGridViewUsers);
-            this.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.Name = "UserForm";
-            this.Text = "UserForm";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).EndInit();
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            ClientSize = new System.Drawing.Size(977, 626);
+            Controls.Add(roleLabel);
+            Controls.Add(statusLabel);
+            Controls.Add(statsBox);
+            Controls.Add(userGreetingLabel);
+            ImeMode = System.Windows.Forms.ImeMode.On;
+            Margin = new System.Windows.Forms.Padding(4);
+            Name = "UserForm";
+            Text = "UserForm";
+            statsBox.ResumeLayout(false);
+            statsBox.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
         #endregion
 
-        public System.Windows.Forms.DataGridView dataGridViewUsers;
-        public System.Windows.Forms.DataGridViewTextBoxColumn UserId;
-        public System.Windows.Forms.DataGridViewTextBoxColumn PatientFirstName;
-        public System.Windows.Forms.DataGridViewTextBoxColumn PatientSecondName;
-        public System.Windows.Forms.Button btnAddNewUser;
+        private System.Windows.Forms.Label userGreetingLabel;
+        private System.Windows.Forms.GroupBox statsBox;
+        private System.Windows.Forms.Button roleBtn;
+        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.TextBox nameTextBox;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.Label Email;
+        private System.Windows.Forms.Label statusLabel;
+        private System.Windows.Forms.Label roleLabel;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

@@ -120,9 +120,7 @@ namespace Hospital_System.UI
             this.toggleButton1.OnToggleColor = System.Drawing.Color.Green;
             this.toggleButton1.Size = new System.Drawing.Size(50, 25);
             this.toggleButton1.TabIndex = 0;
-            this.toggleButton1.UseVisualStyleBackColor = true;
-            this.toggleButton1.CheckedChanged += new System.EventHandler(this.toggleButton1_CheckedChanged);
-            // 
+            this.toggleButton1.UseVisualStyleBackColor = true;            // 
             // ManagmentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

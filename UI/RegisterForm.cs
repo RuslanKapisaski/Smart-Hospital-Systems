@@ -87,7 +87,7 @@
                 //    this.passInput = null;
                 //    this.repassInput = null;
                 //    //DoctorForm doctorForm = new DoctorForm();
-                //    //PatientForm patientForm = new PatientForm();
+                //    //PatientFormAdmin patientForm = new PatientFormAdmin();
                 //    //if (role == "doctor")
                 //    //{
                 //    //    doctorForm.Show();
@@ -106,7 +106,7 @@
             }
         }
 
-
+     
     }
 
 }

@@ -10,11 +10,12 @@ using System.Windows.Forms;
 
 namespace Hospital_System.UI
 {
-    public partial class PatientForm : Form
+    public partial class PatientFormAdmin : Form
     {
-        public PatientForm()
+        public PatientFormAdmin()
         {
             InitializeComponent();
         }
+
     }
 }

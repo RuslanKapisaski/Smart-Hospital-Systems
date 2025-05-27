@@ -10,9 +10,5 @@ namespace Hospital_System.UI
             InitializeComponent();
         }
 
-        private void toggleButton1_CheckedChanged(object sender, EventArgs e)
-        {
-            this.toggleButton1.ApplyTheme(this.toggleButton1.Checked);
-        }
     }
 }

@@ -1,22 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System;
 using System.Windows.Forms;
 
 namespace Hospital_System.UI
 {
-    public partial class MainForm : Form
+    public partial class mainForm : Form
     {
-        public MainForm()
+        public mainForm()
         {
+            //TODO: 
+
+            // watchLabel.Text = DateTime.Now.ToLongTimeString();
+            // timer1.Start();
+
             InitializeComponent();
+
         }
 
-        
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            // watchLabel.Text = DateTime.Now.ToLongDateString();
+
+        }
+
+        private void mainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+

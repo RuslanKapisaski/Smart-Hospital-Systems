@@ -15,14 +15,13 @@ namespace Hospital_System.UI.UIManagers
 
         private readonly UserService _userService;
 
-        //Dependency Injection
-
         public SettingsManagerRe() { }
 
         public SettingsManagerRe(UserService _userService)
         {
             this._userService = _userService;
         }
+
 
 
         private Size ButtonSize = new Size(180, 140);
@@ -50,7 +49,7 @@ namespace Hospital_System.UI.UIManagers
 
         public void ShowFormDoctors()
         {
-            using (var form = new DoctorForm())
+            using (var form = new DoctorFormAdmin())
             {
                 form.Text = "Doctors";
 
@@ -60,7 +59,7 @@ namespace Hospital_System.UI.UIManagers
 
         public void ShowFormPatients()
         {
-            using (var form = new PatientForm())
+            using (var form = new PatientFormAdmin())
             {
                 form.Text = "Patients";
 
@@ -70,14 +69,13 @@ namespace Hospital_System.UI.UIManagers
 
         public void ShowFormHospitals()
         {
-            using (var form = new HospitalForm())
+            using (var form = new HospitalFormAdmin())
             {
                 form.Text = "Hospitals";
 
                 form.ShowDialog();
             }
         }
-
 
         public void ShowFormAppointments()
         {
@@ -88,9 +86,10 @@ namespace Hospital_System.UI.UIManagers
                 form.ShowDialog();
             }
         }
+
         public void ShowFormUsers()
         {
-            using (var form = new UserForm())
+            using (var form = new UserFormAdmin())
             {
                 form.Text = "Users";
 
@@ -110,29 +109,27 @@ namespace Hospital_System.UI.UIManagers
                     }
 
 
-                    form.dataGridViewUsers.DataSource = table;
+                    //form.dataGridViewUsers.DataSource = table;
                 }
 
 
 
                 refreshGridUsers();
 
-                form.btnAddNewUser.Click += (s, e) =>
-                {
-                    // var dialogResult = ShowFormUsersNewEdit();
-                    // if (dialogResult == DialogResult.Yes)
-                    // {
-                    //     refreshGridUsers();
-                    // }
-                };
+                //form.btnAddNewUser.Click += (s, e) =>
+                //{
+                //    // var dialogResult = ShowFormUsersNewEdit();
+                //    // if (dialogResult == DialogResult.Yes)
+                //    // {
+                //    //     refreshGridUsers();
+                //    // }
+                //};
 
 
 
                 form.ShowDialog();
             }
         }
-
-
 
         public void ShowFormReferences()
         {
@@ -143,7 +140,6 @@ namespace Hospital_System.UI.UIManagers
                 form.ShowDialog();
             }
         }
-
 
         private void ShowAdminPanel(ManagmentForm form)
         {
@@ -246,5 +242,35 @@ namespace Hospital_System.UI.UIManagers
 
             return label;
         }
+
+
+        ////Main Form
+        //private MenuStrip menuStrip;
+        //private StatusStrip statusStrip;
+        //private ToolStripStatusLabel statusLabel;
+        //private Panel mainPanel;
+
+      
+
+        //private void ManagePatientsItem_Click(object sender, EventArgs e)
+        //{
+        //    statusLabel.Text = "Manage Patients clicked";
+        //    // TODO: Load Patients management UI in mainPanel
+        //    MessageBox.Show("Open Patients Management here.");
+        //}
+
+        //private void ManageStaffItem_Click(object sender, EventArgs e)
+        //{
+        //    statusLabel.Text = "Manage Staff clicked";
+        //    // TODO: Load Staff management UI in mainPanel
+        //    MessageBox.Show("Open Staff Management here.");
+        //}
+
+        //private void ManageAdminsItem_Click(object sender, EventArgs e)
+        //{
+        //    statusLabel.Text = "Manage Admins clicked";
+        //    // TODO: Load Admin management UI in mainPanel
+        //    MessageBox.Show("Open Admin Management here.");
+        //}
     }
 }
