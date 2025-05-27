@@ -23,6 +23,7 @@
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
+		<PackageReference Include="Microsoft.Web.WebView2" Version="1.0.3240.44" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 
 		<!-- Entity Framework Core 9.0.5 (fully aligned) -->

@@ -32,7 +32,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RegisterForm));
-            pictureBox1 = new PictureBox();
             passInput = new MaskedTextBox();
             label5 = new Label();
             emailInput = new MaskedTextBox();
@@ -47,24 +46,12 @@
             label6 = new Label();
             birthDatePicker = new DateTimePicker();
             label7 = new Label();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Image = (System.Drawing.Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new System.Drawing.Point(789, 29);
-            pictureBox1.Margin = new Padding(4, 4, 4, 4);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new System.Drawing.Size(128, 122);
-            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
-            pictureBox1.TabIndex = 20;
-            pictureBox1.TabStop = false;
             // 
             // passInput
             // 
             passInput.Location = new System.Drawing.Point(307, 307);
-            passInput.Margin = new Padding(4, 4, 4, 4);
+            passInput.Margin = new Padding(4);
             passInput.Name = "passInput";
             passInput.Size = new System.Drawing.Size(344, 25);
             passInput.TabIndex = 17;
@@ -72,6 +59,7 @@
             // label5
             // 
             label5.AutoSize = true;
+            label5.BackColor = System.Drawing.Color.Transparent;
             label5.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             label5.Location = new System.Drawing.Point(222, 307);
             label5.Margin = new Padding(4, 0, 4, 0);
@@ -83,7 +71,7 @@
             // emailInput
             // 
             emailInput.Location = new System.Drawing.Point(307, 260);
-            emailInput.Margin = new Padding(4, 4, 4, 4);
+            emailInput.Margin = new Padding(4);
             emailInput.Name = "emailInput";
             emailInput.Size = new System.Drawing.Size(344, 25);
             emailInput.TabIndex = 15;
@@ -91,6 +79,7 @@
             // label4
             // 
             label4.AutoSize = true;
+            label4.BackColor = System.Drawing.Color.Transparent;
             label4.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             label4.Location = new System.Drawing.Point(222, 260);
             label4.Margin = new Padding(4, 0, 4, 0);
@@ -102,10 +91,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = System.Drawing.SystemColors.MenuText;
+            label1.BackColor = System.Drawing.Color.Transparent;
             label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.33962F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
-            label1.ForeColor = System.Drawing.SystemColors.HotTrack;
-            label1.Location = new System.Drawing.Point(320, 72);
+            label1.ForeColor = System.Drawing.Color.LightSteelBlue;
+            label1.Location = new System.Drawing.Point(319, 90);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(241, 31);
@@ -115,7 +104,7 @@
             // repassInput
             // 
             repassInput.Location = new System.Drawing.Point(307, 360);
-            repassInput.Margin = new Padding(4, 4, 4, 4);
+            repassInput.Margin = new Padding(4);
             repassInput.Name = "repassInput";
             repassInput.Size = new System.Drawing.Size(344, 25);
             repassInput.TabIndex = 22;
@@ -123,6 +112,7 @@
             // label3
             // 
             label3.AutoSize = true;
+            label3.BackColor = System.Drawing.Color.Transparent;
             label3.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             label3.Location = new System.Drawing.Point(200, 360);
             label3.Margin = new Padding(4, 0, 4, 0);
@@ -133,10 +123,10 @@
             // 
             // registerBtn
             // 
-            registerBtn.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            registerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.792453F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            registerBtn.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            registerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.830189F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
             registerBtn.Location = new System.Drawing.Point(400, 488);
-            registerBtn.Margin = new Padding(4, 4, 4, 4);
+            registerBtn.Margin = new Padding(4);
             registerBtn.Name = "registerBtn";
             registerBtn.Size = new System.Drawing.Size(160, 52);
             registerBtn.TabIndex = 23;
@@ -147,7 +137,7 @@
             // lNameInput
             // 
             lNameInput.Location = new System.Drawing.Point(307, 211);
-            lNameInput.Margin = new Padding(4, 4, 4, 4);
+            lNameInput.Margin = new Padding(4);
             lNameInput.Name = "lNameInput";
             lNameInput.Size = new System.Drawing.Size(344, 25);
             lNameInput.TabIndex = 25;
@@ -155,6 +145,7 @@
             // label2
             // 
             label2.AutoSize = true;
+            label2.BackColor = System.Drawing.Color.Transparent;
             label2.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             label2.Location = new System.Drawing.Point(215, 214);
             label2.Margin = new Padding(4, 0, 4, 0);
@@ -166,7 +157,7 @@
             // fNameInput
             // 
             fNameInput.Location = new System.Drawing.Point(307, 162);
-            fNameInput.Margin = new Padding(4, 4, 4, 4);
+            fNameInput.Margin = new Padding(4);
             fNameInput.Name = "fNameInput";
             fNameInput.Size = new System.Drawing.Size(344, 25);
             fNameInput.TabIndex = 27;
@@ -174,6 +165,7 @@
             // label6
             // 
             label6.AutoSize = true;
+            label6.BackColor = System.Drawing.Color.Transparent;
             label6.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             label6.Location = new System.Drawing.Point(215, 162);
             label6.Margin = new Padding(4, 0, 4, 0);
@@ -185,7 +177,7 @@
             // birthDatePicker
             // 
             birthDatePicker.Location = new System.Drawing.Point(307, 424);
-            birthDatePicker.Margin = new Padding(4, 4, 4, 4);
+            birthDatePicker.Margin = new Padding(4);
             birthDatePicker.Name = "birthDatePicker";
             birthDatePicker.Size = new System.Drawing.Size(344, 25);
             birthDatePicker.TabIndex = 28;
@@ -193,6 +185,7 @@
             // label7
             // 
             label7.AutoSize = true;
+            label7.BackColor = System.Drawing.Color.Transparent;
             label7.ForeColor = System.Drawing.SystemColors.GradientActiveCaption;
             label7.Location = new System.Drawing.Point(200, 432);
             label7.Margin = new Padding(4, 0, 4, 0);
@@ -205,7 +198,8 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            BackColor = System.Drawing.Color.AntiqueWhite;
+            BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new System.Drawing.Size(933, 588);
             Controls.Add(label7);
             Controls.Add(birthDatePicker);
@@ -216,25 +210,20 @@
             Controls.Add(registerBtn);
             Controls.Add(repassInput);
             Controls.Add(label3);
-            Controls.Add(pictureBox1);
             Controls.Add(passInput);
             Controls.Add(label5);
             Controls.Add(emailInput);
             Controls.Add(label4);
             Controls.Add(label1);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "RegisterForm";
             Text = "RegisterForm";
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
         }
 
         #endregion
-
-        //private System.Diagnostics.PerformanceCounter performanceCounter1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.MaskedTextBox passInput;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.MaskedTextBox emailInput;

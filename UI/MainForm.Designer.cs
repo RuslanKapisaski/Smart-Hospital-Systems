@@ -115,6 +115,7 @@ namespace Hospital_System.UI
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = System.Drawing.Color.White;
             menuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem1, hospitalsToolStripMenuItem, doctorsToolStripMenuItem1, hospitalSystemsToolStripMenuItem, statusToolStripMenuItem });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -227,6 +228,7 @@ namespace Hospital_System.UI
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new System.Drawing.Size(923, 979);
             Controls.Add(watchLabel);
             Controls.Add(menuStrip1);

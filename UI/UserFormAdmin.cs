@@ -17,6 +17,6 @@ namespace Hospital_System.UI
             InitializeComponent();
         }
 
-        
+     
     }
 }

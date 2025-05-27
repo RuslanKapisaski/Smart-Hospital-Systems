@@ -29,7 +29,8 @@ namespace Hospital_System
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AppointmentsForm));
             appointmentTitle = new System.Windows.Forms.Label();
             doctorLabel = new System.Windows.Forms.Label();
             patientLabel = new System.Windows.Forms.Label();
@@ -50,7 +51,9 @@ namespace Hospital_System
             // appointmentTitle
             // 
             appointmentTitle.AutoSize = true;
+            appointmentTitle.BackColor = System.Drawing.Color.Transparent;
             appointmentTitle.Font = new System.Drawing.Font("Segoe UI", 19.6981125F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            appointmentTitle.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             appointmentTitle.Location = new System.Drawing.Point(24, 9);
             appointmentTitle.Name = "appointmentTitle";
             appointmentTitle.Size = new System.Drawing.Size(213, 40);
@@ -60,27 +63,36 @@ namespace Hospital_System
             // doctorLabel
             // 
             doctorLabel.AutoSize = true;
+            doctorLabel.BackColor = System.Drawing.Color.Transparent;
+            doctorLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.830189F, System.Drawing.FontStyle.Bold);
+            doctorLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             doctorLabel.Location = new System.Drawing.Point(24, 108);
             doctorLabel.Name = "doctorLabel";
-            doctorLabel.Size = new System.Drawing.Size(51, 17);
+            doctorLabel.Size = new System.Drawing.Size(53, 17);
             doctorLabel.TabIndex = 1;
             doctorLabel.Text = "Doctor:";
             // 
             // patientLabel
             // 
             patientLabel.AutoSize = true;
+            patientLabel.BackColor = System.Drawing.Color.Transparent;
+            patientLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.830189F, System.Drawing.FontStyle.Bold);
+            patientLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             patientLabel.Location = new System.Drawing.Point(277, 111);
             patientLabel.Name = "patientLabel";
-            patientLabel.Size = new System.Drawing.Size(50, 17);
+            patientLabel.Size = new System.Drawing.Size(54, 17);
             patientLabel.TabIndex = 2;
             patientLabel.Text = "Patient:";
             // 
             // dateLabel
             // 
             dateLabel.AutoSize = true;
+            dateLabel.BackColor = System.Drawing.Color.Transparent;
+            dateLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 8.830189F, System.Drawing.FontStyle.Bold);
+            dateLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             dateLabel.Location = new System.Drawing.Point(547, 111);
             dateLabel.Name = "dateLabel";
-            dateLabel.Size = new System.Drawing.Size(38, 17);
+            dateLabel.Size = new System.Drawing.Size(39, 17);
             dateLabel.TabIndex = 3;
             dateLabel.Text = "Date:\r\n";
             // 
@@ -110,7 +122,8 @@ namespace Hospital_System
             // 
             // flowLayoutPanel1
             // 
-            flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            flowLayoutPanel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            flowLayoutPanel1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             flowLayoutPanel1.Location = new System.Drawing.Point(1, 71);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new System.Drawing.Size(801, 10);
@@ -120,18 +133,18 @@ namespace Hospital_System
             // 
             appointmentsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             appointmentsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { appointmentID, patientID, doctorID, date, status });
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ControlLight;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 16.3018875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            appointmentsGridView.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.ControlLight;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 16.3018875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            appointmentsGridView.DefaultCellStyle = dataGridViewCellStyle1;
             appointmentsGridView.Location = new System.Drawing.Point(24, 187);
             appointmentsGridView.Name = "appointmentsGridView";
             appointmentsGridView.RowHeadersWidth = 45;
-            appointmentsGridView.Size = new System.Drawing.Size(764, 200);
+            appointmentsGridView.Size = new System.Drawing.Size(593, 75);
             appointmentsGridView.TabIndex = 8;
             // 
             // appointmentID
@@ -173,6 +186,7 @@ namespace Hospital_System
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new System.Drawing.Size(800, 450);
             Controls.Add(appointmentsGridView);
             Controls.Add(flowLayoutPanel1);

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserFormAdmin));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             tabControl1 = new System.Windows.Forms.TabControl();
             tabPage1 = new System.Windows.Forms.TabPage();
             dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -37,22 +38,22 @@
             roleBox = new System.Windows.Forms.ComboBox();
             setRoleButton = new System.Windows.Forms.Button();
             tabPage2 = new System.Windows.Forms.TabPage();
-            tabPage3 = new System.Windows.Forms.TabPage();
-            addRoleBtn = new System.Windows.Forms.Button();
-            deleteRoleBtn = new System.Windows.Forms.Button();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             dataGridView2 = new System.Windows.Forms.DataGridView();
             roleId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             roleName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            deleteRoleBtn = new System.Windows.Forms.Button();
+            addRoleBtn = new System.Windows.Forms.Button();
+            tabPage3 = new System.Windows.Forms.TabPage();
             dataGridView3 = new System.Windows.Forms.DataGridView();
             logsID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             logName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             tabControl1.SuspendLayout();
             tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             tabPage2.SuspendLayout();
-            tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             SuspendLayout();
             // 
@@ -69,6 +70,8 @@
             // 
             // tabPage1
             // 
+            tabPage1.BackgroundImage = (System.Drawing.Image)resources.GetObject("tabPage1.BackgroundImage");
+            tabPage1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             tabPage1.Controls.Add(dataGridView1);
             tabPage1.Controls.Add(roleBox);
             tabPage1.Controls.Add(setRoleButton);
@@ -82,20 +85,21 @@
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridView1.BackgroundColor = System.Drawing.SystemColors.ActiveCaption;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { userEmail, userRole });
             dataGridView1.Location = new System.Drawing.Point(16, 25);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 45;
-            dataGridView1.Size = new System.Drawing.Size(273, 71);
+            dataGridView1.Size = new System.Drawing.Size(266, 62);
             dataGridView1.TabIndex = 1;
             // 
             // userEmail
@@ -132,6 +136,7 @@
             // 
             // tabPage2
             // 
+            tabPage2.BackgroundImage = (System.Drawing.Image)resources.GetObject("tabPage2.BackgroundImage");
             tabPage2.Controls.Add(dataGridView2);
             tabPage2.Controls.Add(deleteRoleBtn);
             tabPage2.Controls.Add(addRoleBtn);
@@ -143,48 +148,14 @@
             tabPage2.Text = "Roles";
             tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
-            // 
-            tabPage3.Controls.Add(dataGridView3);
-            tabPage3.Location = new System.Drawing.Point(4, 26);
-            tabPage3.Name = "tabPage3";
-            tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            tabPage3.Size = new System.Drawing.Size(458, 283);
-            tabPage3.TabIndex = 2;
-            tabPage3.Text = "Logs";
-            tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // addRoleBtn
-            // 
-            addRoleBtn.BackColor = System.Drawing.Color.Transparent;
-            addRoleBtn.Font = new System.Drawing.Font("Segoe UI", 10.8679247F);
-            addRoleBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            addRoleBtn.Location = new System.Drawing.Point(307, 136);
-            addRoleBtn.Name = "addRoleBtn";
-            addRoleBtn.Size = new System.Drawing.Size(116, 44);
-            addRoleBtn.TabIndex = 0;
-            addRoleBtn.Text = "ADD ROLE";
-            addRoleBtn.UseVisualStyleBackColor = false;
-            // 
-            // deleteRoleBtn
-            // 
-            deleteRoleBtn.Font = new System.Drawing.Font("Segoe UI", 10.8679247F);
-            deleteRoleBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            deleteRoleBtn.Location = new System.Drawing.Point(307, 206);
-            deleteRoleBtn.Name = "deleteRoleBtn";
-            deleteRoleBtn.Size = new System.Drawing.Size(116, 44);
-            deleteRoleBtn.TabIndex = 1;
-            deleteRoleBtn.Text = "DELETE ROLE";
-            deleteRoleBtn.UseVisualStyleBackColor = true;
-            // 
             // dataGridView2
             // 
             dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { roleId, roleName });
-            dataGridView2.Location = new System.Drawing.Point(6, 72);
+            dataGridView2.Location = new System.Drawing.Point(6, 36);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.RowHeadersWidth = 45;
-            dataGridView2.Size = new System.Drawing.Size(265, 166);
+            dataGridView2.Size = new System.Drawing.Size(265, 82);
             dataGridView2.TabIndex = 2;
             // 
             // roleId
@@ -200,6 +171,42 @@
             roleName.MinimumWidth = 6;
             roleName.Name = "roleName";
             roleName.Width = 110;
+            // 
+            // deleteRoleBtn
+            // 
+            deleteRoleBtn.BackColor = System.Drawing.Color.FromArgb(224, 224, 224);
+            deleteRoleBtn.Font = new System.Drawing.Font("Segoe UI", 10.8679247F);
+            deleteRoleBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            deleteRoleBtn.Location = new System.Drawing.Point(307, 206);
+            deleteRoleBtn.Name = "deleteRoleBtn";
+            deleteRoleBtn.Size = new System.Drawing.Size(116, 44);
+            deleteRoleBtn.TabIndex = 1;
+            deleteRoleBtn.Text = "DELETE ROLE";
+            deleteRoleBtn.UseVisualStyleBackColor = false;
+            // 
+            // addRoleBtn
+            // 
+            addRoleBtn.BackColor = System.Drawing.Color.Transparent;
+            addRoleBtn.Font = new System.Drawing.Font("Segoe UI", 10.8679247F);
+            addRoleBtn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            addRoleBtn.Location = new System.Drawing.Point(307, 136);
+            addRoleBtn.Name = "addRoleBtn";
+            addRoleBtn.Size = new System.Drawing.Size(116, 44);
+            addRoleBtn.TabIndex = 0;
+            addRoleBtn.Text = "ADD ROLE";
+            addRoleBtn.UseVisualStyleBackColor = false;
+            // 
+            // tabPage3
+            // 
+            tabPage3.BackgroundImage = (System.Drawing.Image)resources.GetObject("tabPage3.BackgroundImage");
+            tabPage3.Controls.Add(dataGridView3);
+            tabPage3.Location = new System.Drawing.Point(4, 26);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            tabPage3.Size = new System.Drawing.Size(458, 283);
+            tabPage3.TabIndex = 2;
+            tabPage3.Text = "Logs";
+            tabPage3.UseVisualStyleBackColor = true;
             // 
             // dataGridView3
             // 
@@ -229,6 +236,8 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(800, 450);
             Controls.Add(tabControl1);
             Name = "UserFormAdmin";
@@ -237,8 +246,8 @@
             tabPage1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tabPage2.ResumeLayout(false);
-            tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             ResumeLayout(false);
         }
