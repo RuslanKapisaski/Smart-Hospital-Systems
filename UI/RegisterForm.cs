@@ -1,113 +1,164 @@
 ﻿namespace Hospital_System.UI
 {
-    //using Hospital_System.DAL.DbConnection;
+    using Hospital_System.DAL.DB;
+    using Hospital_System.DAL.Models;
+    using Hospital_System.DAL.Services;
     using System;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
-    using Npgsql;
-    using Hospital_System.DAL.Models;
 
     public partial class RegisterForm : Form
     {
-
         public RegisterForm()
         {
             InitializeComponent();
+            birthDatePicker.Value = DateTime.Today.AddYears(-18);
         }
 
-
-
-        private void registerButton(object sender, EventArgs e)
+        private void registerBtn_Click(object sender, EventArgs e)
         {
-            ValidateForm();
-
+            if (ValidateForm(out User user))
+            {
+                RegisterUser(user);
+            }
         }
 
-        private void ValidateForm()
+        private bool ValidateForm(out User user)
         {
-            User user = new User();
+            user = new User();
+            bool isValid = true;
 
-            user.FirstName = fNameInput.Text;
-            user.LastName = lNameInput.Text;
-            user.Email = emailInput.Text;
-            user.Password = passInput.Text;
-            string repass = repassInput.Text;
-            user.BirthDate = DateTime.Parse(birthDatePicker.Text);
-            user.RegistrationDate = DateTime.Now;
-            user.RoleId = 0;
-
-            string emailPattern = @"\w+@+\w+.\w+";
-
-            if (user.FirstName.Equals(""))
+            if (string.IsNullOrWhiteSpace(fNameInput.Text))
             {
-                MessageBox.Show("Please enter first name.", "Error registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            if (user.LastName.Equals(""))
-            {
-                MessageBox.Show("Please enter last name.", "Error registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                ShowError("Please enter first name.");
+                isValid = false;
             }
 
-            if (!Regex.IsMatch(user.Email, emailPattern))
+            if (string.IsNullOrWhiteSpace(lNameInput.Text))
             {
-                MessageBox.Show("Please enter a valid email.", "Error registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                ShowError("Please enter last name.");
+                isValid = false;
             }
 
-            if (user.Password.Equals(""))
+            if (!IsValidEmail(emailInput.Text))
             {
-                MessageBox.Show("Please enter a valid password.", "Error registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                ShowError("Please enter a valid email.");
+                isValid = false;
             }
 
-            if (repass != user.Password)
+            if (string.IsNullOrWhiteSpace(passInput.Text) || passInput.Text.Length < 6)
             {
-                MessageBox.Show("Your passwords should match.", "Error registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            }
-            if (user.BirthDate.Equals(""))
-            {
-                MessageBox.Show("Please enter a birthdat", "Error registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                ShowError("Password must be at least 6 characters.");
+                isValid = false;
             }
 
-            else
+            if (passInput.Text != repassInput.Text)
             {
-                //TODO
+                ShowError("Passwords do not match.");
+                isValid = false;
+            }
 
-                //if ()
-                //{
+            if (birthDatePicker.Value > DateTime.Today)
+            {
+                ShowError("Birth date cannot be in the future.");
+                isValid = false;
+            }
 
-                //    MessageBox.Show("Registration successful.");
+            if (isValid)
+            {
+                user.FirstName = fNameInput.Text.Trim();
+                user.LastName = lNameInput.Text.Trim();
+                user.Email = emailInput.Text.Trim();
+                user.Password = passInput.Text;
+                user.BirthDate = EnsureUtc(birthDatePicker.Value);
+                user.RegistrationDate = DateTime.UtcNow;
+                user.RoleId = 0;
+            }
 
-                //    this.fNameInput = null;
-                //    this.lNameInput = null;
-                //    this.emailInput = null;
-                //    this.passInput = null;
-                //    this.repassInput = null;
-                //    //DoctorForm doctorForm = new DoctorForm();
-                //    //PatientFormAdmin patientForm = new PatientFormAdmin();
-                //    //if (role == "doctor")
-                //    //{
-                //    //    doctorForm.Show();
-                //    //}
-                //    //else
-                //    //{
-                //    //    patientForm.Show();
-                //    //}
-                //    this.Hide();
-                //}
-                //else
-                //{
-                //    MessageBox.Show("Registration failed.");
-                //}
+            return isValid;
+        }
 
+        private void RegisterUser(User user)
+        {
+            try
+            {
+                using (var dbContext = new HospitalDbContext())
+                {
+                    var userService = new UserService(dbContext);
+                    bool isSuccessful = userService.RegisterUser(user);
+
+                    if (isSuccessful)
+                    {
+                        MessageBox.Show("Registration successful", "Success",
+                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        ResetForm();
+                        this.Hide();
+                        this.Close();
+
+                        var mainForm = new MainForm();
+                        mainForm.ShowDialog();
+                    }
+                }
+            }
+            catch (ArgumentException ex)
+            {
+                ShowError(ex.Message);
+            }
+            catch (Npgsql.PostgresException ex) when (ex.SqlState == "23505")
+            {
+                ShowError("Email already exists. Please use a different email.");
+            }
+            catch (Exception ex)
+            {
+                ShowError($"Registration failed: {ex.Message}");
             }
         }
 
-     
+        private void ResetForm()
+        {
+            fNameInput.Text = string.Empty;
+            lNameInput.Text = string.Empty;
+            emailInput.Text = string.Empty;
+            passInput.Text = string.Empty;
+            repassInput.Text = string.Empty;
+            birthDatePicker.Value = DateTime.Today.AddYears(-18);
+        }
+
+        private DateTime EnsureUtc(DateTime input)
+        {
+            switch (input.Kind)
+            {
+                case DateTimeKind.Utc:
+                    return input;
+                case DateTimeKind.Local:
+                    return input.ToUniversalTime();
+                case DateTimeKind.Unspecified:
+                default:
+                    return DateTime.SpecifyKind(input, DateTimeKind.Utc);
+            }
+        }
+
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                return Regex.IsMatch(email,
+                    @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
+                    RegexOptions.IgnoreCase);
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        private void ShowError(string message)
+        {
+            MessageBox.Show(message, "Registration Error",
+                          MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
     }
-
 }
+
 

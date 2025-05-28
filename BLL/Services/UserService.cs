@@ -23,10 +23,7 @@
 
         public bool RegisterUser(User user)
         {
-            if (user != null)
-            {
-                throw new ArgumentException(ExceptionMessages.UserAlreadyExist);
-            }
+         
             if (this._hospitalDbContext.Users.Any(u => u.Email == user.Email))
             {
                 throw new ArgumentException(ExceptionMessages.UserAlreadyExist);

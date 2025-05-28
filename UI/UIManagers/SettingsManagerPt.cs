@@ -16,7 +16,7 @@ namespace Hospital_System.UI.UIManagers
         private void ShowFormResults()
         {
 
-            using (var form = new mainForm())
+            using (var form = new MainForm())
             {
                 form.Text = "Results";
                 form.ShowDialog();

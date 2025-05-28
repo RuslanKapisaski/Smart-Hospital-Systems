@@ -129,6 +129,7 @@
             linkRegisterForm.TabIndex = 25;
             linkRegisterForm.TabStop = true;
             linkRegisterForm.Text = "Register Here!";
+            linkRegisterForm.LinkClicked += linkRegisterForm_LinkClicked_1;
             // 
             // accountLabel
             // 
@@ -146,6 +147,7 @@
             AutoScaleMode = AutoScaleMode.Dpi;
             BackColor = System.Drawing.SystemColors.ButtonHighlight;
             BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(800, 450);
             Controls.Add(accountLabel);
             Controls.Add(linkRegisterForm);
@@ -164,15 +166,15 @@
         }
 
         #endregion
-        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
-        private System.Windows.Forms.Label loginTitle;
-        private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.MaskedTextBox emailInput;
-        private System.Windows.Forms.MaskedTextBox passInput;
-        private System.Windows.Forms.Label passLabel;
-        private System.Windows.Forms.ImageList imageList1;
-        private LinkLabel linkRegisterForm;
-        private Label accountLabel;
         public Button LoginButton;
+        public ContextMenuStrip contextMenuStrip1;
+        public Label loginTitle;
+        public Label emailLabel;
+        public MaskedTextBox emailInput;
+        public MaskedTextBox passInput;
+        public Label passLabel;
+        public ImageList imageList1;
+        public LinkLabel linkRegisterForm;
+        public Label accountLabel;
     }
 }

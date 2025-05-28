@@ -132,7 +132,7 @@
             registerBtn.TabIndex = 23;
             registerBtn.Text = "Register";
             registerBtn.UseVisualStyleBackColor = false;
-            registerBtn.Click += registerButton;
+            registerBtn.Click += registerBtn_Click;
             // 
             // lNameInput
             // 
@@ -200,7 +200,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = System.Drawing.Color.AntiqueWhite;
             BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
-            ClientSize = new System.Drawing.Size(933, 588);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new System.Drawing.Size(925, 550);
             Controls.Add(label7);
             Controls.Add(birthDatePicker);
             Controls.Add(fNameInput);
@@ -217,27 +218,27 @@
             Controls.Add(label1);
             Margin = new Padding(4);
             Name = "RegisterForm";
-            Text = "RegisterForm";
+            Text = "A";
             ResumeLayout(false);
             PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.MaskedTextBox passInput;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox emailInput;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MaskedTextBox repassInput;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Button registerBtn;
-        private MaskedTextBox lNameInput;
-        private Label label2;
-        private MaskedTextBox fNameInput;
-        private Label label6;
-        private DateTimePicker birthDatePicker;
-        private Label label7;
         private Npgsql.NpgsqlCommand npgsqlCommand1;
+        public MaskedTextBox passInput;
+        public Label label5;
+        public MaskedTextBox emailInput;
+        public Label label4;
+        public Label label1;
+        public MaskedTextBox repassInput;
+        public Label label3;
+        public Button registerBtn;
+        public MaskedTextBox lNameInput;
+        public Label label2;
+        public MaskedTextBox fNameInput;
+        public Label label6;
+        public DateTimePicker birthDatePicker;
+        public Label label7;
     }
 }

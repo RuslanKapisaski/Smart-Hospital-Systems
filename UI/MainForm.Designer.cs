@@ -1,7 +1,7 @@
 ﻿
 namespace Hospital_System.UI
 {
-     partial class mainForm
+     partial class MainForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace Hospital_System.UI
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainForm));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             cutomDropDownMenu1 = new Hospital_System.UI.CustomControls.CutomDropDownMenu(components);
             appointmentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             pricesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -223,12 +223,13 @@ namespace Hospital_System.UI
             timer1.Interval = 1000;
             timer1.Tick += timer1_Tick;
             // 
-            // mainForm
+            // MainForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.Color.FromArgb(224, 224, 224);
             BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(923, 979);
             Controls.Add(watchLabel);
             Controls.Add(menuStrip1);
@@ -237,9 +238,8 @@ namespace Hospital_System.UI
             Icon = (System.Drawing.Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Margin = new System.Windows.Forms.Padding(4);
-            Name = "mainForm";
+            Name = "MainForm";
             Text = "Results";
-            Load += mainForm_Load;
             cutomDropDownMenu1.ResumeLayout(false);
             contextMenuStrip1.ResumeLayout(false);
             menuStrip1.ResumeLayout(false);

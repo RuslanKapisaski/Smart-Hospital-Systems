@@ -27,7 +27,7 @@
             var settingsManager = new SettingsManagerRe(userService);
             //settingsManager.ShowManagmentForm(isAdmin: true, isDeveloper: false);
 
-            Application.Run(new mainForm());
+            Application.Run(new LoginForm());
 
         
 

@@ -4,9 +4,9 @@ using System.Windows.Forms;
 
 namespace Hospital_System.UI
 {
-    public partial class mainForm : Form
+    public partial class MainForm : Form
     {
-        public mainForm()
+        public MainForm()
         {
             //TODO: 
 
@@ -23,10 +23,7 @@ namespace Hospital_System.UI
 
         }
 
-        private void mainForm_Load(object sender, EventArgs e)
-        {
-
-        }
+       
     }
 }
 

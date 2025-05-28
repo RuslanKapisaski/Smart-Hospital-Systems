@@ -1,12 +1,8 @@
 ﻿using Hospital_System.DAL.Models.DTOs;
 using Hospital_System.DAL.Models.Enums;
-using Hospital_System.Models;
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Hospital_System.BLL.Interfaces
 {
