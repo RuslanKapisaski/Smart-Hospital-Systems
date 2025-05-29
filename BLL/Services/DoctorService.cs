@@ -1,8 +1,8 @@
 ﻿using Hospital_System.BLL.Interfaces;
 using Hospital_System.DAL.DB;
+using Hospital_System.DAL.Models;
 using Hospital_System.DAL.Models.DTOs;
 using Hospital_System.DAL.Models.Enums;
-using Hospital_System.Models;
 using Hospital_System.Utils;
 using Mapster;
 using System;
@@ -20,7 +20,6 @@ namespace Hospital_System.DAL.Services
         {
             this.hospitalDbContext = hospitalDbContext;
         }
-
 
         public void AddDoctor(DoctorDTO doctorDto)
         {
@@ -47,7 +46,7 @@ namespace Hospital_System.DAL.Services
             }
             else
             {
-                doctor.Schedules.Add(newSchedule);
+                doctor.Schedules.Add((int)newSchedule);
                 this.hospitalDbContext.SaveChanges();
             }
         }
@@ -103,9 +102,12 @@ namespace Hospital_System.DAL.Services
         public DoctorDTO GetDoctorByFullName(string doctorName)
         {
             //Empty space 
-            var doctor = this.hospitalDbContext.Doctors.Any(x => $"{x.FirstName}" + " " + $"{x.LastName}" == doctorName);
+            var doctor = this.hospitalDbContext
+                .Users
+                .Where(u => u.Id == 2)
+                .Select(x => $"{x.FirstName}" + " " + $"{x.LastName}" == doctorName);
             
-            if(doctor == false)
+            if(doctor == null)
             {
                 throw new ArgumentException(ExceptionMessages.DoctorNotFound);
             }
@@ -159,7 +161,6 @@ namespace Hospital_System.DAL.Services
                 return null;
             }
         }
-
 
     }
 }

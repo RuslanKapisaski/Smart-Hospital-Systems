@@ -27,25 +27,25 @@ namespace Hospital_System.UI.UIManagers
         private Size ButtonSize = new Size(180, 140);
 
 
-        public void ShowManagmentForm(bool isAdmin, bool isDeveloper)
-        {
-            using (var form = new ManagmentForm())
-            {
-                form.Text = "Managment Form";
+        //public void ShowManagmentForm(bool isAdmin, bool isDeveloper)
+        //{
+        //    using (var form = new MainForm())
+        //    {
+        //        form.Text = "Managment Form";
 
-                if (isAdmin)
-                {
-                    ShowAdminPanel(form);
-                }
+        //        if (isAdmin)
+        //        {
+        //            ShowAdminPanel(form);
+        //        }
 
-                if (isDeveloper)
-                {
-                    ShowDeveloperPanel(form);
-                }
+        //        if (isDeveloper)
+        //        {
+        //            ShowDeveloperPanel(form);
+        //        }
 
-                form.ShowDialog();
-            }
-        }
+        //        form.ShowDialog();
+        //    }
+        //}
 
         public void ShowFormDoctors()
         {
@@ -59,7 +59,7 @@ namespace Hospital_System.UI.UIManagers
 
         public void ShowFormPatients()
         {
-            using (var form = new PatientFormAdmin())
+            using (var form = new PatientForm())
             {
                 form.Text = "Patients";
 
@@ -141,7 +141,159 @@ namespace Hospital_System.UI.UIManagers
             }
         }
 
-        private void ShowAdminPanel(ManagmentForm form)
+        //users form
+        public void ShowFormHospitalsForUsers()
+        {
+            using (var form = new PatientForm())
+            {
+                form.SelectTab("hospitals");
+                form.ShowDialog();
+            }
+        }
+
+        public void ShowFormDoctorsForUsers()
+        {
+            using (var form = new PatientForm())
+            {
+                form.SelectTab("doctors");
+                form.ShowDialog();
+            }
+        }
+
+        public void ShowFormPaymentsForUsers()
+        {
+            using (var form = new Payments())
+            {
+                form.Text = "Payments";
+                form.ShowDialog();
+            }
+        }
+
+        public void ShowFormAppointmentsForUsers()
+        {
+            using (var form = new PatientForm())
+            {
+                form.SelectTab("appointments");
+                form.ShowDialog();
+            }
+        }
+
+        public void ShowFormAboutUsForUsers()
+        {
+            using (var form = new AboutForm())
+            {
+                form.Text = "Hospital Systems";
+                form.ShowDialog();
+            }
+        }
+
+        public void DispatchPanels(int role, MainForm form)
+        {
+         
+            switch (role)
+            {
+                case 0:
+                    ShowPatientPanel(form);
+                    break;
+
+                case 1:
+                    ShowDeveloperPanel(form);
+
+                    break;
+
+                case 2:
+                    ShowPatientPanel(form);
+
+                    break;
+
+                case 3:
+                    ShowPatientPanel(form);
+
+                    break;
+
+                default:
+                    MessageBox.Show("Role not recognized: " + role);
+                    break;
+            }
+        }
+
+        public void ShowPatientPanel(MainForm form)
+        {
+ 
+            var buttons = new List<Control>();
+
+            buttons.Add(CreateTile("Hospitals", Color.DarkRed, () =>
+            {
+                ShowFormHospitalsForUsers();
+            }));
+
+            buttons.Add(CreateTile("Doctors", Color.DarkOliveGreen, () =>
+            {
+                ShowFormDoctorsForUsers();
+            }));
+
+            buttons.Add(CreateTile("Payments", Color.DarkOrange, () =>
+            {
+                ShowFormPaymentsForUsers();
+            }));
+
+            buttons.Add(CreateTile("Appointments", Color.DarkMagenta, () =>
+            {
+                ShowFormAppointmentsForUsers();
+            }));
+
+            buttons.Add(CreateTile("About Us", Color.Blue, () =>
+            {
+                ShowFormAboutUsForUsers();
+            }));
+
+
+
+            //form.flowLayoutPanelAdmin.Controls.Add(label);
+            buttons.ForEach(x => form.flowLayoutPanelMainForm.Controls.Add(x));
+
+
+        }
+
+        public void ShowDoctorPanel(MainForm form)
+        {
+
+            var buttons = new List<Control>();
+
+            buttons.Add(CreateTile("Hospitals", Color.DarkRed, () =>
+            {
+                ShowFormHospitalsForUsers();
+            }));
+
+            buttons.Add(CreateTile("Doctors", Color.DarkOliveGreen, () =>
+            {
+                ShowFormDoctorsForUsers();
+            }));
+
+            buttons.Add(CreateTile("Payments", Color.DarkOrange, () =>
+            {
+                ShowFormPaymentsForUsers();
+            }));
+
+            buttons.Add(CreateTile("Appointments", Color.DarkMagenta, () =>
+            {
+                ShowFormAppointmentsForUsers();
+            }));
+
+            buttons.Add(CreateTile("About Us", Color.Blue, () =>
+            {
+                ShowFormAboutUsForUsers();
+            }));
+
+
+
+            //form.flowLayoutPanelAdmin.Controls.Add(label);
+            buttons.ForEach(x => form.flowLayoutPanelMainForm.Controls.Add(x));
+
+
+        }
+
+        private void ShowAdminPanel(MainForm form)
         {
             var label = CreateLabel("Administrator", Color.White, Color.Black, null);
 
@@ -176,12 +328,12 @@ namespace Hospital_System.UI.UIManagers
 
 
             //form.flowLayoutPanelAdmin.Controls.Add(label);
-            buttons.ForEach(x => form.flowLayoutPanelAdmin.Controls.Add(x));
+            buttons.ForEach(x => form.flowLayoutPanelMainForm.Controls.Add(x));
 
 
         }
 
-        private void ShowDeveloperPanel(ManagmentForm form)
+        private void ShowDeveloperPanel(MainForm form)
         {
             var label = CreateLabel("Developer", Color.White, Color.Black, null, 350);
 
@@ -193,7 +345,7 @@ namespace Hospital_System.UI.UIManagers
             }));
 
             //form.flowLayoutPanelDeveloper.Controls.Add(label);
-            buttons.ForEach(x => form.flowLayoutPanelDeveloper.Controls.Add(x));
+            buttons.ForEach(x => form.flowLayoutPanelMainForm.Controls.Add(x));
         }
 
         private void Button_MouseEnter(object sender, EventArgs e)
@@ -244,33 +396,6 @@ namespace Hospital_System.UI.UIManagers
         }
 
 
-        ////Main Form
-        //private MenuStrip menuStrip;
-        //private StatusStrip statusStrip;
-        //private ToolStripStatusLabel statusLabel;
-        //private Panel mainPanel;
-
-      
-
-        //private void ManagePatientsItem_Click(object sender, EventArgs e)
-        //{
-        //    statusLabel.Text = "Manage Patients clicked";
-        //    // TODO: Load Patients management UI in mainPanel
-        //    MessageBox.Show("Open Patients Management here.");
-        //}
-
-        //private void ManageStaffItem_Click(object sender, EventArgs e)
-        //{
-        //    statusLabel.Text = "Manage Staff clicked";
-        //    // TODO: Load Staff management UI in mainPanel
-        //    MessageBox.Show("Open Staff Management here.");
-        //}
-
-        //private void ManageAdminsItem_Click(object sender, EventArgs e)
-        //{
-        //    statusLabel.Text = "Manage Admins clicked";
-        //    // TODO: Load Admin management UI in mainPanel
-        //    MessageBox.Show("Open Admin Management here.");
-        //}
+        
     }
 }

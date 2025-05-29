@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Hospital_System.DAL.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Hospital_System.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    partial class HospitalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250528104848_FixPaymentPrimaryKey")]
+    partial class FixPaymentPrimaryKey
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,6 +26,27 @@ namespace Hospital_System.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Hospital_System.DAL.Models.Admin", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Admins", "public");
+                });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Appointment", b =>
                 {
@@ -55,7 +79,7 @@ namespace Hospital_System.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("appointments", "public");
+                    b.ToTable("Appointments", "public");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Doctor", b =>
@@ -70,15 +94,13 @@ namespace Hospital_System.Migrations
                         .HasColumnType("integer[]");
 
                     b.Property<string>("Specialization")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)");
+                        .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("HospitalId");
 
-                    b.ToTable("doctors", "public");
+                    b.ToTable("Doctors", "public");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Hospital", b =>
@@ -93,29 +115,23 @@ namespace Hospital_System.Migrations
                         .HasColumnType("text");
 
                     b.Property<string>("ContactNumber")
-                        .HasMaxLength(10)
-                        .HasColumnType("character varying(10)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime?>("EstablishedDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("HospitalDescription")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
+                        .HasColumnType("text");
 
                     b.HasKey("HospitalId");
 
-                    b.ToTable("hospitals", "public");
+                    b.ToTable("Hospitals", "public");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Patient", b =>
@@ -124,7 +140,6 @@ namespace Hospital_System.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<int>("Gender")
@@ -134,14 +149,13 @@ namespace Hospital_System.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("InsuranceInfo")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
                     b.HasIndex("HospitalId");
 
-                    b.ToTable("patients", "public");
+                    b.ToTable("Patients", "public");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Payment", b =>
@@ -171,7 +185,7 @@ namespace Hospital_System.Migrations
 
                     b.HasIndex("PatientId");
 
-                    b.ToTable("payments", "public");
+                    b.ToTable("Payments", "public");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Role", b =>
@@ -182,13 +196,12 @@ namespace Hospital_System.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RoleId"));
 
-                    b.Property<int>("RoleName")
-                        .HasMaxLength(10)
-                        .HasColumnType("integer");
+                    b.Property<string>("RoleName")
+                        .HasColumnType("text");
 
                     b.HasKey("RoleId");
 
-                    b.ToTable("roles", "public");
+                    b.ToTable("Roles", "public");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.User", b =>
@@ -203,18 +216,13 @@ namespace Hospital_System.Migrations
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)");
+                        .HasColumnType("text");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
+                        .HasColumnType("text");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
+                        .HasColumnType("text");
 
                     b.Property<int?>("LinkedDoctorId")
                         .HasColumnType("integer");
@@ -223,9 +231,7 @@ namespace Hospital_System.Migrations
                         .HasColumnType("integer");
 
                     b.Property<string>("Password")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("character varying(30)");
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("timestamp with time zone");
@@ -237,7 +243,7 @@ namespace Hospital_System.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("users", "public");
+                    b.ToTable("Users", "public");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Appointment", b =>

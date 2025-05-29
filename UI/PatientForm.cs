@@ -6,16 +6,43 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Forms;
 
 namespace Hospital_System.UI
 {
-    public partial class PatientFormAdmin : Form
+    public partial class PatientForm : Form
     {
-        public PatientFormAdmin()
+        public PatientForm()
         {
             InitializeComponent();
         }
 
+        public void SelectTab(string tabName)
+        {
+            switch (tabName.ToLower())
+            {
+                case "hospitals":
+                    mainTab.SelectedTab = hospitalsTab;
+                    break;
+                case "doctors":
+                    mainTab.SelectedTab = doctorsTab;
+                    break;
+                case "appointments":
+                    mainTab.SelectedTab = tabAppointemnts;
+                    break;
+                case "medical results":
+                    mainTab.SelectedTab = resultsTab;
+                    break;
+                default:
+                    MessageBox.Show("Tab not found.");
+                    break;
+            }
+
+        }
+
+       
     }
 }
+
+

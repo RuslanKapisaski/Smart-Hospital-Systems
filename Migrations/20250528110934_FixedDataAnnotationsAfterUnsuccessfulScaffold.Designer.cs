@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Hospital_System.DAL.DB;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -12,9 +13,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Hospital_System.Migrations
 {
     [DbContext(typeof(HospitalDbContext))]
-    partial class HospitalDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250528110934_FixedDataAnnotationsAfterUnsuccessfulScaffold")]
+    partial class FixedDataAnnotationsAfterUnsuccessfulScaffold
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -182,9 +185,10 @@ namespace Hospital_System.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RoleId"));
 
-                    b.Property<int>("RoleName")
+                    b.Property<string>("RoleName")
+                        .IsRequired()
                         .HasMaxLength(10)
-                        .HasColumnType("integer");
+                        .HasColumnType("character varying(10)");
 
                     b.HasKey("RoleId");
 

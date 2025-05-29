@@ -2,9 +2,9 @@
 {
     using Hospital_System.BLL.Interfaces;
     using Hospital_System.DAL.DB;
+    using Hospital_System.DAL.Models;
     using Hospital_System.DAL.Models.DTOs;
     using Hospital_System.DAL.Models.Enums;
-    using Hospital_System.Models;
     using Hospital_System.Utils;
     using Mapster;
     using System;
@@ -48,7 +48,7 @@
             }
             else
             {
-                appointment.Status = status;
+                appointment.Status = (int)status;
                 this.hospitalDbContext.SaveChanges();
             }
 
@@ -75,7 +75,7 @@
             {
                 throw new ArgumentException(ExceptionMessages.InvalidAppointmentStatus);
             }
-                var isStatusFound = this.hospitalDbContext.Appointments.Any(a => a.Status == (AppointmentStatus)status);
+                var isStatusFound = this.hospitalDbContext.Appointments.Any(a => a.Status == status);
             if (isStatusFound)
             {
                 return "CONDUCTED";
@@ -103,7 +103,7 @@
         {
             Appointment appointmentToCheck = this.hospitalDbContext.Appointments.Find(appointmentId);
 
-            bool isConducted = appointmentToCheck.Status == AppointmentStatus.CONDUCTED; ;
+            bool isConducted = appointmentToCheck.Status == (int)AppointmentStatus.CONDUCTED;
 
             return isConducted;
         }

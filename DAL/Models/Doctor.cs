@@ -1,30 +1,30 @@
-﻿
-namespace Hospital_System.Models
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Hospital_System.DAL.Models;
+
+
+[Table("doctors")]
+public partial class Doctor
 {
-    using Hospital_System.DAL.Models;
-    using Hospital_System.DAL.Models.Enums;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    public int Id { get; set; }
 
-    [Table("doctors")]
-    public class Doctor:User
-    {
+    [Required]
+    [MaxLength(30)]
+    public string Specialization { get; set; }
 
-        [Required]
-        [MaxLength(30)]
-        public string Specialization { get; set; }
+    [ForeignKey(nameof(Hospital))]
+    public int HospitalId { get; set; }
 
-        [ForeignKey(nameof(Hospital))]
-        public int HospitalId { get; set; }
+    public List<int> Schedules { get; set; }
 
+    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
-        public ICollection<Appointment> Appointments { get; set; }
+    [ForeignKey(nameof(HospitalId))]
+    public virtual Hospital Hospital { get; set; }
 
-        [Required]
-        public ICollection<DoctorSchedule> Schedules { get; set; }
-    
-        //Navigational
-        public Hospital Hospital { get; set; }
-    }
+    [ForeignKey(nameof(Id))]
+    public virtual User IdNavigation { get; set; }
 }

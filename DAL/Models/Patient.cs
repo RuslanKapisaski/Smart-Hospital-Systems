@@ -1,30 +1,35 @@
-﻿
-namespace Hospital_System.Models
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Hospital_System.DAL.Models;
+
+
+[Table("patients")]
+public partial class Patient
 {
-    using Hospital_System.DAL.Models;
-    using Hospital_System.DAL.Models.Enums;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    [Key]
+    public int Id { get; set; }
 
-    [Table("patients")]
-    public class Patient : User
-    {
-        [ForeignKey(nameof(Hospital))]
-        public int HospitalId { get; set; }
+    [ForeignKey(nameof(Hospital))]
+    public int HospitalId { get; set; }
+    [Required]
+    public int Gender { get; set; }
 
-        [Required]
-        public GenderState? Gender { get; set; }
+    [Required]
+    public string Address { get; set; }
 
-        [Required]
-        public string Address { get; set; }
+    [Required]
+    public string InsuranceInfo { get; set; }
 
-        [Required]
-        public string InsuranceInfo { get; set; }
+    public virtual ICollection<Appointment> Appointments { get; set; } = new List<Appointment>();
 
-        //Navigational
-        public Hospital Hospital { get; set; }
+    [ForeignKey(nameof(HospitalId))]
+    public virtual Hospital Hospital { get; set; }
 
-        public virtual ICollection<Payment> Payments { get; set; }
-    }
+    [ForeignKey(nameof(Id))]
+    public virtual User IdNavigation { get; set; }
+
+    public virtual ICollection<Payment> Payments { get; set; } = new List<Payment>();
 }

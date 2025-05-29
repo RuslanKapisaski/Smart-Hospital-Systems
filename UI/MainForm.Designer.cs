@@ -46,8 +46,7 @@ namespace Hospital_System.UI
             hospitalsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             doctorsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            viewToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            requestVisitationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            viewToolStripMenuDoctors = new System.Windows.Forms.ToolStripMenuItem();
             hospitalSystemsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             statusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +54,8 @@ namespace Hospital_System.UI
             watchLabel = new System.Windows.Forms.Label();
             timer1 = new System.Windows.Forms.Timer(components);
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            greetLabel = new System.Windows.Forms.Label();
+            flowLayoutPanelMainForm = new System.Windows.Forms.FlowLayoutPanel();
             cutomDropDownMenu1.SuspendLayout();
             contextMenuStrip1.SuspendLayout();
             menuStrip1.SuspendLayout();
@@ -120,99 +121,102 @@ namespace Hospital_System.UI
             menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] { fileToolStripMenuItem1, hospitalsToolStripMenuItem, doctorsToolStripMenuItem1, hospitalSystemsToolStripMenuItem, statusToolStripMenuItem });
             menuStrip1.Location = new System.Drawing.Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new System.Drawing.Size(923, 25);
+            menuStrip1.Size = new System.Drawing.Size(923, 33);
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem1
             // 
             fileToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { openToolStripMenuItem, saveAsToolStripMenuItem, exitToolStripMenuItem });
+            fileToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
             fileToolStripMenuItem1.Name = "fileToolStripMenuItem1";
-            fileToolStripMenuItem1.Size = new System.Drawing.Size(39, 21);
+            fileToolStripMenuItem1.Size = new System.Drawing.Size(50, 29);
             fileToolStripMenuItem1.Text = "File";
             // 
             // openToolStripMenuItem
             // 
             openToolStripMenuItem.Name = "openToolStripMenuItem";
-            openToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            openToolStripMenuItem.Size = new System.Drawing.Size(149, 30);
             openToolStripMenuItem.Text = "Open";
             // 
             // saveAsToolStripMenuItem
             // 
             saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
-            saveAsToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            saveAsToolStripMenuItem.Size = new System.Drawing.Size(149, 30);
             saveAsToolStripMenuItem.Text = "Save as";
             // 
             // exitToolStripMenuItem
             // 
             exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            exitToolStripMenuItem.Size = new System.Drawing.Size(126, 24);
+            exitToolStripMenuItem.Size = new System.Drawing.Size(149, 30);
             exitToolStripMenuItem.Text = "Exit";
             // 
             // hospitalsToolStripMenuItem
             // 
             hospitalsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { viewToolStripMenuItem });
+            hospitalsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
             hospitalsToolStripMenuItem.Name = "hospitalsToolStripMenuItem";
-            hospitalsToolStripMenuItem.Size = new System.Drawing.Size(74, 21);
+            hospitalsToolStripMenuItem.Size = new System.Drawing.Size(98, 29);
             hospitalsToolStripMenuItem.Text = "Hospitals";
             // 
             // viewToolStripMenuItem
             // 
             viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            viewToolStripMenuItem.Size = new System.Drawing.Size(109, 24);
+            viewToolStripMenuItem.Size = new System.Drawing.Size(127, 30);
             viewToolStripMenuItem.Text = "View";
+            viewToolStripMenuItem.Click += viewToolStripMenuItem_Click;
             // 
             // doctorsToolStripMenuItem1
             // 
-            doctorsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { viewToolStripMenuItem1, requestVisitationToolStripMenuItem });
+            doctorsToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { viewToolStripMenuDoctors });
+            doctorsToolStripMenuItem1.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
             doctorsToolStripMenuItem1.Name = "doctorsToolStripMenuItem1";
-            doctorsToolStripMenuItem1.Size = new System.Drawing.Size(66, 21);
+            doctorsToolStripMenuItem1.Size = new System.Drawing.Size(87, 29);
             doctorsToolStripMenuItem1.Text = "Doctors";
             // 
-            // viewToolStripMenuItem1
+            // viewToolStripMenuDoctors
             // 
-            viewToolStripMenuItem1.Name = "viewToolStripMenuItem1";
-            viewToolStripMenuItem1.Size = new System.Drawing.Size(186, 24);
-            viewToolStripMenuItem1.Text = "View";
-            // 
-            // requestVisitationToolStripMenuItem
-            // 
-            requestVisitationToolStripMenuItem.Name = "requestVisitationToolStripMenuItem";
-            requestVisitationToolStripMenuItem.Size = new System.Drawing.Size(186, 24);
-            requestVisitationToolStripMenuItem.Text = "Request Visitation";
+            viewToolStripMenuDoctors.Name = "viewToolStripMenuDoctors";
+            viewToolStripMenuDoctors.Size = new System.Drawing.Size(127, 30);
+            viewToolStripMenuDoctors.Text = "View";
             // 
             // hospitalSystemsToolStripMenuItem
             // 
             hospitalSystemsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { aboutToolStripMenuItem });
+            hospitalSystemsToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
             hospitalSystemsToolStripMenuItem.Name = "hospitalSystemsToolStripMenuItem";
-            hospitalSystemsToolStripMenuItem.Size = new System.Drawing.Size(119, 21);
+            hospitalSystemsToolStripMenuItem.Size = new System.Drawing.Size(160, 29);
             hospitalSystemsToolStripMenuItem.Text = "Hospital Systems";
             // 
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new System.Drawing.Size(117, 24);
+            aboutToolStripMenuItem.Size = new System.Drawing.Size(140, 30);
             aboutToolStripMenuItem.Text = "About";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem_Click;
             // 
             // statusToolStripMenuItem
             // 
             statusToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] { personalInfoToolStripMenuItem });
+            statusToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
             statusToolStripMenuItem.Name = "statusToolStripMenuItem";
-            statusToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
+            statusToolStripMenuItem.Size = new System.Drawing.Size(72, 29);
             statusToolStripMenuItem.Text = "Status";
             // 
             // personalInfoToolStripMenuItem
             // 
+            personalInfoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
             personalInfoToolStripMenuItem.Name = "personalInfoToolStripMenuItem";
-            personalInfoToolStripMenuItem.Size = new System.Drawing.Size(158, 24);
+            personalInfoToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
             personalInfoToolStripMenuItem.Text = "Personal Info";
+            personalInfoToolStripMenuItem.Click += personalInfoToolStripMenuItem_Click;
             // 
             // watchLabel
             // 
             watchLabel.AutoSize = true;
             watchLabel.Dock = System.Windows.Forms.DockStyle.Right;
             watchLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            watchLabel.Location = new System.Drawing.Point(923, 25);
+            watchLabel.Location = new System.Drawing.Point(923, 33);
             watchLabel.Name = "watchLabel";
             watchLabel.Size = new System.Drawing.Size(0, 17);
             watchLabel.TabIndex = 4;
@@ -221,7 +225,28 @@ namespace Hospital_System.UI
             // 
             timer1.Enabled = true;
             timer1.Interval = 1000;
-            timer1.Tick += timer1_Tick;
+            // 
+            // greetLabel
+            // 
+            greetLabel.AutoSize = true;
+            greetLabel.BackColor = System.Drawing.Color.Transparent;
+            greetLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            greetLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.18868F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            greetLabel.ForeColor = System.Drawing.Color.AliceBlue;
+            greetLabel.Location = new System.Drawing.Point(870, 33);
+            greetLabel.Name = "greetLabel";
+            greetLabel.Size = new System.Drawing.Size(53, 20);
+            greetLabel.TabIndex = 5;
+            greetLabel.Text = "Hello, ";
+            // 
+            // flowLayoutPanelMainForm
+            // 
+            flowLayoutPanelMainForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            flowLayoutPanelMainForm.BackColor = System.Drawing.Color.Transparent;
+            flowLayoutPanelMainForm.Location = new System.Drawing.Point(40, 190);
+            flowLayoutPanelMainForm.Name = "flowLayoutPanelMainForm";
+            flowLayoutPanelMainForm.Size = new System.Drawing.Size(803, 503);
+            flowLayoutPanelMainForm.TabIndex = 6;
             // 
             // MainForm
             // 
@@ -231,6 +256,8 @@ namespace Hospital_System.UI
             BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(923, 979);
+            Controls.Add(flowLayoutPanelMainForm);
+            Controls.Add(greetLabel);
             Controls.Add(watchLabel);
             Controls.Add(menuStrip1);
             ForeColor = System.Drawing.Color.Coral;
@@ -262,18 +289,19 @@ namespace Hospital_System.UI
         public System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem1;
         public System.Windows.Forms.ToolStripMenuItem hospitalsToolStripMenuItem;
         public System.Windows.Forms.ToolStripMenuItem doctorsToolStripMenuItem1;
-        private System.Windows.Forms.Label watchLabel;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripMenuItem hospitalSystemsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem requestVisitationToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem personalInfoToolStripMenuItem;
+        public System.Windows.Forms.Label greetLabel;
+        public System.Windows.Forms.Label watchLabel;
+        public System.Windows.Forms.Timer timer1;
+        public System.Windows.Forms.ToolStripMenuItem hospitalSystemsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem statusToolStripMenuItem;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.ToolStripMenuItem openToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem viewToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem viewToolStripMenuDoctors;
+        public System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        public System.Windows.Forms.ToolStripMenuItem personalInfoToolStripMenuItem;
+        public System.Windows.Forms.FlowLayoutPanel flowLayoutPanelMainForm;
     }
 }

@@ -53,48 +53,58 @@
             // 
             // loginTitle
             // 
+            loginTitle.Anchor = AnchorStyles.None;
             loginTitle.AutoSize = true;
             loginTitle.BackColor = System.Drawing.Color.Transparent;
-            loginTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.33962F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
-            loginTitle.ForeColor = System.Drawing.Color.LightSteelBlue;
-            loginTitle.Location = new System.Drawing.Point(290, 125);
+            loginTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 48.2264137F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            loginTitle.ForeColor = System.Drawing.Color.LightBlue;
+            loginTitle.Location = new System.Drawing.Point(119, 32);
+            loginTitle.Margin = new Padding(3, 0, 3, 300);
             loginTitle.Name = "loginTitle";
-            loginTitle.Size = new System.Drawing.Size(241, 31);
+            loginTitle.Size = new System.Drawing.Size(599, 81);
             loginTitle.TabIndex = 3;
             loginTitle.Text = "Hospital Systems";
             // 
             // emailLabel
             // 
+            emailLabel.Anchor = AnchorStyles.None;
             emailLabel.AutoSize = true;
             emailLabel.BackColor = System.Drawing.Color.Transparent;
-            emailLabel.Location = new System.Drawing.Point(207, 189);
+            emailLabel.Font = new System.Drawing.Font("Segoe UI", 14.2641506F);
+            emailLabel.Location = new System.Drawing.Point(175, 184);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(42, 17);
+            emailLabel.Size = new System.Drawing.Size(68, 30);
             emailLabel.TabIndex = 6;
             emailLabel.Text = "Email:";
             // 
             // emailInput
             // 
-            emailInput.Location = new System.Drawing.Point(277, 189);
+            emailInput.Anchor = AnchorStyles.None;
+            emailInput.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
+            emailInput.Location = new System.Drawing.Point(278, 189);
             emailInput.Name = "emailInput";
-            emailInput.Size = new System.Drawing.Size(295, 25);
+            emailInput.Size = new System.Drawing.Size(308, 31);
             emailInput.TabIndex = 7;
             // 
             // passInput
             // 
-            passInput.Location = new System.Drawing.Point(277, 239);
+            passInput.Anchor = AnchorStyles.None;
+            passInput.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
+            passInput.Location = new System.Drawing.Point(278, 239);
             passInput.Name = "passInput";
-            passInput.Size = new System.Drawing.Size(295, 25);
+            passInput.Size = new System.Drawing.Size(308, 31);
             passInput.TabIndex = 9;
             passInput.KeyPress += passInput_KeyPress;
             // 
             // passLabel
             // 
+            passLabel.Anchor = AnchorStyles.None;
             passLabel.AutoSize = true;
             passLabel.BackColor = System.Drawing.Color.Transparent;
-            passLabel.Location = new System.Drawing.Point(188, 239);
+            passLabel.Font = new System.Drawing.Font("Segoe UI", 14.2641506F);
+            passLabel.Location = new System.Drawing.Point(156, 234);
             passLabel.Name = "passLabel";
-            passLabel.Size = new System.Drawing.Size(67, 17);
+            passLabel.Size = new System.Drawing.Size(104, 30);
             passLabel.TabIndex = 8;
             passLabel.Text = "Password:";
             // 
@@ -106,13 +116,14 @@
             // 
             // LoginButton
             // 
+            LoginButton.Anchor = AnchorStyles.None;
             LoginButton.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             LoginButton.BackColor = System.Drawing.SystemColors.ActiveCaption;
             LoginButton.Font = new System.Drawing.Font("Segoe UI", 8.830189F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
             LoginButton.ForeColor = System.Drawing.SystemColors.HotTrack;
             LoginButton.Location = new System.Drawing.Point(360, 300);
             LoginButton.Name = "LoginButton";
-            LoginButton.Size = new System.Drawing.Size(105, 34);
+            LoginButton.Size = new System.Drawing.Size(148, 46);
             LoginButton.TabIndex = 24;
             LoginButton.Text = "Login";
             LoginButton.UseVisualStyleBackColor = false;
@@ -120,12 +131,14 @@
             // 
             // linkRegisterForm
             // 
+            linkRegisterForm.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             linkRegisterForm.AutoSize = true;
             linkRegisterForm.BackColor = System.Drawing.Color.Transparent;
+            linkRegisterForm.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
             linkRegisterForm.LinkColor = System.Drawing.Color.LightCoral;
-            linkRegisterForm.Location = new System.Drawing.Point(690, 409);
+            linkRegisterForm.Location = new System.Drawing.Point(657, 403);
             linkRegisterForm.Name = "linkRegisterForm";
-            linkRegisterForm.Size = new System.Drawing.Size(92, 17);
+            linkRegisterForm.Size = new System.Drawing.Size(122, 25);
             linkRegisterForm.TabIndex = 25;
             linkRegisterForm.TabStop = true;
             linkRegisterForm.Text = "Register Here!";
@@ -133,11 +146,13 @@
             // 
             // accountLabel
             // 
+            accountLabel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             accountLabel.AutoSize = true;
             accountLabel.BackColor = System.Drawing.Color.Transparent;
-            accountLabel.Location = new System.Drawing.Point(532, 409);
+            accountLabel.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
+            accountLabel.Location = new System.Drawing.Point(452, 403);
             accountLabel.Name = "accountLabel";
-            accountLabel.Size = new System.Drawing.Size(152, 17);
+            accountLabel.Size = new System.Drawing.Size(209, 25);
             accountLabel.TabIndex = 26;
             accountLabel.Text = "Do not have an account?";
             // 

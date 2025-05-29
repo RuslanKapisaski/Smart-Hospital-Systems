@@ -11,10 +11,7 @@
 
     static class Program
     {
-        /// <summary>
-        /// The main entry point for the application.
-        /// </summary>
-        /// 
+       
         [STAThread]
         static void Main()
         {
@@ -22,15 +19,12 @@
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-            var dbContext = new HospitalDbContext();
-            var userService = new UserService(dbContext);
-            var settingsManager = new SettingsManagerRe(userService);
-            //settingsManager.ShowManagmentForm(isAdmin: true, isDeveloper: false);
+           //var dbContext = new HospitalDbContext();
+            //var userService = new UserService(dbContext);
+            //var settingsManager = new SettingsManagerRe(userService);
+            //settingsManager.ShowManagmentForm(isAdmin: false, isDeveloper: true);
 
             Application.Run(new LoginForm());
-
-        
-
 
         }
     }

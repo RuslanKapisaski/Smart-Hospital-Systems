@@ -6,6 +6,7 @@
     using Hospital_System.DAL.Models.DTOs;
     using Hospital_System.Utils;
     using Mapster;
+    using Microsoft.EntityFrameworkCore;
     using Npgsql;
     using System;
     using System.Collections.Generic;
@@ -42,21 +43,22 @@
 
         }
 
-        public bool LoginUser(UserDTO user)
+        public bool LoginUser(UserDTO userDTO)
         {
-            string userEmail = user.Email;
-            bool isRegistered = this
+            bool isLoggedIn = this
                 ._hospitalDbContext
                 .Users
-                .Any(u => userEmail == u.Email && u.Password == user.Password);
+                .Include(u => u.Role)
+                .Any(u => u.Email == userDTO.Email && u.Password == userDTO.Password);
 
-            if (isRegistered == false)
+
+            if (isLoggedIn == false)
             {
                 throw new ArgumentException(ExceptionMessages.UserAlreadyExist);
             }
             else
             {
-                return isRegistered;
+                return isLoggedIn;
             }
 
         }

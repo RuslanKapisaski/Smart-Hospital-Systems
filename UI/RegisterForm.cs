@@ -2,7 +2,9 @@
 {
     using Hospital_System.DAL.DB;
     using Hospital_System.DAL.Models;
+    using Hospital_System.DAL.Models.DTOs;
     using Hospital_System.DAL.Services;
+    using Mapster;
     using System;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
@@ -19,8 +21,20 @@
         {
             if (ValidateForm(out User user))
             {
+                user.FirstName = fNameInput.Text.Trim();
+                user.LastName = lNameInput.Text.Trim();
+                user.Email = emailInput.Text.Trim();
+                user.Password = passInput.Text;
+                user.BirthDate = EnsureUtc(birthDatePicker.Value);
+                user.RegistrationDate = DateTime.UtcNow;
+               
                 RegisterUser(user);
             }
+            else
+            {
+                MessageBox.Show("Enter valid information", "Registration error", MessageBoxButtons.OK);
+            }
+
         }
 
         private bool ValidateForm(out User user)
@@ -64,17 +78,6 @@
                 isValid = false;
             }
 
-            if (isValid)
-            {
-                user.FirstName = fNameInput.Text.Trim();
-                user.LastName = lNameInput.Text.Trim();
-                user.Email = emailInput.Text.Trim();
-                user.Password = passInput.Text;
-                user.BirthDate = EnsureUtc(birthDatePicker.Value);
-                user.RegistrationDate = DateTime.UtcNow;
-                user.RoleId = 0;
-            }
-
             return isValid;
         }
 
@@ -85,18 +88,24 @@
                 using (var dbContext = new HospitalDbContext())
                 {
                     var userService = new UserService(dbContext);
+
+                    //Role destribution
+                    if (user.Role == null)
+                    {
+                        user.Role = dbContext.Roles.Find(0);
+                    }
+
                     bool isSuccessful = userService.RegisterUser(user);
 
                     if (isSuccessful)
                     {
-                        MessageBox.Show("Registration successful", "Success",
-                                      MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                         ResetForm();
                         this.Hide();
                         this.Close();
 
-                        var mainForm = new MainForm();
+                        //Inject userDto in main form
+                        var userDto = user.Adapt<UserDTO>();
+                        var mainForm = new MainForm(userDto);
                         mainForm.ShowDialog();
                     }
                 }

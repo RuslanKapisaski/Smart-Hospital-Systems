@@ -49,16 +49,17 @@ namespace Hospital_System.UI
             userGreetingLabel.AutoSize = true;
             userGreetingLabel.BackColor = System.Drawing.Color.Transparent;
             userGreetingLabel.Font = new System.Drawing.Font("Segoe UI", 16.3018875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
-            userGreetingLabel.ForeColor = System.Drawing.SystemColors.MenuHighlight;
+            userGreetingLabel.ForeColor = System.Drawing.SystemColors.InactiveCaption;
             userGreetingLabel.Location = new System.Drawing.Point(12, 9);
             userGreetingLabel.Name = "userGreetingLabel";
             userGreetingLabel.Size = new System.Drawing.Size(138, 35);
             userGreetingLabel.TabIndex = 0;
-            userGreetingLabel.Text = "Welcome: ";
+            userGreetingLabel.Text = "Welcome, ";
             // 
             // statsBox
             // 
             statsBox.BackgroundImage = (System.Drawing.Image)resources.GetObject("statsBox.BackgroundImage");
+            statsBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             statsBox.Controls.Add(roleBtn);
             statsBox.Controls.Add(emailTextBox);
             statsBox.Controls.Add(nameTextBox);
@@ -127,21 +128,23 @@ namespace Hospital_System.UI
             // 
             statusLabel.AutoSize = true;
             statusLabel.BackColor = System.Drawing.Color.Transparent;
-            statusLabel.Font = new System.Drawing.Font("Segoe UI", 10.18868F);
+            statusLabel.Font = new System.Drawing.Font("Segoe UI", 14.2641506F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
             statusLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             statusLabel.Location = new System.Drawing.Point(110, 512);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new System.Drawing.Size(52, 20);
+            statusLabel.Size = new System.Drawing.Size(74, 30);
             statusLabel.TabIndex = 5;
             statusLabel.Text = "Status:";
             // 
             // roleLabel
             // 
             roleLabel.AutoSize = true;
-            roleLabel.Font = new System.Drawing.Font("Segoe UI", 10.18868F);
-            roleLabel.Location = new System.Drawing.Point(110, 541);
+            roleLabel.BackColor = System.Drawing.Color.Transparent;
+            roleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2264156F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            roleLabel.ForeColor = System.Drawing.SystemColors.Control;
+            roleLabel.Location = new System.Drawing.Point(111, 557);
             roleLabel.Name = "roleLabel";
-            roleLabel.Size = new System.Drawing.Size(42, 20);
+            roleLabel.Size = new System.Drawing.Size(53, 25);
             roleLabel.TabIndex = 6;
             roleLabel.Text = "Role:";
             // 
@@ -156,6 +159,7 @@ namespace Hospital_System.UI
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(977, 626);
             Controls.Add(roleLabel);
             Controls.Add(statusLabel);

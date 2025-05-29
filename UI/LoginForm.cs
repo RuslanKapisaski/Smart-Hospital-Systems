@@ -47,11 +47,13 @@
                         user.Password = pass;
 
                         if (service.LoginUser(user))
-                        {
-                            MessageBox.Show("Success.", "Success message", MessageBoxButtons.OK);
-                            ResetForm();
-                            var mainForm = new MainForm();
-                            mainForm.Show();
+                        { 
+                            //ResetForm();
+                            var mainForm = new MainForm(user);
+                            mainForm.ShowDialog();
+                            
+                            this.Hide();
+                            mainForm.FormClosed += (s, args) => this.Close();
                         }
                         else
                         {

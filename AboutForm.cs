@@ -57,7 +57,7 @@ namespace Hospital_System
                         <li>Centralized patient and doctor data</li>
                         <li>Accurate appointment tracking</li>
                         <li>Real-time inventory updates</li>
-                        <li>Reliable billing history</li>
+                        <li>Reliable billing History</li>
                         <li>Role-based user authentication</li>
                         <li>Scalable structure supporting multi-hospital management</li>
                     </ul>
