@@ -4,7 +4,9 @@
     using Hospital_System.DAL.Models.DTOs;
     using Hospital_System.DAL.Services;
     using Hospital_System.UI;
+    using Hospital_System.UI.UIManagers;
     using System;
+    using System.Linq;
     using System.Text.RegularExpressions;
     using System.Windows.Forms;
     using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -12,9 +14,12 @@
 
     public partial class LoginForm : Form
     {
+        SettingsManagerRe manager = new SettingsManagerRe();
+
         public LoginForm()
         {
             InitializeComponent();
+            passInput.PasswordChar = '*';
         }
 
         private void linkRegisterForm_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
@@ -35,7 +40,7 @@
             String pass = passInput.Text;
             String email = emailInput.Text;
 
-            if(ValidateLoginForm(pass, email))
+            if (ValidateLoginForm(pass, email))
             {
                 try
                 {
@@ -45,26 +50,28 @@
                         UserDTO user = new UserDTO();
                         user.Email = email;
                         user.Password = pass;
+                        //user.Role = context.Users.Select(u => u.Email == user.Email && u.Role.RoleId == user.Role.roleId);
 
-                        if (service.LoginUser(user))
-                        { 
-                            //ResetForm();
-                            var mainForm = new MainForm(user);
-                            mainForm.ShowDialog();
-                            
-                            this.Hide();
-                            mainForm.FormClosed += (s, args) => this.Close();
-                        }
-                        else
+                        try
                         {
-                            MessageBox.Show("Invalid email or password", "Login Failed", MessageBoxButtons.OK);
-                        }
+                            var loggedUser = service.LoginUser(user);
+                            var mainForm = new MainForm(loggedUser);
+                            manager.DispatchPanels(loggedUser.Role.roleId, mainForm);
+                            this.Hide();
 
-                    }                      
+                            mainForm.FormClosed += (s, args) => this.Close();
+
+                            mainForm.Show();
+                        }
+                        catch (Exception ex) { MessageBox.Show("Login failed: " + ex, "Login Failed", MessageBoxButtons.OK); }
+
+
+
+                    }
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred during login. Please try again. Ensure that email and password match with yours.","Error", MessageBoxButtons.OK);
+                    MessageBox.Show("An error occurred during login. Please try again. Ensure that email and password match with yours.", "Error", MessageBoxButtons.OK);
                 }
             }
 

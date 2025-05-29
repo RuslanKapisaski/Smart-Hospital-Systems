@@ -7,7 +7,7 @@
     {
         bool RegisterUser(User user);
 
-        bool LoginUser(UserDTO user);
+        UserDTO LoginUser(UserDTO user);
 
         bool EditUserRole(int userID, RoleDTO newRole);
 

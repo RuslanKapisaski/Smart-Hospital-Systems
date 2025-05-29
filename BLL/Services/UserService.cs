@@ -31,6 +31,8 @@
             }
             else
             {
+                user.Role.RoleId = 0;
+
                 this
                     ._hospitalDbContext
                     .Users
@@ -43,22 +45,24 @@
 
         }
 
-        public bool LoginUser(UserDTO userDTO)
+        public UserDTO LoginUser(UserDTO loginDto)
         {
-            bool isLoggedIn = this
+            var user = this
                 ._hospitalDbContext
                 .Users
                 .Include(u => u.Role)
-                .Any(u => u.Email == userDTO.Email && u.Password == userDTO.Password);
+                .FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
 
 
-            if (isLoggedIn == false)
+            if (user == null)
             {
                 throw new ArgumentException(ExceptionMessages.UserAlreadyExist);
             }
             else
             {
-                return isLoggedIn;
+                var loggedDto =  user.Adapt<UserDTO>();
+
+                return loggedDto;
             }
 
         }

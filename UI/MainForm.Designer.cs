@@ -207,7 +207,7 @@ namespace Hospital_System.UI
             // 
             personalInfoToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12.2264156F);
             personalInfoToolStripMenuItem.Name = "personalInfoToolStripMenuItem";
-            personalInfoToolStripMenuItem.Size = new System.Drawing.Size(198, 30);
+            personalInfoToolStripMenuItem.Size = new System.Drawing.Size(193, 30);
             personalInfoToolStripMenuItem.Text = "Personal Info";
             personalInfoToolStripMenuItem.Click += personalInfoToolStripMenuItem_Click;
             // 
@@ -241,11 +241,11 @@ namespace Hospital_System.UI
             // 
             // flowLayoutPanelMainForm
             // 
-            flowLayoutPanelMainForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            flowLayoutPanelMainForm.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             flowLayoutPanelMainForm.BackColor = System.Drawing.Color.Transparent;
-            flowLayoutPanelMainForm.Location = new System.Drawing.Point(40, 190);
+            flowLayoutPanelMainForm.Location = new System.Drawing.Point(59, 202);
             flowLayoutPanelMainForm.Name = "flowLayoutPanelMainForm";
-            flowLayoutPanelMainForm.Size = new System.Drawing.Size(803, 503);
+            flowLayoutPanelMainForm.Size = new System.Drawing.Size(769, 777);
             flowLayoutPanelMainForm.TabIndex = 6;
             // 
             // MainForm

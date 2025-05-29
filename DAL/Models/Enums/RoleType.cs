@@ -11,6 +11,7 @@ namespace Hospital_System.DAL.Models.Enums
         User = 0,
         Patient = 1,
         Doctor = 2,
-        Admin = 3
+        Admin = 3,
+        Developer = 4
     }
 }

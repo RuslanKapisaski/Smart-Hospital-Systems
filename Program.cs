@@ -4,6 +4,7 @@
     using Hospital_System.DAL.Models;
     using Hospital_System.DAL.Services;
     using Hospital_System.UI.UIManagers;
+    using Mapster;
     using System;
     using System.Windows.Forms;
     
@@ -19,13 +20,19 @@
             Application.SetCompatibleTextRenderingDefault(false);
 
 
-           //var dbContext = new HospitalDbContext();
+            //var dbContext = new HospitalDbContext();
             //var userService = new UserService(dbContext);
             //var settingsManager = new SettingsManagerRe(userService);
             //settingsManager.ShowManagmentForm(isAdmin: false, isDeveloper: true);
-
+            MapsterConfiguration();
             Application.Run(new LoginForm());
 
+        }
+
+        //Case insensitive configuration
+        static void MapsterConfiguration()
+        {
+            TypeAdapterConfig.GlobalSettings.Default.NameMatchingStrategy(NameMatchingStrategy.IgnoreCase);
         }
     }
 }

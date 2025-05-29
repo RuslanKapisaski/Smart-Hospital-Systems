@@ -15,6 +15,7 @@
         {
             InitializeComponent();
             birthDatePicker.Value = DateTime.Today.AddYears(-18);
+            MaskPasswordFields();
         }
 
         private void registerBtn_Click(object sender, EventArgs e)
@@ -167,7 +168,15 @@
             MessageBox.Show(message, "Registration Error",
                           MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void MaskPasswordFields()
+        {
+            passInput.PasswordChar = '*';
+            repassInput.PasswordChar = '*';
+
+        }
     }
+
 }
 
 
