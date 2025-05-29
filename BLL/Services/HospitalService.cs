@@ -22,16 +22,17 @@ namespace Hospital_System.DAL.Services
 
         public bool AddHospital(HospitalDTO hospitalDTO)
         {
-            if (hospitalDTO != null)
+            try
             {
                 this._hospitalDbContext.Hospitals.Add(hospitalDTO.Adapt<Hospital>());
                 bool isAdded = this._hospitalDbContext.SaveChanges() == 1;
 
                 return isAdded;
             }
-            else
+            catch (Exception ex)
             {
-                return false;
+
+                throw new ArgumentException(ExceptionMessages.HospitalCreationProblem + ex);
             }
 
         }
@@ -39,15 +40,15 @@ namespace Hospital_System.DAL.Services
         public bool DeleteHospital(int hospitalId)
         {
             var hospital = CheckIfHospitalExist(hospitalId);
-            if (hospital != null)
-            {
-                throw new ArgumentException(ExceptionMessages.HospitalNotFound);
-            }
-            else
+            try
             {
                 this._hospitalDbContext.Hospitals.Remove(hospital);
                 bool isDeleted = this._hospitalDbContext.SaveChanges() == 1;
                 return isDeleted;
+            }
+            catch(Exception e)
+            {
+                throw new ArgumentException(ExceptionMessages.HospitalNotFound + e);
             }
         }
 

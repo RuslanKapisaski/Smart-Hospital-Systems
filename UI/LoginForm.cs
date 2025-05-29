@@ -19,6 +19,7 @@
         public LoginForm()
         {
             InitializeComponent();
+            CenterForm();
             passInput.PasswordChar = '*';
         }
 
@@ -50,8 +51,6 @@
                         UserDTO user = new UserDTO();
                         user.Email = email;
                         user.Password = pass;
-                        //user.Role = context.Users.Select(u => u.Email == user.Email && u.Role.RoleId == user.Role.roleId);
-
                         try
                         {
                             var loggedUser = service.LoginUser(user);
@@ -115,5 +114,11 @@
             }
 
         }
+
+        private void CenterForm()
+        {
+            this.StartPosition = FormStartPosition.CenterScreen;
+        }
+        
     }
 }

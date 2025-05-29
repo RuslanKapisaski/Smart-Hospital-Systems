@@ -27,8 +27,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HospitalFormAdmin));
             hospitalDetailsGroupBox = new System.Windows.Forms.GroupBox();
-            hospitalDescriptionTextBox = new System.Windows.Forms.TextBox();
+            descriptionTextBox = new System.Windows.Forms.RichTextBox();
             emailTextBox = new System.Windows.Forms.TextBox();
             phoneTextBox = new System.Windows.Forms.TextBox();
             addressTextBox = new System.Windows.Forms.TextBox();
@@ -38,26 +39,27 @@
             Phone = new System.Windows.Forms.Label();
             Address = new System.Windows.Forms.Label();
             nameLabel = new System.Windows.Forms.Label();
-            deleteButton = new System.Windows.Forms.Button();
-            addButton = new System.Windows.Forms.Button();
+            deleteHospitalButton = new System.Windows.Forms.Button();
+            addHospitalButton = new System.Windows.Forms.Button();
             hospitalsGroupBox = new System.Windows.Forms.GroupBox();
-            hospitalsGridView1 = new System.Windows.Forms.DataGridView();
-            Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            hospitalName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            hospitalAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            hospitalPhone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            hospitalEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            hospitalDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hospitalsGridView = new System.Windows.Forms.DataGridView();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             label1 = new System.Windows.Forms.Label();
+            HospitalId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hospitalAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ContactNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hospitalEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            hospitalDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
             hospitalDetailsGroupBox.SuspendLayout();
             hospitalsGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)hospitalsGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)hospitalsGridView).BeginInit();
             SuspendLayout();
             // 
             // hospitalDetailsGroupBox
             // 
-            hospitalDetailsGroupBox.Controls.Add(hospitalDescriptionTextBox);
+            hospitalDetailsGroupBox.BackColor = System.Drawing.Color.Black;
+            hospitalDetailsGroupBox.Controls.Add(descriptionTextBox);
             hospitalDetailsGroupBox.Controls.Add(emailTextBox);
             hospitalDetailsGroupBox.Controls.Add(phoneTextBox);
             hospitalDetailsGroupBox.Controls.Add(addressTextBox);
@@ -67,22 +69,24 @@
             hospitalDetailsGroupBox.Controls.Add(Phone);
             hospitalDetailsGroupBox.Controls.Add(Address);
             hospitalDetailsGroupBox.Controls.Add(nameLabel);
-            hospitalDetailsGroupBox.Controls.Add(deleteButton);
-            hospitalDetailsGroupBox.Controls.Add(addButton);
+            hospitalDetailsGroupBox.Controls.Add(deleteHospitalButton);
+            hospitalDetailsGroupBox.Controls.Add(addHospitalButton);
+            hospitalDetailsGroupBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             hospitalDetailsGroupBox.Font = new System.Drawing.Font("Segoe UI", 10.18868F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
-            hospitalDetailsGroupBox.Location = new System.Drawing.Point(109, 87);
+            hospitalDetailsGroupBox.Location = new System.Drawing.Point(109, 45);
             hospitalDetailsGroupBox.Name = "hospitalDetailsGroupBox";
-            hospitalDetailsGroupBox.Size = new System.Drawing.Size(576, 277);
+            hospitalDetailsGroupBox.Size = new System.Drawing.Size(576, 319);
             hospitalDetailsGroupBox.TabIndex = 0;
             hospitalDetailsGroupBox.TabStop = false;
             hospitalDetailsGroupBox.Text = "Hospitals";
             // 
-            // hospitalDescriptionTextBox
+            // descriptionTextBox
             // 
-            hospitalDescriptionTextBox.Location = new System.Drawing.Point(112, 218);
-            hospitalDescriptionTextBox.Name = "hospitalDescriptionTextBox";
-            hospitalDescriptionTextBox.Size = new System.Drawing.Size(279, 27);
-            hospitalDescriptionTextBox.TabIndex = 11;
+            descriptionTextBox.Location = new System.Drawing.Point(115, 214);
+            descriptionTextBox.Name = "descriptionTextBox";
+            descriptionTextBox.Size = new System.Drawing.Size(276, 90);
+            descriptionTextBox.TabIndex = 11;
+            descriptionTextBox.Text = "";
             // 
             // emailTextBox
             // 
@@ -94,6 +98,7 @@
             // phoneTextBox
             // 
             phoneTextBox.Location = new System.Drawing.Point(112, 139);
+            phoneTextBox.Margin = new System.Windows.Forms.Padding(10);
             phoneTextBox.Name = "phoneTextBox";
             phoneTextBox.Size = new System.Drawing.Size(279, 27);
             phoneTextBox.TabIndex = 9;
@@ -107,7 +112,7 @@
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new System.Drawing.Point(112, 51);
+            nameTextBox.Location = new System.Drawing.Point(112, 54);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.Size = new System.Drawing.Size(279, 27);
             nameTextBox.TabIndex = 7;
@@ -115,75 +120,82 @@
             // descriptionLabel
             // 
             descriptionLabel.AutoSize = true;
+            descriptionLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.18868F, System.Drawing.FontStyle.Bold);
             descriptionLabel.Location = new System.Drawing.Point(18, 218);
             descriptionLabel.Name = "descriptionLabel";
-            descriptionLabel.Size = new System.Drawing.Size(88, 20);
+            descriptionLabel.Size = new System.Drawing.Size(91, 20);
             descriptionLabel.TabIndex = 6;
             descriptionLabel.Text = "Description:";
             // 
             // emailLabel
             // 
             emailLabel.AutoSize = true;
-            emailLabel.Location = new System.Drawing.Point(21, 184);
+            emailLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.18868F, System.Drawing.FontStyle.Bold);
+            emailLabel.Location = new System.Drawing.Point(30, 180);
             emailLabel.Name = "emailLabel";
-            emailLabel.Size = new System.Drawing.Size(49, 20);
+            emailLabel.Size = new System.Drawing.Size(50, 20);
             emailLabel.TabIndex = 5;
             emailLabel.Text = "Email:";
             // 
             // Phone
             // 
             Phone.AutoSize = true;
-            Phone.Location = new System.Drawing.Point(21, 146);
+            Phone.Font = new System.Drawing.Font("Segoe UI Semibold", 10.18868F, System.Drawing.FontStyle.Bold);
+            Phone.Location = new System.Drawing.Point(26, 142);
             Phone.Name = "Phone";
-            Phone.Size = new System.Drawing.Size(53, 20);
+            Phone.Size = new System.Drawing.Size(57, 20);
             Phone.TabIndex = 4;
             Phone.Text = "Phone:";
             // 
             // Address
             // 
             Address.AutoSize = true;
+            Address.Font = new System.Drawing.Font("Segoe UI Semibold", 10.18868F, System.Drawing.FontStyle.Bold);
             Address.Location = new System.Drawing.Point(26, 100);
             Address.Name = "Address";
-            Address.Size = new System.Drawing.Size(65, 20);
+            Address.Size = new System.Drawing.Size(67, 20);
             Address.TabIndex = 3;
             Address.Text = "Address:";
             // 
             // nameLabel
             // 
             nameLabel.AutoSize = true;
+            nameLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 10.18868F, System.Drawing.FontStyle.Bold);
             nameLabel.Location = new System.Drawing.Point(26, 54);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new System.Drawing.Size(52, 20);
+            nameLabel.Size = new System.Drawing.Size(54, 20);
             nameLabel.TabIndex = 2;
             nameLabel.Text = "Name:";
             // 
-            // deleteButton
+            // deleteHospitalButton
             // 
-            deleteButton.BackColor = System.Drawing.Color.Firebrick;
-            deleteButton.Font = new System.Drawing.Font("Segoe UI", 8.830189F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
-            deleteButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            deleteButton.Location = new System.Drawing.Point(432, 162);
-            deleteButton.Name = "deleteButton";
-            deleteButton.Size = new System.Drawing.Size(119, 51);
-            deleteButton.TabIndex = 1;
-            deleteButton.Text = "DELETE";
-            deleteButton.UseVisualStyleBackColor = false;
+            deleteHospitalButton.BackColor = System.Drawing.Color.Firebrick;
+            deleteHospitalButton.Font = new System.Drawing.Font("Segoe UI", 8.830189F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            deleteHospitalButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            deleteHospitalButton.Location = new System.Drawing.Point(432, 162);
+            deleteHospitalButton.Name = "deleteHospitalButton";
+            deleteHospitalButton.Size = new System.Drawing.Size(119, 51);
+            deleteHospitalButton.TabIndex = 1;
+            deleteHospitalButton.Text = "DELETE";
+            deleteHospitalButton.UseVisualStyleBackColor = false;
             // 
-            // addButton
+            // addHospitalButton
             // 
-            addButton.BackColor = System.Drawing.Color.ForestGreen;
-            addButton.Font = new System.Drawing.Font("Segoe UI", 8.830189F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
-            addButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            addButton.Location = new System.Drawing.Point(432, 77);
-            addButton.Name = "addButton";
-            addButton.Size = new System.Drawing.Size(119, 51);
-            addButton.TabIndex = 0;
-            addButton.Text = "ADD";
-            addButton.UseVisualStyleBackColor = false;
+            addHospitalButton.BackColor = System.Drawing.Color.ForestGreen;
+            addHospitalButton.Font = new System.Drawing.Font("Segoe UI", 8.830189F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            addHospitalButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            addHospitalButton.Location = new System.Drawing.Point(432, 77);
+            addHospitalButton.Name = "addHospitalButton";
+            addHospitalButton.Size = new System.Drawing.Size(119, 51);
+            addHospitalButton.TabIndex = 0;
+            addHospitalButton.Text = "ADD";
+            addHospitalButton.UseVisualStyleBackColor = false;
+            addHospitalButton.Click += addHospitalButton_Click;
             // 
             // hospitalsGroupBox
             // 
-            hospitalsGroupBox.Controls.Add(hospitalsGridView1);
+            hospitalsGroupBox.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            hospitalsGroupBox.Controls.Add(hospitalsGridView);
             hospitalsGroupBox.Location = new System.Drawing.Point(69, 370);
             hospitalsGroupBox.Name = "hospitalsGroupBox";
             hospitalsGroupBox.Size = new System.Drawing.Size(711, 192);
@@ -191,30 +203,43 @@
             hospitalsGroupBox.TabStop = false;
             hospitalsGroupBox.Text = "Hospitals";
             // 
-            // hospitalsGridView1
+            // hospitalsGridView
             // 
-            hospitalsGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            hospitalsGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { Id, hospitalName, hospitalAddress, hospitalPhone, hospitalEmail, hospitalDescription });
-            hospitalsGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            hospitalsGridView1.Location = new System.Drawing.Point(3, 21);
-            hospitalsGridView1.Name = "hospitalsGridView1";
-            hospitalsGridView1.RowHeadersWidth = 45;
-            hospitalsGridView1.Size = new System.Drawing.Size(705, 168);
-            hospitalsGridView1.TabIndex = 0;
+            hospitalsGridView.BackgroundColor = System.Drawing.SystemColors.ActiveCaptionText;
+            hospitalsGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            hospitalsGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { HospitalId, Name, hospitalAddress, ContactNumber, hospitalEmail, hospitalDescription });
+            hospitalsGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            hospitalsGridView.GridColor = System.Drawing.SystemColors.InfoText;
+            hospitalsGridView.Location = new System.Drawing.Point(3, 21);
+            hospitalsGridView.Name = "hospitalsGridView";
+            hospitalsGridView.RowHeadersWidth = 45;
+            hospitalsGridView.Size = new System.Drawing.Size(705, 168);
+            hospitalsGridView.TabIndex = 0;
             // 
-            // Id
+            // label1
             // 
-            Id.HeaderText = "ID";
-            Id.MinimumWidth = 6;
-            Id.Name = "Id";
-            Id.Width = 110;
+            label1.AutoSize = true;
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label1.Font = new System.Drawing.Font("Segoe UI", 14.2641506F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            label1.Location = new System.Drawing.Point(26, 12);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(334, 30);
+            label1.TabIndex = 2;
+            label1.Text = "Hospital Managment Operations";
             // 
-            // hospitalName
+            // HospitalId
             // 
-            hospitalName.HeaderText = "Name";
-            hospitalName.MinimumWidth = 6;
-            hospitalName.Name = "hospitalName";
-            hospitalName.Width = 110;
+            HospitalId.HeaderText = "ID";
+            HospitalId.MinimumWidth = 6;
+            HospitalId.Name = "HospitalId";
+            HospitalId.Width = 110;
+            // 
+            // Name
+            // 
+            Name.HeaderText = "Name";
+            Name.MinimumWidth = 6;
+            Name.Name = "Name";
+            Name.Width = 110;
             // 
             // hospitalAddress
             // 
@@ -223,12 +248,12 @@
             hospitalAddress.Name = "hospitalAddress";
             hospitalAddress.Width = 110;
             // 
-            // hospitalPhone
+            // ContactNumber
             // 
-            hospitalPhone.HeaderText = "Phone";
-            hospitalPhone.MinimumWidth = 6;
-            hospitalPhone.Name = "hospitalPhone";
-            hospitalPhone.Width = 110;
+            ContactNumber.HeaderText = "Phone";
+            ContactNumber.MinimumWidth = 6;
+            ContactNumber.Name = "ContactNumber";
+            ContactNumber.Width = 110;
             // 
             // hospitalEmail
             // 
@@ -244,29 +269,21 @@
             hospitalDescription.Name = "hospitalDescription";
             hospitalDescription.Width = 110;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new System.Drawing.Font("Segoe UI", 14.2641506F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
-            label1.Location = new System.Drawing.Point(26, 12);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(334, 30);
-            label1.TabIndex = 2;
-            label1.Text = "Hospital Managment Operations";
-            // 
             // HospitalFormAdmin
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
             ClientSize = new System.Drawing.Size(869, 625);
             Controls.Add(label1);
             Controls.Add(hospitalsGroupBox);
             Controls.Add(hospitalDetailsGroupBox);
+            ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             Margin = new System.Windows.Forms.Padding(4);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "HospitalFormAdmin";
+           
             Padding = new System.Windows.Forms.Padding(10, 12, 10, 12);
             ShowIcon = false;
             ShowInTaskbar = false;
@@ -275,7 +292,7 @@
             hospitalDetailsGroupBox.ResumeLayout(false);
             hospitalDetailsGroupBox.PerformLayout();
             hospitalsGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)hospitalsGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)hospitalsGridView).EndInit();
             ResumeLayout(false);
             PerformLayout();
 
@@ -283,28 +300,28 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox hospitalDetailsGroupBox;
-        private System.Windows.Forms.Button deleteButton;
-        private System.Windows.Forms.Button addButton;
-        private System.Windows.Forms.GroupBox hospitalsGroupBox;
-        private System.Windows.Forms.DataGridView hospitalsGridView1;
-        private System.Windows.Forms.TextBox hospitalDescriptionTextBox;
-        private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.TextBox phoneTextBox;
-        private System.Windows.Forms.TextBox addressTextBox;
-        private System.Windows.Forms.TextBox nameTextBox;
-        private System.Windows.Forms.Label descriptionLabel;
-        private System.Windows.Forms.Label emailLabel;
-        private System.Windows.Forms.Label Phone;
-        private System.Windows.Forms.Label Address;
-        private System.Windows.Forms.Label nameLabel;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hospitalName;
+        public System.Windows.Forms.GroupBox hospitalDetailsGroupBox;
+        public System.Windows.Forms.Button deleteHospitalButton;
+        public System.Windows.Forms.Button addHospitalButton;
+        public System.Windows.Forms.GroupBox hospitalsGroupBox;
+        public System.Windows.Forms.DataGridView hospitalsGridView;
+        public System.Windows.Forms.TextBox emailTextBox;
+        public System.Windows.Forms.TextBox phoneTextBox;
+        public System.Windows.Forms.TextBox addressTextBox;
+        public System.Windows.Forms.TextBox nameTextBox;
+        public System.Windows.Forms.Label descriptionLabel;
+        public System.Windows.Forms.Label emailLabel;
+        public System.Windows.Forms.Label Phone;
+        public System.Windows.Forms.Label Address;
+        public System.Windows.Forms.Label nameLabel;
+        public System.ComponentModel.BackgroundWorker backgroundWorker1;
+        public System.Windows.Forms.Label label1;
+        private System.Windows.Forms.RichTextBox descriptionTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn HospitalId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Name;
         private System.Windows.Forms.DataGridViewTextBoxColumn hospitalAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn hospitalPhone;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ContactNumber;
         private System.Windows.Forms.DataGridViewTextBoxColumn hospitalEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn hospitalDescription;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.Label label1;
     }
 }

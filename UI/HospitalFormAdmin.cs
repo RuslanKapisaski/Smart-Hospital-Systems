@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Hospital_System.DAL.DB;
+using Hospital_System.DAL.Services;
+using Mapster;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -15,7 +18,7 @@ namespace Hospital_System.DAL.Models.DTOs
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
-      
+            LoadHospitals();
         }
 
         #region Assembly Attribute Accessors
@@ -98,5 +101,71 @@ namespace Hospital_System.DAL.Models.DTOs
         }
         #endregion
 
+        private void addHospitalButton_Click(object sender, EventArgs e)
+        {
+            if (ValidateForm())
+            {
+                using (var context = new HospitalDbContext())
+                {
+                    var service = new HospitalService(context);
+                    var hospitalDto = new HospitalDTO
+                    {
+                        Name = nameTextBox.Text,
+                        Address = addressTextBox.Text,
+                        ContactNumber = phoneTextBox.Text,
+                        Email = emailTextBox.Text,
+                        HospitalDescription = descriptionTextBox.Text
+                    };
+                    service.AddHospital(hospitalDto);
+                    MessageBox.Show("New hospital is successfuly added!", "Confirmation message", MessageBoxButtons.OK);
+                    ResetForm();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Plaese, enter valid information in the fields", "Entern invalid information error", MessageBoxButtons.OK);
+            }
+
+        }
+
+        private void LoadHospitals()
+        {
+            using (var context = new HospitalDbContext())
+            {
+                var service = new HospitalService(context);
+                IReadOnlyList<HospitalDTO>  hospitals = service.GetAllHospitals();
+                hospitalsGridView.DataSource = hospitals;
+                hospitalsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+        }
+        private bool ValidateForm()
+        {
+            bool isValid = true;
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is TextBox text)
+                {
+                    if (string.IsNullOrWhiteSpace(control.Text))
+                    {
+                        isValid = false;
+                        return isValid;
+                    }
+                }
+            }
+            return isValid;
+        }
+
+        private void ResetForm()
+        {
+
+            nameTextBox.Text = " ";
+            addressTextBox.Text = " ";
+            phoneTextBox.Text = " ";
+            emailTextBox.Text = " ";
+            descriptionTextBox.Text = " ";
+        }
+
+      
     }
 }

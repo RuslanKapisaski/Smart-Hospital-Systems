@@ -12,6 +12,7 @@ namespace Hospital_System.Utils
         public const string PatientNotFound = "Patient doesn't exist!";
         public const string DoctorNotFound = "Doctor doesn't exist!";
         public const string HospitalNotFound = "Hospital doesn't exist!";
+        public const string HospitalCreationProblem = "Problem occured while creating hospidal!";
         public const string RoleNotFound = "Role doesn't exist!";
         public const string InvalidLogin = "Invalid login. Please enter your data!";
         public const string InvlidRole = "Such role doesn't exist";

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hospital_System.DAL.DB;
+using Hospital_System.DAL.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,9 +19,20 @@ namespace Hospital_System.UI
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
 
+        private void addDoctorBtn_Click(object sender, EventArgs e)
+        {
+            using (var context = new HospitalDbContext())
+            {
+                var service = new DoctorService(context);
+                try
+                {
+                    //var doctorDto
+                }
+                catch (Exception ex)
+                {
+                }
+            }
         }
     }
 }

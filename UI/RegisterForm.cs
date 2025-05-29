@@ -4,6 +4,7 @@
     using Hospital_System.DAL.Models;
     using Hospital_System.DAL.Models.DTOs;
     using Hospital_System.DAL.Services;
+    using Hospital_System.UI.UIManagers;
     using Mapster;
     using System;
     using System.Text.RegularExpressions;
@@ -11,11 +12,14 @@
 
     public partial class RegisterForm : Form
     {
+        SettingsManagerRe manager = new SettingsManagerRe();
+
         public RegisterForm()
         {
             InitializeComponent();
-            birthDatePicker.Value = DateTime.Today.AddYears(-18);
+            CenterForm();
             MaskPasswordFields();
+            birthDatePicker.Value = DateTime.Today.AddYears(-18);
         }
 
         private void registerBtn_Click(object sender, EventArgs e)
@@ -90,7 +94,6 @@
                 {
                     var userService = new UserService(dbContext);
 
-                    //Role destribution
                     if (user.Role == null)
                     {
                         user.Role = dbContext.Roles.Find(0);
@@ -102,11 +105,10 @@
                     {
                         ResetForm();
                         this.Hide();
-                        this.Close();
 
-                        //Inject userDto in main form
                         var userDto = user.Adapt<UserDTO>();
                         var mainForm = new MainForm(userDto);
+                        manager.DispatchPanels(userDto.Role.roleId, mainForm);
                         mainForm.ShowDialog();
                     }
                 }
@@ -174,6 +176,11 @@
             passInput.PasswordChar = '*';
             repassInput.PasswordChar = '*';
 
+        }
+
+        private void CenterForm()
+        {
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
     }
 

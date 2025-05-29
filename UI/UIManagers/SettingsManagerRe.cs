@@ -25,6 +25,7 @@ namespace Hospital_System.UI.UIManagers
 
 
         private Size ButtonSize = new Size(280, 200);
+        private Color OriginalButtonColor = Color.Transparent;
 
         //Admins forms
         private void ShowFormDoctorsForAdmins()
@@ -185,7 +186,7 @@ namespace Hospital_System.UI.UIManagers
 
             var buttons = new List<Control>();
 
-            buttons.Add(CreateTile("My Profile", Color.FromArgb(199, 229, 255), () =>
+            buttons.Add(CreateTile("My Profile", Color.White, () =>
             {
                 ShowFormBasicUserInformation();
             }));
@@ -385,32 +386,41 @@ namespace Hospital_System.UI.UIManagers
             buttons.ForEach(x => form.flowLayoutPanelMainForm.Controls.Add(x));
         }
 
-
         private Control CreateTile(string buttonText, Color borderColor, Action onClick)
         {
             var button = new Button();
-            button.Margin = new Padding(5);
-            button.Text = buttonText;
             button.Size = ButtonSize;
-            button.BackColor = Color.Transparent;
+            button.BackColor = OriginalButtonColor;
+            button.Margin = new Padding(10);
+            button.Text = buttonText;
             button.ForeColor = Color.White;
             button.Font = new Font(button.Font.FontFamily, 24, FontStyle.Bold);
+
             button.FlatStyle = FlatStyle.Flat;
             button.FlatAppearance.BorderColor = borderColor;
-            button.FlatAppearance.BorderSize = 3; 
-            // Remove mouse hover default gray
-            button.FlatAppearance.MouseOverBackColor = Color.Transparent;
-            // Optional: Change border color on hover
+            button.FlatAppearance.BorderSize = 3;
+
+            button.UseVisualStyleBackColor = false;
+
+            Color hoverColor = Color.FromArgb(
+                Math.Min(255, borderColor.R + 40),
+                Math.Min(255, borderColor.G + 40),
+                Math.Min(255, borderColor.B + 40)
+            );
+
             button.MouseEnter += (s, e) =>
             {
-                button.BackColor = Color.FromArgb(
-                    Math.Min(255, borderColor.R + 40),
-                    Math.Min(255, borderColor.G + 40),
-                    Math.Min(255, borderColor.B + 40)
-                );
+                button.FlatAppearance.BorderColor = hoverColor;
+                button.BackColor = Color.FromArgb(10, hoverColor.R, hoverColor.G, hoverColor.B); // Slight tint
             };
-            
-                button.Click += (s, e) => onClick?.Invoke();
+
+            button.MouseLeave += (s, e) =>
+            {
+                button.FlatAppearance.BorderColor = borderColor;
+                button.BackColor = OriginalButtonColor;
+            };
+
+            button.Click += (s, e) => onClick?.Invoke();
 
             return button;
         }

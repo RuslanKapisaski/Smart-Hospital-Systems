@@ -33,7 +33,6 @@ namespace Hospital_System.UI
             groupBoxDoctors = new System.Windows.Forms.GroupBox();
             deleteDoctorBtn = new System.Windows.Forms.Button();
             editDoctorBtn = new System.Windows.Forms.Button();
-            viewDoctorsBtn = new System.Windows.Forms.Button();
             addDoctorBtn = new System.Windows.Forms.Button();
             dataGridView1 = new System.Windows.Forms.DataGridView();
             FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,15 +49,14 @@ namespace Hospital_System.UI
             groupBoxDoctors.BackColor = System.Drawing.Color.Transparent;
             groupBoxDoctors.Controls.Add(deleteDoctorBtn);
             groupBoxDoctors.Controls.Add(editDoctorBtn);
-            groupBoxDoctors.Controls.Add(viewDoctorsBtn);
             groupBoxDoctors.Controls.Add(addDoctorBtn);
             groupBoxDoctors.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.86792F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, 204);
             groupBoxDoctors.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            groupBoxDoctors.Location = new System.Drawing.Point(734, 82);
+            groupBoxDoctors.Location = new System.Drawing.Point(769, 82);
             groupBoxDoctors.Margin = new System.Windows.Forms.Padding(4);
             groupBoxDoctors.Name = "groupBoxDoctors";
             groupBoxDoctors.Padding = new System.Windows.Forms.Padding(4);
-            groupBoxDoctors.Size = new System.Drawing.Size(236, 489);
+            groupBoxDoctors.Size = new System.Drawing.Size(201, 435);
             groupBoxDoctors.TabIndex = 0;
             groupBoxDoctors.TabStop = false;
             groupBoxDoctors.Text = "Doctor Services";
@@ -69,10 +67,10 @@ namespace Hospital_System.UI
             deleteDoctorBtn.BackColor = System.Drawing.Color.MidnightBlue;
             deleteDoctorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8679247F, System.Drawing.FontStyle.Bold);
             deleteDoctorBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            deleteDoctorBtn.Location = new System.Drawing.Point(46, 371);
+            deleteDoctorBtn.Location = new System.Drawing.Point(11, 325);
             deleteDoctorBtn.Margin = new System.Windows.Forms.Padding(4);
             deleteDoctorBtn.Name = "deleteDoctorBtn";
-            deleteDoctorBtn.Size = new System.Drawing.Size(145, 72);
+            deleteDoctorBtn.Size = new System.Drawing.Size(182, 72);
             deleteDoctorBtn.TabIndex = 3;
             deleteDoctorBtn.Text = "DELETE";
             deleteDoctorBtn.UseVisualStyleBackColor = false;
@@ -83,28 +81,13 @@ namespace Hospital_System.UI
             editDoctorBtn.BackColor = System.Drawing.Color.MidnightBlue;
             editDoctorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8679247F, System.Drawing.FontStyle.Bold);
             editDoctorBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            editDoctorBtn.Location = new System.Drawing.Point(46, 256);
+            editDoctorBtn.Location = new System.Drawing.Point(11, 173);
             editDoctorBtn.Margin = new System.Windows.Forms.Padding(4);
             editDoctorBtn.Name = "editDoctorBtn";
-            editDoctorBtn.Size = new System.Drawing.Size(145, 72);
+            editDoctorBtn.Size = new System.Drawing.Size(182, 72);
             editDoctorBtn.TabIndex = 2;
             editDoctorBtn.Text = "EDIT";
             editDoctorBtn.UseVisualStyleBackColor = false;
-            // 
-            // viewDoctorsBtn
-            // 
-            viewDoctorsBtn.Anchor = System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right;
-            viewDoctorsBtn.BackColor = System.Drawing.Color.MidnightBlue;
-            viewDoctorsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8679247F, System.Drawing.FontStyle.Bold);
-            viewDoctorsBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            viewDoctorsBtn.Location = new System.Drawing.Point(46, 65);
-            viewDoctorsBtn.Margin = new System.Windows.Forms.Padding(4);
-            viewDoctorsBtn.Name = "viewDoctorsBtn";
-            viewDoctorsBtn.Size = new System.Drawing.Size(145, 72);
-            viewDoctorsBtn.TabIndex = 1;
-            viewDoctorsBtn.Text = "VIEW";
-            viewDoctorsBtn.UseVisualStyleBackColor = false;
-            viewDoctorsBtn.Click += button2_Click;
             // 
             // addDoctorBtn
             // 
@@ -112,13 +95,14 @@ namespace Hospital_System.UI
             addDoctorBtn.BackColor = System.Drawing.Color.MidnightBlue;
             addDoctorBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8679247F, System.Drawing.FontStyle.Bold);
             addDoctorBtn.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            addDoctorBtn.Location = new System.Drawing.Point(46, 160);
+            addDoctorBtn.Location = new System.Drawing.Point(11, 46);
             addDoctorBtn.Margin = new System.Windows.Forms.Padding(4);
             addDoctorBtn.Name = "addDoctorBtn";
-            addDoctorBtn.Size = new System.Drawing.Size(145, 72);
+            addDoctorBtn.Size = new System.Drawing.Size(182, 72);
             addDoctorBtn.TabIndex = 0;
             addDoctorBtn.Text = "ADD";
             addDoctorBtn.UseVisualStyleBackColor = false;
+            addDoctorBtn.Click += addDoctorBtn_Click;
             // 
             // dataGridView1
             // 
@@ -126,11 +110,11 @@ namespace Hospital_System.UI
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] { FirstName, LastName, Specialization, Hospital });
             dataGridView1.GridColor = System.Drawing.SystemColors.HotTrack;
-            dataGridView1.Location = new System.Drawing.Point(58, 207);
+            dataGridView1.Location = new System.Drawing.Point(51, 131);
             dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 45;
-            dataGridView1.Size = new System.Drawing.Size(481, 72);
+            dataGridView1.Size = new System.Drawing.Size(481, 88);
             dataGridView1.TabIndex = 1;
             // 
             // FirstName
@@ -184,7 +168,6 @@ namespace Hospital_System.UI
         private System.Windows.Forms.GroupBox groupBoxDoctors;
         private System.Windows.Forms.Button addDoctorBtn;
         private System.Windows.Forms.Button editDoctorBtn;
-        private System.Windows.Forms.Button viewDoctorsBtn;
         private System.Windows.Forms.Button deleteDoctorBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
