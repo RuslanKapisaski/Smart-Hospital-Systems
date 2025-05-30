@@ -39,3 +39,4 @@ Thumbs.db
 # Others
 _ReSharper*/
 *.vs/
+/App.config
