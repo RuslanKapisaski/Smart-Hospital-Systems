@@ -15,6 +15,7 @@ namespace Hospital_System
         public AppointmentsForm()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

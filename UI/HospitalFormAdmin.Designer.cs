@@ -43,14 +43,14 @@
             addHospitalButton = new System.Windows.Forms.Button();
             hospitalsGroupBox = new System.Windows.Forms.GroupBox();
             hospitalsGridView = new System.Windows.Forms.DataGridView();
-            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            label1 = new System.Windows.Forms.Label();
             HospitalId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             hospitalAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ContactNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             hospitalEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
             hospitalDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            label1 = new System.Windows.Forms.Label();
             hospitalDetailsGroupBox.SuspendLayout();
             hospitalsGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hospitalsGridView).BeginInit();
@@ -79,6 +79,7 @@
             hospitalDetailsGroupBox.TabIndex = 0;
             hospitalDetailsGroupBox.TabStop = false;
             hospitalDetailsGroupBox.Text = "Hospitals";
+        
             // 
             // descriptionTextBox
             // 
@@ -216,17 +217,6 @@
             hospitalsGridView.Size = new System.Drawing.Size(705, 168);
             hospitalsGridView.TabIndex = 0;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.BackColor = System.Drawing.Color.Transparent;
-            label1.Font = new System.Drawing.Font("Segoe UI", 14.2641506F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
-            label1.Location = new System.Drawing.Point(26, 12);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(334, 30);
-            label1.TabIndex = 2;
-            label1.Text = "Hospital Managment Operations";
-            // 
             // HospitalId
             // 
             HospitalId.HeaderText = "ID";
@@ -269,6 +259,17 @@
             hospitalDescription.Name = "hospitalDescription";
             hospitalDescription.Width = 110;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.BackColor = System.Drawing.Color.Transparent;
+            label1.Font = new System.Drawing.Font("Segoe UI", 14.2641506F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
+            label1.Location = new System.Drawing.Point(26, 12);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(334, 30);
+            label1.TabIndex = 2;
+            label1.Text = "Hospital Managment Operations";
+            // 
             // HospitalFormAdmin
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -283,7 +284,7 @@
             Margin = new System.Windows.Forms.Padding(4);
             MaximizeBox = false;
             MinimizeBox = false;
-           
+            //Name = "HospitalFormAdmin";
             Padding = new System.Windows.Forms.Padding(10, 12, 10, 12);
             ShowIcon = false;
             ShowInTaskbar = false;

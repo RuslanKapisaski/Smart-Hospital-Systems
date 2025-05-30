@@ -1,5 +1,6 @@
 ﻿using Hospital_System.DAL.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 
 namespace Hospital_System.DAL.DB
@@ -40,6 +41,7 @@ namespace Hospital_System.DAL.DB
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<Payment> Payments { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<RoleRequest> RoleRequests { get; set; }
 
     }
 }

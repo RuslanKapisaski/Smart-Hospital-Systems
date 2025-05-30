@@ -8,7 +8,8 @@ namespace Hospital_System.DAL.Models.DTOs
 {
     public class UserDTO
     {
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public RoleDTO Role { get; set; }

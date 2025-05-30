@@ -133,7 +133,7 @@ namespace Hospital_System.DAL.Models.DTOs
             using (var context = new HospitalDbContext())
             {
                 var service = new HospitalService(context);
-                IReadOnlyList<HospitalDTO>  hospitals = service.GetAllHospitals();
+                IReadOnlyList<HospitalDTO> hospitals = service.GetAllHospitals();
                 hospitalsGridView.DataSource = hospitals;
                 hospitalsGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
@@ -165,7 +165,5 @@ namespace Hospital_System.DAL.Models.DTOs
             emailTextBox.Text = " ";
             descriptionTextBox.Text = " ";
         }
-
-      
     }
 }

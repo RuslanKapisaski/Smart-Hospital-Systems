@@ -182,10 +182,6 @@ namespace Hospital_System.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("RoleId"));
 
-                    b.Property<int>("RoleName")
-                        .HasMaxLength(10)
-                        .HasColumnType("integer");
-
                     b.HasKey("RoleId");
 
                     b.ToTable("roles", "public");
@@ -230,7 +226,7 @@ namespace Hospital_System.Migrations
                     b.Property<DateTime>("RegistrationDate")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<int?>("RoleId")
+                    b.Property<int>("RoleId")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -238,6 +234,35 @@ namespace Hospital_System.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("users", "public");
+                });
+
+            modelBuilder.Entity("RoleRequest", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<bool?>("IsApproved")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime>("RequestedAt")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<int>("RequestedRoleId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RequestedRoleId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("role_requests", "public");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Appointment", b =>
@@ -318,9 +343,30 @@ namespace Hospital_System.Migrations
                 {
                     b.HasOne("Hospital_System.DAL.Models.Role", "Role")
                         .WithMany("Users")
-                        .HasForeignKey("RoleId");
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("RoleRequest", b =>
+                {
+                    b.HasOne("Hospital_System.DAL.Models.Role", "RequestedRole")
+                        .WithMany()
+                        .HasForeignKey("RequestedRoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Hospital_System.DAL.Models.User", "User")
+                        .WithMany("RoleRequests")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("RequestedRole");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Hospital_System.DAL.Models.Doctor", b =>
@@ -354,6 +400,8 @@ namespace Hospital_System.Migrations
                     b.Navigation("Doctor");
 
                     b.Navigation("Patient");
+
+                    b.Navigation("RoleRequests");
                 });
 #pragma warning restore 612, 618
         }

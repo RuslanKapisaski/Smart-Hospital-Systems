@@ -14,9 +14,12 @@ public partial class Role
     [Required]
     public int RoleId { get; set; }
 
-    [Required]
-    [MaxLength(10)]
-    public RoleType RoleName { get; set; }
+    [NotMapped]
+    public RoleType RoleName
+    {
+        get => (RoleType)RoleId;
+        set => RoleId = (int)value;
+    }
 
     public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

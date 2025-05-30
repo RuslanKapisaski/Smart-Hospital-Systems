@@ -3,6 +3,7 @@
     using Hospital_System.DAL.DB;
     using Hospital_System.DAL.Models;
     using Hospital_System.DAL.Models.DTOs;
+    using Hospital_System.DAL.Models.Enums;
     using Hospital_System.DAL.Services;
     using Hospital_System.UI.UIManagers;
     using Mapster;
@@ -20,12 +21,14 @@
             CenterForm();
             MaskPasswordFields();
             birthDatePicker.Value = DateTime.Today.AddYears(-18);
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void registerBtn_Click(object sender, EventArgs e)
         {
-            if (ValidateForm(out User user))
+            if (CheckIsFormValid())
             {
+                var user = new User();
                 user.FirstName = fNameInput.Text.Trim();
                 user.LastName = lNameInput.Text.Trim();
                 user.Email = emailInput.Text.Trim();
@@ -42,9 +45,8 @@
 
         }
 
-        private bool ValidateForm(out User user)
+        private bool CheckIsFormValid()
         {
-            user = new User();
             bool isValid = true;
 
             if (string.IsNullOrWhiteSpace(fNameInput.Text))
@@ -96,19 +98,19 @@
 
                     if (user.Role == null)
                     {
-                        user.Role = dbContext.Roles.Find(0);
+                        var role = dbContext.Roles.Find(1); // or use FirstOrDefault(r => r.RoleId == 1);
+                        user.Role = role;
                     }
 
                     bool isSuccessful = userService.RegisterUser(user);
-
+                   
                     if (isSuccessful)
                     {
                         ResetForm();
                         this.Hide();
-
-                        var userDto = user.Adapt<UserDTO>();
-                        var mainForm = new MainForm(userDto);
-                        manager.DispatchPanels(userDto.Role.roleId, mainForm);
+                        GLOB.LogedUser = user.Adapt<UserDTO>();
+                       var mainForm = new MainForm();
+                        manager.DispatchPanels(GLOB.LogedUser.Role.roleId, mainForm);
                         mainForm.ShowDialog();
                     }
                 }

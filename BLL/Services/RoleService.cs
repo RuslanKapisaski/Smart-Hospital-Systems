@@ -1,13 +1,13 @@
-﻿using Hospital_System.BLL.Interfaces;
-using Hospital_System.DAL.DB;
-using Hospital_System.DAL.Models;
-using Hospital_System.DAL.Models.DTOs;
-using Hospital_System.Utils;
-using Mapster;
-using System;
-
-namespace Hospital_System.BLL.Services
+﻿namespace Hospital_System.BLL.Services
 {
+    using Hospital_System.BLL.Interfaces;
+    using Hospital_System.DAL.DB;
+    using Hospital_System.DAL.Models;
+    using Hospital_System.Utils;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public class RoleService : IRoleService
     {
         private readonly HospitalDbContext DBContext;
@@ -17,26 +17,35 @@ namespace Hospital_System.BLL.Services
             this.DBContext = DBContext;
         }
 
-        public void AddRole(RoleDTO roleDto)
+        public void AddRole(Role role)
         {
-           // Role role = this.mapper.Map
-            var newRole = roleDto.Adapt<Role>();
-            this.DBContext.Roles.Add(newRole);
-            this.DBContext.SaveChanges();
+            try
+            {
+                this.DBContext.Roles.Add(role);
+                this.DBContext.SaveChanges();
+            }
+            catch (Exception ex) { throw new ArgumentException(ExceptionMessages.RoleNotFound); }
+            
         }
 
         public bool RemoveRoleByUserId(string userId)
         {
             var user = DBContext.Users.Find(userId);
 
-            if (user==null)
+            if (user == null)
             {
-                throw new ArgumentException (ExceptionMessages.UserNotFound);
+                throw new ArgumentException(ExceptionMessages.UserNotFound);
             }
 
-            this.DBContext.Users.Remove(user);
+            this.DBContext.Roles.Remove(user.Role);
             bool isDeleted = DBContext.SaveChanges() == 1;
             return isDeleted;
+        }
+        //public string GetRoleNameByRoleId() { }
+
+        public List<Role> GetRoles()
+        {
+            return this.DBContext.Roles.ToList();
         }
     }
 }

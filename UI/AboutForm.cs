@@ -14,6 +14,7 @@ namespace Hospital_System.UI
     {
         public AboutForm()
         {
+
             InitializeComponent();
             RenderHtmlInformation();
         }
@@ -100,6 +101,6 @@ namespace Hospital_System.UI
             this.FormBorderStyle = FormBorderStyle.None;
         }
 
-     
+
     }
 }

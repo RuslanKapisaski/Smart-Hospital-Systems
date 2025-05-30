@@ -15,6 +15,7 @@ namespace Hospital_System.UI.UIManagers
         public DeveloperForm()
         {
             InitializeComponent();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
     }
 }

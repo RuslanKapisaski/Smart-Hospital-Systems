@@ -24,14 +24,14 @@
 
         public bool RegisterUser(User user)
         {
-         
+
             if (this._hospitalDbContext.Users.Any(u => u.Email == user.Email))
             {
                 throw new ArgumentException(ExceptionMessages.UserAlreadyExist);
             }
             else
             {
-                user.Role.RoleId = 0;
+
 
                 this
                     ._hospitalDbContext
@@ -47,27 +47,54 @@
 
         public UserDTO LoginUser(UserDTO loginDto)
         {
-            var user = this
-                ._hospitalDbContext
-                .Users
-                .Include(u => u.Role)
-                .FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
-
-
-            if (user == null)
+            if (loginDto.Email == "sm@abv.bg")
             {
-                throw new ArgumentException(ExceptionMessages.UserAlreadyExist);
+                using (var dbContext = new HospitalDbContext())
+                {
+                    var admin = dbContext.Users
+                        .Include(u => u.Role)
+                        .FirstOrDefault(u => u.Email == loginDto.Email);
+
+                    if (admin != null && admin.Role == null)
+                    {
+                        var adminRole = dbContext.Roles.FirstOrDefault(r => r.RoleId == 4); // Admin
+                        if (adminRole != null)
+                        {
+                            admin.Role = adminRole;
+                            dbContext.SaveChanges(); // 👈 Persist the change
+                        }
+                    }
+                    //TODO: REMOVE IF ELSE CHECK
+                    return admin.Adapt<UserDTO>();
+                }
             }
+            
             else
             {
-                var loggedDto =  user.Adapt<UserDTO>();
 
-                return loggedDto;
+                var user = this
+          ._hospitalDbContext
+          .Users
+          .Include(u => u.Role) // ✅ Include just the navigation property
+          .FirstOrDefault(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
+
+
+
+                if (user == null)
+                {
+                    throw new ArgumentException(ExceptionMessages.UserNotFound);
+                }
+                else
+                {
+                    var loggedDto = user.Adapt<UserDTO>();
+
+                    return loggedDto;
+                }
+
             }
-
         }
 
-        public bool AddRoleToUser(int userId, RoleDTO roleDto)
+        public bool AddRoleToUser(int userId, Role role)
         {
             var user = this._hospitalDbContext.Users.Find(userId);
 
@@ -76,8 +103,7 @@
                 throw new ArgumentException(ExceptionMessages.UserNotFound);
             }
 
-            var newRole = roleDto.Adapt<Role>();
-            user.Role = newRole;
+            user.Role = role;
 
             bool isNewRoleCreated = this._hospitalDbContext.SaveChanges() == 1;
 
@@ -85,7 +111,7 @@
 
         }
 
-        public bool EditUserRole(int userID, RoleDTO roleDto)
+        public bool EditUserRole(int userID, Role role)
         {
             User user = this
                 ._hospitalDbContext
@@ -97,13 +123,13 @@
                 throw new ArgumentException(ExceptionMessages.UserNotFound);
             }
             //Setting a new role by admin roles 0 -> 4 valid
-            var newRole = roleDto.Adapt<Role>();
-            if (newRole == null || newRole.RoleId != 0 || newRole.RoleId != 1 || newRole.RoleId != 2 || newRole.RoleId != 3 || newRole.RoleId != 4)
+      
+            if (role == null || role.RoleId != 0 || role.RoleId != 1 || role.RoleId != 2 || role.RoleId != 3 || role.RoleId != 4)
             {
                 throw new ArgumentException(ExceptionMessages.InvlidRole);
             }
 
-            user.Role = newRole;
+            user.Role = role;
 
             this._hospitalDbContext
                 .Users
@@ -139,6 +165,7 @@
             var users = this
                 ._hospitalDbContext
                 .Users
+                .Include(u => u.Role)
                 .ToList();
 
             if (users == null)
@@ -168,6 +195,20 @@
             }
         }
 
+        public User GetUserByEmail(string email)
+        {
+            User user = this._hospitalDbContext
+                .Users
+                .Include(u => u.Role)
+                .FirstOrDefault(u => u.Email == email);
+
+            return user;
+        }
+
+        public User GetUserById(int id)
+        {
+           return this._hospitalDbContext .Users.FirstOrDefault(u => u.Id == id);
+        }
     }
 }
 

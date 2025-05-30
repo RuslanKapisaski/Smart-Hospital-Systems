@@ -18,5 +18,7 @@ namespace Hospital_System.Utils
         public const string InvlidRole = "Such role doesn't exist";
         public const string InvalidAppointmentStatus = "Such status doesn't exist";
         public const string SpecializationAlreadyExist = "This doctor already has a specialization";
+        public const string RoleRequestError = "Error occured while requesting a role.";
+        public const string InvalidRoleIDd = "Invalid role id is requested";
     }
 }

@@ -9,11 +9,15 @@
 
         UserDTO LoginUser(UserDTO user);
 
-        bool EditUserRole(int userID, RoleDTO newRole);
+        public User GetUserById(int id);
+
+        User GetUserByEmail(string email);
+
+        bool EditUserRole(int userID, Role role);
 
         bool DeleteUser(int userId);
 
-        bool AddRoleToUser(int userId, RoleDTO roleDto);
+        bool AddRoleToUser(int userId, Role role);
 
         IReadOnlyList<UserDTO> GetAllUsersDTOs();
 

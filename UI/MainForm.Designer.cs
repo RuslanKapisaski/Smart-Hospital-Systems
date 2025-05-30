@@ -243,9 +243,9 @@ namespace Hospital_System.UI
             // 
             flowLayoutPanelMainForm.Anchor = System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right;
             flowLayoutPanelMainForm.BackColor = System.Drawing.Color.Transparent;
-            flowLayoutPanelMainForm.Location = new System.Drawing.Point(59, 202);
+            flowLayoutPanelMainForm.Location = new System.Drawing.Point(90, 202);
             flowLayoutPanelMainForm.Name = "flowLayoutPanelMainForm";
-            flowLayoutPanelMainForm.Size = new System.Drawing.Size(769, 777);
+            flowLayoutPanelMainForm.Size = new System.Drawing.Size(738, 777);
             flowLayoutPanelMainForm.TabIndex = 6;
             // 
             // MainForm

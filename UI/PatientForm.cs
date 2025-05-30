@@ -16,6 +16,7 @@ namespace Hospital_System.UI
         public PatientForm()
         {
             InitializeComponent();
+            this.WindowState = FormWindowState.Maximized;
         }
 
         public void SelectTab(string tabName)

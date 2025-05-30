@@ -39,5 +39,11 @@ public partial class User
 
     public virtual Patient Patient { get; set; }
 
+    public int RoleId { get; set; } 
+
+    [ForeignKey("RoleId")]
     public virtual Role Role { get; set; }
+
+    public virtual ICollection<RoleRequest> RoleRequests { get; set; } = new List<RoleRequest>();
+
 }

@@ -24,20 +24,11 @@ namespace Hospital_System.UI.UIManagers
         }
 
 
-        private Size ButtonSize = new Size(280, 200);
+        private Size ButtonSize = new Size(360, 300);
         private Color OriginalButtonColor = Color.Transparent;
 
         //Admins forms
-        private void ShowFormDoctorsForAdmins()
-        {
-            using (var form = new DoctorFormAdmin())
-            {
-                form.Text = "Doctors";
-
-                form.ShowDialog();
-            }
-        }
-
+       
         private void ShowFormPatientsForAdmins()
         {
             using (var form = new PatientForm())
@@ -74,39 +65,6 @@ namespace Hospital_System.UI.UIManagers
             {
                 form.Text = "Users";
 
-                void refreshGridUsers()
-                {
-                    DataTable table = new DataTable();
-                    table.Columns.Add("User ID");
-                    table.Columns.Add("Username");
-                    table.Columns.Add("Email");
-                    table.Columns.Add("Registration Date");
-
-                    var users = _userService.GetAllUsers();
-
-                    foreach (var user in users)
-                    {
-                        table.Rows.Add(user.Id, user.FirstName + " " + user.LastName, user.Email, user.RegistrationDate);
-                    }
-
-
-                    //form.dataGridViewUsers.DataSource = table;
-                }
-
-
-
-                refreshGridUsers();
-
-                //form.btnAddNewUser.Click += (s, e) =>
-                //{
-                //    // var dialogResult = ShowFormUsersNewEdit();
-                //    // if (dialogResult == DialogResult.Yes)
-                //    // {
-                //    //     refreshGridUsers();
-                //    // }
-                //};
-
-
 
                 form.ShowDialog();
             }
@@ -123,13 +81,13 @@ namespace Hospital_System.UI.UIManagers
             }
         }
 
-        //users form
+        ////users form
         private void ShowFormBasicUserInformation()
         {
-            UserDTO userDTO = new UserDTO();
-            using (var form = new UserForm(userDTO))
+            using (var form = new UserForm())
             {
                 form.Text = "User information";
+
                 form.ShowDialog();
             }
         }
@@ -180,17 +138,23 @@ namespace Hospital_System.UI.UIManagers
             }
         }
 
+
+
+
+
+
         //Panels
         private void ShowUserPanel(MainForm form)
         {
 
             var buttons = new List<Control>();
 
+            
             buttons.Add(CreateTile("My Profile", Color.White, () =>
             {
                 ShowFormBasicUserInformation();
             }));
-
+         
             //form.flowLayoutPanelAdmin.Controls.Add(label);
             buttons.ForEach(x => form.flowLayoutPanelMainForm.Controls.Add(x));
 
@@ -282,11 +246,6 @@ namespace Hospital_System.UI.UIManagers
                 ShowFormHospitalsForAdmins();
             }));
 
-            buttons.Add(CreateTile("Doctors", Color.DarkOliveGreen, () =>
-            {
-                ShowFormDoctorsForAdmins();
-            }));
-
             buttons.Add(CreateTile("Patients", Color.DarkOrange, () =>
             {
                 ShowFormPatientsForAdmins();
@@ -311,40 +270,6 @@ namespace Hospital_System.UI.UIManagers
 
         }
 
-        //Buttons Dispatcher
-        public void DispatchPanels(int role, MainForm form)
-        {
-         
-            switch (role)
-            {
-                case 0:
-                    ShowUserPanel(form);
-                    break;
-
-                case 1:
-                    ShowPatientPanel(form);
-
-                    break;
-
-                case 2:
-                    ShowDoctorPanel(form);
-
-                    break;
-
-                case 3:
-                    ShowAdminPanel(form);
-                    break; 
-                
-                case 4:
-                    ShowDeveloperPanel(form);
-                    break;
-
-                default:
-                    MessageBox.Show("Role not recognized: " + role);
-                    break;
-            }
-        }
-
         private void ShowDeveloperPanel(MainForm form)
         {
             var label = CreateLabel("Developer", Color.White, Color.Black, null, 350);
@@ -354,11 +279,6 @@ namespace Hospital_System.UI.UIManagers
             buttons.Add(CreateTile("Developer Mode", Color.DarkRed, () =>
             {
                 ShowFormHospitalsForAdmins();
-            }));
-
-            buttons.Add(CreateTile("Developer Mode", Color.DarkOliveGreen, () =>
-            {
-                ShowFormDoctorsForAdmins();
             }));
 
             buttons.Add(CreateTile("Developer Mode", Color.DarkOrange, () =>
@@ -384,6 +304,40 @@ namespace Hospital_System.UI.UIManagers
 
             //form.flowLayoutPanelDeveloper.Controls.Add(label);
             buttons.ForEach(x => form.flowLayoutPanelMainForm.Controls.Add(x));
+        }
+
+        //Buttons Dispatcher
+        public void DispatchPanels(int role, MainForm form)
+        {
+         
+            switch (role)
+            {
+                case 1:
+                    ShowUserPanel(form);
+                    break;
+
+                case 2:
+                    ShowPatientPanel(form);
+
+                    break;
+
+                case 3:
+                    ShowDoctorPanel(form);
+
+                    break;
+
+                case 4:
+                    ShowAdminPanel(form);
+                    break; 
+                
+                case 5:
+                    ShowDeveloperPanel(form);
+                    break;
+
+                default:
+                    MessageBox.Show("Role not recognized: " + role);
+                    break;
+            }
         }
 
         private Control CreateTile(string buttonText, Color borderColor, Action onClick)

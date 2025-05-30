@@ -19,11 +19,6 @@
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-
-            //var dbContext = new HospitalDbContext();
-            //var userService = new UserService(dbContext);
-            //var settingsManager = new SettingsManagerRe(userService);
-            //settingsManager.ShowManagmentForm(isAdmin: false, isDeveloper: true);
             MapsterConfiguration();
             Application.Run(new LoginForm());
 

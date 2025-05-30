@@ -48,14 +48,14 @@
                     using (var context = new HospitalDbContext())
                     {
                         var service = new UserService(context);
-                        UserDTO user = new UserDTO();
-                        user.Email = email;
-                        user.Password = pass;
+                        var userDto = new UserDTO();
+                        userDto.Email = email;
+                        userDto.Password = pass;
                         try
                         {
-                            var loggedUser = service.LoginUser(user);
-                            var mainForm = new MainForm(loggedUser);
-                            manager.DispatchPanels(loggedUser.Role.roleId, mainForm);
+                            GLOB.LogedUser = service.LoginUser(userDto);
+                            var mainForm = new MainForm();
+                            manager.DispatchPanels(GLOB.LogedUser.Role.roleId, mainForm);
                             this.Hide();
 
                             mainForm.FormClosed += (s, args) => this.Close();

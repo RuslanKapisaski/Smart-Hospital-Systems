@@ -33,19 +33,21 @@ namespace Hospital_System.UI
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
             userGreetingLabel = new System.Windows.Forms.Label();
             statsBox = new System.Windows.Forms.GroupBox();
+            emailLabel = new System.Windows.Forms.Label();
+            nameLbl = new System.Windows.Forms.Label();
             roleBtn = new System.Windows.Forms.Button();
-            emailTextBox = new System.Windows.Forms.TextBox();
-            nameTextBox = new System.Windows.Forms.TextBox();
             nameLabel = new System.Windows.Forms.Label();
             Email = new System.Windows.Forms.Label();
-            statusLabel = new System.Windows.Forms.Label();
+            registrationDateLabel = new System.Windows.Forms.Label();
             roleLabel = new System.Windows.Forms.Label();
             contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(components);
+            regDateLabel = new System.Windows.Forms.Label();
             statsBox.SuspendLayout();
             SuspendLayout();
             // 
             // userGreetingLabel
             // 
+            userGreetingLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             userGreetingLabel.AutoSize = true;
             userGreetingLabel.BackColor = System.Drawing.Color.Transparent;
             userGreetingLabel.Font = new System.Drawing.Font("Segoe UI", 16.3018875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
@@ -58,47 +60,57 @@ namespace Hospital_System.UI
             // 
             // statsBox
             // 
+            statsBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             statsBox.BackgroundImage = (System.Drawing.Image)resources.GetObject("statsBox.BackgroundImage");
             statsBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            statsBox.Controls.Add(emailLabel);
+            statsBox.Controls.Add(nameLbl);
             statsBox.Controls.Add(roleBtn);
-            statsBox.Controls.Add(emailTextBox);
-            statsBox.Controls.Add(nameTextBox);
             statsBox.Controls.Add(nameLabel);
             statsBox.Controls.Add(Email);
             statsBox.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2264156F, System.Drawing.FontStyle.Bold);
             statsBox.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            statsBox.Location = new System.Drawing.Point(94, 117);
+            statsBox.Location = new System.Drawing.Point(38, 90);
             statsBox.Name = "statsBox";
-            statsBox.Size = new System.Drawing.Size(364, 361);
+            statsBox.Size = new System.Drawing.Size(433, 388);
             statsBox.TabIndex = 1;
             statsBox.TabStop = false;
             statsBox.Text = "My info";
+            // 
+            // emailLabel
+            // 
+            emailLabel.AutoSize = true;
+            emailLabel.BackColor = System.Drawing.Color.Transparent;
+            emailLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2264156F, System.Drawing.FontStyle.Bold);
+            emailLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            emailLabel.Location = new System.Drawing.Point(106, 176);
+            emailLabel.Name = "emailLabel";
+            emailLabel.Size = new System.Drawing.Size(0, 25);
+            emailLabel.TabIndex = 6;
+            // 
+            // nameLbl
+            // 
+            nameLbl.AutoSize = true;
+            nameLbl.BackColor = System.Drawing.Color.Transparent;
+            nameLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2264156F, System.Drawing.FontStyle.Bold);
+            nameLbl.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            nameLbl.Location = new System.Drawing.Point(106, 111);
+            nameLbl.Name = "nameLbl";
+            nameLbl.Size = new System.Drawing.Size(0, 25);
+            nameLbl.TabIndex = 5;
             // 
             // roleBtn
             // 
             roleBtn.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             roleBtn.Font = new System.Drawing.Font("Segoe UI", 12.2264156F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
             roleBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            roleBtn.Location = new System.Drawing.Point(49, 245);
+            roleBtn.Location = new System.Drawing.Point(73, 248);
             roleBtn.Name = "roleBtn";
             roleBtn.Size = new System.Drawing.Size(260, 42);
             roleBtn.TabIndex = 4;
             roleBtn.Text = "Request Role Upgrade";
             roleBtn.UseVisualStyleBackColor = false;
-            // 
-            // emailTextBox
-            // 
-            emailTextBox.Location = new System.Drawing.Point(91, 176);
-            emailTextBox.Name = "emailTextBox";
-            emailTextBox.Size = new System.Drawing.Size(160, 31);
-            emailTextBox.TabIndex = 3;
-            // 
-            // nameTextBox
-            // 
-            nameTextBox.Location = new System.Drawing.Point(91, 108);
-            nameTextBox.Name = "nameTextBox";
-            nameTextBox.Size = new System.Drawing.Size(160, 31);
-            nameTextBox.TabIndex = 2;
+            roleBtn.Click += roleBtn_Click;
             // 
             // nameLabel
             // 
@@ -124,25 +136,27 @@ namespace Hospital_System.UI
             Email.TabIndex = 0;
             Email.Text = "Email:";
             // 
-            // statusLabel
+            // registrationDateLabel
             // 
-            statusLabel.AutoSize = true;
-            statusLabel.BackColor = System.Drawing.Color.Transparent;
-            statusLabel.Font = new System.Drawing.Font("Segoe UI", 14.2641506F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
-            statusLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            statusLabel.Location = new System.Drawing.Point(110, 512);
-            statusLabel.Name = "statusLabel";
-            statusLabel.Size = new System.Drawing.Size(74, 30);
-            statusLabel.TabIndex = 5;
-            statusLabel.Text = "Status:";
+            registrationDateLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            registrationDateLabel.AutoSize = true;
+            registrationDateLabel.BackColor = System.Drawing.Color.Transparent;
+            registrationDateLabel.Font = new System.Drawing.Font("Segoe UI", 14.2641506F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            registrationDateLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            registrationDateLabel.Location = new System.Drawing.Point(67, 568);
+            registrationDateLabel.Name = "registrationDateLabel";
+            registrationDateLabel.Size = new System.Drawing.Size(178, 30);
+            registrationDateLabel.TabIndex = 5;
+            registrationDateLabel.Text = "Registration Date:";
             // 
             // roleLabel
             // 
+            roleLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             roleLabel.AutoSize = true;
             roleLabel.BackColor = System.Drawing.Color.Transparent;
             roleLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2264156F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, 204);
             roleLabel.ForeColor = System.Drawing.SystemColors.Control;
-            roleLabel.Location = new System.Drawing.Point(111, 557);
+            roleLabel.Location = new System.Drawing.Point(67, 534);
             roleLabel.Name = "roleLabel";
             roleLabel.Size = new System.Drawing.Size(53, 25);
             roleLabel.TabIndex = 6;
@@ -154,6 +168,18 @@ namespace Hospital_System.UI
             contextMenuStrip1.Name = "contextMenuStrip1";
             contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
+            // regDateLabel
+            // 
+            regDateLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            regDateLabel.AutoSize = true;
+            regDateLabel.BackColor = System.Drawing.Color.Transparent;
+            regDateLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 12.2264156F, System.Drawing.FontStyle.Bold);
+            regDateLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            regDateLabel.Location = new System.Drawing.Point(283, 573);
+            regDateLabel.Name = "regDateLabel";
+            regDateLabel.Size = new System.Drawing.Size(0, 25);
+            regDateLabel.TabIndex = 8;
+            // 
             // UserForm
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -161,8 +187,9 @@ namespace Hospital_System.UI
             BackgroundImage = (System.Drawing.Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             ClientSize = new System.Drawing.Size(977, 626);
+            Controls.Add(regDateLabel);
             Controls.Add(roleLabel);
-            Controls.Add(statusLabel);
+            Controls.Add(registrationDateLabel);
             Controls.Add(statsBox);
             Controls.Add(userGreetingLabel);
             ImeMode = System.Windows.Forms.ImeMode.On;
@@ -181,12 +208,13 @@ namespace Hospital_System.UI
         public System.Windows.Forms.Label userGreetingLabel;
         public System.Windows.Forms.GroupBox statsBox;
         public System.Windows.Forms.Button roleBtn;
-        public System.Windows.Forms.TextBox emailTextBox;
-        public System.Windows.Forms.TextBox nameTextBox;
         public System.Windows.Forms.Label nameLabel;
         public System.Windows.Forms.Label Email;
-        public System.Windows.Forms.Label statusLabel;
+        public System.Windows.Forms.Label registrationDateLabel;
         public System.Windows.Forms.Label roleLabel;
         public System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        public System.Windows.Forms.Label emailLabel;
+        public System.Windows.Forms.Label nameLbl;
+        public System.Windows.Forms.Label regDateLabel;
     }
 }

@@ -8,10 +8,10 @@ namespace Hospital_System.DAL.Models.Enums
 {
     public enum RoleType
     {
-        User = 0,
-        Patient = 1,
-        Doctor = 2,
-        Admin = 3,
-        Developer = 4
+        User = 1,
+        Patient = 2,
+        Doctor = 3,
+        Admin = 4,
+        Developer = 5
     }
 }
